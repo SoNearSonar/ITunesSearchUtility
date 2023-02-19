@@ -61,12 +61,16 @@
             this.LBL_AlbumArtistURL = new System.Windows.Forms.Label();
             this.TPG_Podcast = new System.Windows.Forms.TabPage();
             this.GBX_SearchInput = new System.Windows.Forms.GroupBox();
+            this.TXT_SearchLimit = new System.Windows.Forms.TextBox();
+            this.LBL_CountryCode = new System.Windows.Forms.Label();
+            this.LBL_SearchLimit = new System.Windows.Forms.Label();
             this.CBX_SearchBy = new System.Windows.Forms.ComboBox();
             this.TXT_ContentName = new System.Windows.Forms.TextBox();
             this.LBL_SearchBy = new System.Windows.Forms.Label();
             this.LBL_ContentName = new System.Windows.Forms.Label();
             this.BTN_ContentSearch = new System.Windows.Forms.Button();
             this.TPG_History = new System.Windows.Forms.TabPage();
+            this.TXT_CountryCode = new System.Windows.Forms.TextBox();
             this.TCTRL_Main.SuspendLayout();
             this.TPG_Search.SuspendLayout();
             this.GBX_ContentResult.SuspendLayout();
@@ -102,9 +106,9 @@
             // GBX_ContentResult
             // 
             this.GBX_ContentResult.Controls.Add(this.LVW_CollectionResults);
-            this.GBX_ContentResult.Location = new System.Drawing.Point(7, 100);
+            this.GBX_ContentResult.Location = new System.Drawing.Point(7, 152);
             this.GBX_ContentResult.Name = "GBX_ContentResult";
-            this.GBX_ContentResult.Size = new System.Drawing.Size(401, 320);
+            this.GBX_ContentResult.Size = new System.Drawing.Size(401, 268);
             this.GBX_ContentResult.TabIndex = 1;
             this.GBX_ContentResult.TabStop = false;
             this.GBX_ContentResult.Text = "Result";
@@ -115,10 +119,10 @@
             this.CHDR_ContentName,
             this.CHDR_Artists});
             this.LVW_CollectionResults.FullRowSelect = true;
-            this.LVW_CollectionResults.Location = new System.Drawing.Point(6, 18);
+            this.LVW_CollectionResults.Location = new System.Drawing.Point(6, 22);
             this.LVW_CollectionResults.MultiSelect = false;
             this.LVW_CollectionResults.Name = "LVW_CollectionResults";
-            this.LVW_CollectionResults.Size = new System.Drawing.Size(389, 292);
+            this.LVW_CollectionResults.Size = new System.Drawing.Size(389, 240);
             this.LVW_CollectionResults.TabIndex = 0;
             this.LVW_CollectionResults.UseCompatibleStateImageBehavior = false;
             this.LVW_CollectionResults.View = System.Windows.Forms.View.Details;
@@ -374,6 +378,10 @@
             // 
             // GBX_SearchInput
             // 
+            this.GBX_SearchInput.Controls.Add(this.TXT_CountryCode);
+            this.GBX_SearchInput.Controls.Add(this.TXT_SearchLimit);
+            this.GBX_SearchInput.Controls.Add(this.LBL_CountryCode);
+            this.GBX_SearchInput.Controls.Add(this.LBL_SearchLimit);
             this.GBX_SearchInput.Controls.Add(this.CBX_SearchBy);
             this.GBX_SearchInput.Controls.Add(this.TXT_ContentName);
             this.GBX_SearchInput.Controls.Add(this.LBL_SearchBy);
@@ -381,29 +389,55 @@
             this.GBX_SearchInput.Controls.Add(this.BTN_ContentSearch);
             this.GBX_SearchInput.Location = new System.Drawing.Point(7, 2);
             this.GBX_SearchInput.Name = "GBX_SearchInput";
-            this.GBX_SearchInput.Size = new System.Drawing.Size(401, 95);
+            this.GBX_SearchInput.Size = new System.Drawing.Size(401, 151);
             this.GBX_SearchInput.TabIndex = 0;
             this.GBX_SearchInput.TabStop = false;
             this.GBX_SearchInput.Text = "Search Input";
             // 
+            // TXT_SearchLimit
+            // 
+            this.TXT_SearchLimit.Location = new System.Drawing.Point(103, 87);
+            this.TXT_SearchLimit.Name = "TXT_SearchLimit";
+            this.TXT_SearchLimit.Size = new System.Drawing.Size(173, 23);
+            this.TXT_SearchLimit.TabIndex = 8;
+            // 
+            // LBL_CountryCode
+            // 
+            this.LBL_CountryCode.AutoSize = true;
+            this.LBL_CountryCode.Location = new System.Drawing.Point(13, 122);
+            this.LBL_CountryCode.Name = "LBL_CountryCode";
+            this.LBL_CountryCode.Size = new System.Drawing.Size(84, 15);
+            this.LBL_CountryCode.TabIndex = 7;
+            this.LBL_CountryCode.Text = "Country Code:";
+            // 
+            // LBL_SearchLimit
+            // 
+            this.LBL_SearchLimit.AutoSize = true;
+            this.LBL_SearchLimit.Location = new System.Drawing.Point(13, 90);
+            this.LBL_SearchLimit.Name = "LBL_SearchLimit";
+            this.LBL_SearchLimit.Size = new System.Drawing.Size(75, 15);
+            this.LBL_SearchLimit.TabIndex = 5;
+            this.LBL_SearchLimit.Text = "Search Limit:";
+            // 
             // CBX_SearchBy
             // 
+            this.CBX_SearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBX_SearchBy.FormattingEnabled = true;
             this.CBX_SearchBy.Items.AddRange(new object[] {
             "Album Name",
             "Song Name",
             "Artist ID",
             "Podcast ID"});
-            this.CBX_SearchBy.Location = new System.Drawing.Point(84, 56);
+            this.CBX_SearchBy.Location = new System.Drawing.Point(103, 55);
             this.CBX_SearchBy.Name = "CBX_SearchBy";
-            this.CBX_SearchBy.Size = new System.Drawing.Size(192, 23);
+            this.CBX_SearchBy.Size = new System.Drawing.Size(173, 23);
             this.CBX_SearchBy.TabIndex = 4;
             // 
             // TXT_ContentName
             // 
-            this.TXT_ContentName.Location = new System.Drawing.Point(84, 23);
+            this.TXT_ContentName.Location = new System.Drawing.Point(103, 23);
             this.TXT_ContentName.Name = "TXT_ContentName";
-            this.TXT_ContentName.Size = new System.Drawing.Size(301, 23);
+            this.TXT_ContentName.Size = new System.Drawing.Size(282, 23);
             this.TXT_ContentName.TabIndex = 3;
             // 
             // LBL_SearchBy
@@ -426,7 +460,7 @@
             // 
             // BTN_ContentSearch
             // 
-            this.BTN_ContentSearch.Location = new System.Drawing.Point(294, 55);
+            this.BTN_ContentSearch.Location = new System.Drawing.Point(294, 86);
             this.BTN_ContentSearch.Name = "BTN_ContentSearch";
             this.BTN_ContentSearch.Size = new System.Drawing.Size(91, 24);
             this.BTN_ContentSearch.TabIndex = 0;
@@ -443,6 +477,13 @@
             this.TPG_History.TabIndex = 1;
             this.TPG_History.Text = "History";
             this.TPG_History.UseVisualStyleBackColor = true;
+            // 
+            // TXT_CountryCode
+            // 
+            this.TXT_CountryCode.Location = new System.Drawing.Point(103, 119);
+            this.TXT_CountryCode.Name = "TXT_CountryCode";
+            this.TXT_CountryCode.Size = new System.Drawing.Size(173, 23);
+            this.TXT_CountryCode.TabIndex = 9;
             // 
             // ITunesSearchUtility
             // 
@@ -506,5 +547,9 @@
         private Label LBL_AlbumPrice;
         private TextBox TXT_AlbumTrackCount;
         private Label LBL_AlbumTrackCount;
+        private TextBox TXT_SearchLimit;
+        private Label LBL_CountryCode;
+        private Label LBL_SearchLimit;
+        private TextBox TXT_CountryCode;
     }
 }

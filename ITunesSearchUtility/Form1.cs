@@ -1,5 +1,7 @@
 using iTunesSearch.Library;
 using iTunesSearch.Library.Models;
+using ITunesSearchUtility.Helpers;
+using System.Runtime.CompilerServices;
 
 namespace ITunesSearchUtility
 {
@@ -23,14 +25,40 @@ namespace ITunesSearchUtility
         {
             if (string.IsNullOrWhiteSpace(TXT_ContentName.Text))
             {
-                MessageBox.Show("Please enter in the required information to continue", "Name error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please enter in the content name in the input field", "Name error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            int searchLimit = 100;
+            if (!string.IsNullOrWhiteSpace(TXT_SearchLimit.Text))
+            {
+                if (int.TryParse(TXT_SearchLimit.Text, out int limit))
+                {
+                    searchLimit = limit;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter in a proper search limit number", "Search limit error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            string countryCode = "us";
+            if (!string.IsNullOrWhiteSpace(TXT_CountryCode.Text))
+            {
+                countryCode = TXT_CountryCode.Text.ToUpperInvariant().Substring(0, 2);
+                if (TXT_CountryCode.Text.Length > 2 || !CountryList.Countries.ContainsKey(countryCode))
+                {
+                    MessageBox.Show("Please enter in a proper country code", "Country code error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                countryCode = countryCode.ToLowerInvariant();
             }
 
             switch (CBX_SearchBy.SelectedIndex)
             {
                 case 0:
-                    AlbumResult albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text);
+                    AlbumResult albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultByName != null)
                     {
                         _albums.Clear();
@@ -38,7 +66,7 @@ namespace ITunesSearchUtility
                     }
                     break;
                 case 1:
-                    AlbumResult albumResultBySongName = await _search.GetAlbumsFromSongAsync(TXT_ContentName.Text);
+                    AlbumResult albumResultBySongName = await _search.GetAlbumsFromSongAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultBySongName != null)
                     {
                         _albums.Clear();
@@ -48,7 +76,7 @@ namespace ITunesSearchUtility
                 case 2:
                     if (long.TryParse(TXT_ContentName.Text, out long artistId))
                     {
-                        AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(artistId);
+                        AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(artistId, searchLimit, countryCode);
                         if (albumResultByArtistId != null)
                         {
                             _albums.Clear();
@@ -95,7 +123,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumArtists.Text = _albums[index].ArtistName;
                     TXT_AlbumArtistID.Text = _albums[index].ArtistId.ToString();
                     TXT_AlbumArtistURL.Text = _albums[index].ArtistViewUrl;
-                    TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness;
+                    TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness.Equals("notExplicit") ? "No" : "Yes";
                     TXT_AlbumReleaseDate.Text = _albums[index].ReleaseDate;
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
                     TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
