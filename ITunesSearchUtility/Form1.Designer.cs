@@ -37,6 +37,8 @@
             this.GBX_ContentInformation = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TPG_Album = new System.Windows.Forms.TabPage();
+            this.TXT_AlbumTrackCount = new System.Windows.Forms.TextBox();
+            this.LBL_AlbumTrackCount = new System.Windows.Forms.Label();
             this.TXT_AlbumPrice = new System.Windows.Forms.TextBox();
             this.LBL_AlbumPrice = new System.Windows.Forms.Label();
             this.TXT_AlbumCopyright = new System.Windows.Forms.TextBox();
@@ -51,9 +53,9 @@
             this.LBL_AlbumArtists = new System.Windows.Forms.Label();
             this.LBL_AlbumReleaseDate = new System.Windows.Forms.Label();
             this.TXT_AlbumArtists = new System.Windows.Forms.TextBox();
-            this.TXT_AlbumAmgArtistID = new System.Windows.Forms.TextBox();
+            this.TXT_AlbumIsExplicit = new System.Windows.Forms.TextBox();
             this.LBL_AlbumArtistID = new System.Windows.Forms.Label();
-            this.LBL_AlbumAMGArtistID = new System.Windows.Forms.Label();
+            this.LBL_AlbumIsExplicit = new System.Windows.Forms.Label();
             this.TXT_AlbumArtistID = new System.Windows.Forms.TextBox();
             this.TXT_AlbumArtistURL = new System.Windows.Forms.TextBox();
             this.LBL_AlbumArtistURL = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.LBL_ContentName = new System.Windows.Forms.Label();
             this.BTN_ContentSearch = new System.Windows.Forms.Button();
             this.TPG_History = new System.Windows.Forms.TabPage();
-            this.TXT_AlbumTrackCount = new System.Windows.Forms.TextBox();
-            this.LBL_AlbumTrackCount = new System.Windows.Forms.Label();
             this.TCTRL_Main.SuspendLayout();
             this.TPG_Search.SuspendLayout();
             this.GBX_ContentResult.SuspendLayout();
@@ -172,9 +172,9 @@
             this.TPG_Album.Controls.Add(this.LBL_AlbumArtists);
             this.TPG_Album.Controls.Add(this.LBL_AlbumReleaseDate);
             this.TPG_Album.Controls.Add(this.TXT_AlbumArtists);
-            this.TPG_Album.Controls.Add(this.TXT_AlbumAmgArtistID);
+            this.TPG_Album.Controls.Add(this.TXT_AlbumIsExplicit);
             this.TPG_Album.Controls.Add(this.LBL_AlbumArtistID);
-            this.TPG_Album.Controls.Add(this.LBL_AlbumAMGArtistID);
+            this.TPG_Album.Controls.Add(this.LBL_AlbumIsExplicit);
             this.TPG_Album.Controls.Add(this.TXT_AlbumArtistID);
             this.TPG_Album.Controls.Add(this.TXT_AlbumArtistURL);
             this.TPG_Album.Controls.Add(this.LBL_AlbumArtistURL);
@@ -185,6 +185,22 @@
             this.TPG_Album.TabIndex = 0;
             this.TPG_Album.Text = "Album";
             this.TPG_Album.UseVisualStyleBackColor = true;
+            // 
+            // TXT_AlbumTrackCount
+            // 
+            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(104, 330);
+            this.TXT_AlbumTrackCount.Name = "TXT_AlbumTrackCount";
+            this.TXT_AlbumTrackCount.Size = new System.Drawing.Size(252, 23);
+            this.TXT_AlbumTrackCount.TabIndex = 26;
+            // 
+            // LBL_AlbumTrackCount
+            // 
+            this.LBL_AlbumTrackCount.AutoSize = true;
+            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(10, 333);
+            this.LBL_AlbumTrackCount.Name = "LBL_AlbumTrackCount";
+            this.LBL_AlbumTrackCount.Size = new System.Drawing.Size(73, 15);
+            this.LBL_AlbumTrackCount.TabIndex = 25;
+            this.LBL_AlbumTrackCount.Text = "Track Count:";
             // 
             // TXT_AlbumPrice
             // 
@@ -298,12 +314,12 @@
             this.TXT_AlbumArtists.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumArtists.TabIndex = 8;
             // 
-            // TXT_AlbumAmgArtistID
+            // TXT_AlbumIsExplicit
             // 
-            this.TXT_AlbumAmgArtistID.Location = new System.Drawing.Point(105, 138);
-            this.TXT_AlbumAmgArtistID.Name = "TXT_AlbumAmgArtistID";
-            this.TXT_AlbumAmgArtistID.Size = new System.Drawing.Size(252, 23);
-            this.TXT_AlbumAmgArtistID.TabIndex = 14;
+            this.TXT_AlbumIsExplicit.Location = new System.Drawing.Point(105, 138);
+            this.TXT_AlbumIsExplicit.Name = "TXT_AlbumIsExplicit";
+            this.TXT_AlbumIsExplicit.Size = new System.Drawing.Size(252, 23);
+            this.TXT_AlbumIsExplicit.TabIndex = 14;
             // 
             // LBL_AlbumArtistID
             // 
@@ -314,14 +330,14 @@
             this.LBL_AlbumArtistID.TabIndex = 9;
             this.LBL_AlbumArtistID.Text = "Artist ID:";
             // 
-            // LBL_AlbumAMGArtistID
+            // LBL_AlbumIsExplicit
             // 
-            this.LBL_AlbumAMGArtistID.AutoSize = true;
-            this.LBL_AlbumAMGArtistID.Location = new System.Drawing.Point(11, 142);
-            this.LBL_AlbumAMGArtistID.Name = "LBL_AlbumAMGArtistID";
-            this.LBL_AlbumAMGArtistID.Size = new System.Drawing.Size(82, 15);
-            this.LBL_AlbumAMGArtistID.TabIndex = 13;
-            this.LBL_AlbumAMGArtistID.Text = "AMG Artist ID:";
+            this.LBL_AlbumIsExplicit.AutoSize = true;
+            this.LBL_AlbumIsExplicit.Location = new System.Drawing.Point(11, 142);
+            this.LBL_AlbumIsExplicit.Name = "LBL_AlbumIsExplicit";
+            this.LBL_AlbumIsExplicit.Size = new System.Drawing.Size(59, 15);
+            this.LBL_AlbumIsExplicit.TabIndex = 13;
+            this.LBL_AlbumIsExplicit.Text = "Is Explicit:";
             // 
             // TXT_AlbumArtistID
             // 
@@ -351,7 +367,7 @@
             this.TPG_Podcast.Location = new System.Drawing.Point(4, 24);
             this.TPG_Podcast.Name = "TPG_Podcast";
             this.TPG_Podcast.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_Podcast.Size = new System.Drawing.Size(373, 335);
+            this.TPG_Podcast.Size = new System.Drawing.Size(373, 365);
             this.TPG_Podcast.TabIndex = 1;
             this.TPG_Podcast.Text = "Podcast";
             this.TPG_Podcast.UseVisualStyleBackColor = true;
@@ -377,7 +393,6 @@
             "Album Name",
             "Song Name",
             "Artist ID",
-            "AMG Artist ID",
             "Podcast ID"});
             this.CBX_SearchBy.Location = new System.Drawing.Point(84, 56);
             this.CBX_SearchBy.Name = "CBX_SearchBy";
@@ -424,26 +439,10 @@
             this.TPG_History.Location = new System.Drawing.Point(4, 24);
             this.TPG_History.Name = "TPG_History";
             this.TPG_History.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_History.Size = new System.Drawing.Size(813, 396);
+            this.TPG_History.Size = new System.Drawing.Size(813, 426);
             this.TPG_History.TabIndex = 1;
             this.TPG_History.Text = "History";
             this.TPG_History.UseVisualStyleBackColor = true;
-            // 
-            // TXT_AlbumTrackCount
-            // 
-            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(104, 330);
-            this.TXT_AlbumTrackCount.Name = "TXT_AlbumTrackCount";
-            this.TXT_AlbumTrackCount.Size = new System.Drawing.Size(252, 23);
-            this.TXT_AlbumTrackCount.TabIndex = 26;
-            // 
-            // LBL_AlbumTrackCount
-            // 
-            this.LBL_AlbumTrackCount.AutoSize = true;
-            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(10, 333);
-            this.LBL_AlbumTrackCount.Name = "LBL_AlbumTrackCount";
-            this.LBL_AlbumTrackCount.Size = new System.Drawing.Size(73, 15);
-            this.LBL_AlbumTrackCount.TabIndex = 25;
-            this.LBL_AlbumTrackCount.Text = "Track Count:";
             // 
             // ITunesSearchUtility
             // 
@@ -494,8 +493,8 @@
         private Label LBL_AlbumPrimaryGenre;
         private TextBox TXT_AlbumReleaseDate;
         private Label LBL_AlbumReleaseDate;
-        private TextBox TXT_AlbumAmgArtistID;
-        private Label LBL_AlbumAMGArtistID;
+        private TextBox TXT_AlbumIsExplicit;
+        private Label LBL_AlbumIsExplicit;
         private TabControl tabControl1;
         private TabPage TPG_Album;
         private TabPage TPG_Podcast;

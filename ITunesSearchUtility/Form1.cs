@@ -62,21 +62,6 @@ namespace ITunesSearchUtility
                     }
                     break;
                 case 3:
-                    if (long.TryParse(TXT_ContentName.Text, out long amgArtistId))
-                    {
-                        AlbumResult albumResultByAmgArtistId = await _search.GetAlbumsByAMGArtistIdAsync(amgArtistId);
-                        if (albumResultByAmgArtistId != null)
-                        {
-                            AddAlbums(albumResultByAmgArtistId);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter in a proper number for the AMG artist ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    break;
-                case 4:
                     if (long.TryParse(TXT_ContentName.Text, out long podcastId))
                     {
                         PodcastListResult podcastResultById = await _search.GetPodcastById(podcastId);
@@ -87,7 +72,7 @@ namespace ITunesSearchUtility
                     }
                     else
                     {
-                        MessageBox.Show("Please enter in a proper number for the AMG artist ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Please enter in a proper number for the podcast ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     break;
@@ -110,7 +95,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumArtists.Text = _albums[index].ArtistName;
                     TXT_AlbumArtistID.Text = _albums[index].ArtistId.ToString();
                     TXT_AlbumArtistURL.Text = _albums[index].ArtistViewUrl;
-                    TXT_AlbumAmgArtistID.Text = _albums[index].AMGArtistId.ToString();
+                    TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness;
                     TXT_AlbumReleaseDate.Text = _albums[index].ReleaseDate;
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
                     TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
