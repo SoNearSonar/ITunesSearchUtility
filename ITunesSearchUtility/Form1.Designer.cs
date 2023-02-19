@@ -44,12 +44,12 @@
             this.CHDR_ContentName = new System.Windows.Forms.ColumnHeader();
             this.CHDR_Artists = new System.Windows.Forms.ColumnHeader();
             this.GBX_SearchInput = new System.Windows.Forms.GroupBox();
-            this.CBX_ContentType = new System.Windows.Forms.ComboBox();
+            this.CBX_SearchBy = new System.Windows.Forms.ComboBox();
             this.TXT_ContentName = new System.Windows.Forms.TextBox();
-            this.LBL_ContentType = new System.Windows.Forms.Label();
+            this.LBL_SearchBy = new System.Windows.Forms.Label();
             this.LBL_ContentName = new System.Windows.Forms.Label();
             this.BTN_ContentSearch = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TPG_History = new System.Windows.Forms.TabPage();
             this.TCTRL_Main.SuspendLayout();
             this.TPG_Search.SuspendLayout();
             this.GBX_ContentInformation.SuspendLayout();
@@ -60,7 +60,7 @@
             // TCTRL_Main
             // 
             this.TCTRL_Main.Controls.Add(this.TPG_Search);
-            this.TCTRL_Main.Controls.Add(this.tabPage2);
+            this.TCTRL_Main.Controls.Add(this.TPG_History);
             this.TCTRL_Main.Location = new System.Drawing.Point(5, 4);
             this.TCTRL_Main.Name = "TCTRL_Main";
             this.TCTRL_Main.SelectedIndex = 0;
@@ -198,9 +198,9 @@
             // 
             // GBX_SearchInput
             // 
-            this.GBX_SearchInput.Controls.Add(this.CBX_ContentType);
+            this.GBX_SearchInput.Controls.Add(this.CBX_SearchBy);
             this.GBX_SearchInput.Controls.Add(this.TXT_ContentName);
-            this.GBX_SearchInput.Controls.Add(this.LBL_ContentType);
+            this.GBX_SearchInput.Controls.Add(this.LBL_SearchBy);
             this.GBX_SearchInput.Controls.Add(this.LBL_ContentName);
             this.GBX_SearchInput.Controls.Add(this.BTN_ContentSearch);
             this.GBX_SearchInput.Location = new System.Drawing.Point(7, 2);
@@ -210,40 +210,43 @@
             this.GBX_SearchInput.TabStop = false;
             this.GBX_SearchInput.Text = "Search Input";
             // 
-            // CBX_ContentType
+            // CBX_SearchBy
             // 
-            this.CBX_ContentType.FormattingEnabled = true;
-            this.CBX_ContentType.Items.AddRange(new object[] {
-            "Album"});
-            this.CBX_ContentType.Location = new System.Drawing.Point(107, 56);
-            this.CBX_ContentType.Name = "CBX_ContentType";
-            this.CBX_ContentType.Size = new System.Drawing.Size(169, 23);
-            this.CBX_ContentType.TabIndex = 4;
+            this.CBX_SearchBy.FormattingEnabled = true;
+            this.CBX_SearchBy.Items.AddRange(new object[] {
+            "Album Name",
+            "Song Name",
+            "Artist ID",
+            "AMG Artist ID"});
+            this.CBX_SearchBy.Location = new System.Drawing.Point(84, 56);
+            this.CBX_SearchBy.Name = "CBX_SearchBy";
+            this.CBX_SearchBy.Size = new System.Drawing.Size(192, 23);
+            this.CBX_SearchBy.TabIndex = 4;
             // 
             // TXT_ContentName
             // 
-            this.TXT_ContentName.Location = new System.Drawing.Point(107, 23);
+            this.TXT_ContentName.Location = new System.Drawing.Point(84, 23);
             this.TXT_ContentName.Name = "TXT_ContentName";
-            this.TXT_ContentName.Size = new System.Drawing.Size(278, 23);
+            this.TXT_ContentName.Size = new System.Drawing.Size(301, 23);
             this.TXT_ContentName.TabIndex = 3;
             // 
-            // LBL_ContentType
+            // LBL_SearchBy
             // 
-            this.LBL_ContentType.AutoSize = true;
-            this.LBL_ContentType.Location = new System.Drawing.Point(13, 59);
-            this.LBL_ContentType.Name = "LBL_ContentType";
-            this.LBL_ContentType.Size = new System.Drawing.Size(80, 15);
-            this.LBL_ContentType.TabIndex = 2;
-            this.LBL_ContentType.Text = "Content Type:";
+            this.LBL_SearchBy.AutoSize = true;
+            this.LBL_SearchBy.Location = new System.Drawing.Point(13, 59);
+            this.LBL_SearchBy.Name = "LBL_SearchBy";
+            this.LBL_SearchBy.Size = new System.Drawing.Size(61, 15);
+            this.LBL_SearchBy.TabIndex = 2;
+            this.LBL_SearchBy.Text = "Search By:";
             // 
             // LBL_ContentName
             // 
             this.LBL_ContentName.AutoSize = true;
             this.LBL_ContentName.Location = new System.Drawing.Point(13, 27);
             this.LBL_ContentName.Name = "LBL_ContentName";
-            this.LBL_ContentName.Size = new System.Drawing.Size(88, 15);
+            this.LBL_ContentName.Size = new System.Drawing.Size(38, 15);
             this.LBL_ContentName.TabIndex = 1;
-            this.LBL_ContentName.Text = "Content Name:";
+            this.LBL_ContentName.Text = "Input:";
             // 
             // BTN_ContentSearch
             // 
@@ -255,15 +258,15 @@
             this.BTN_ContentSearch.UseVisualStyleBackColor = true;
             this.BTN_ContentSearch.Click += new System.EventHandler(this.BTN_ContentSearch_Click);
             // 
-            // tabPage2
+            // TPG_History
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(813, 449);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.TPG_History.Location = new System.Drawing.Point(4, 24);
+            this.TPG_History.Name = "TPG_History";
+            this.TPG_History.Padding = new System.Windows.Forms.Padding(3);
+            this.TPG_History.Size = new System.Drawing.Size(813, 449);
+            this.TPG_History.TabIndex = 1;
+            this.TPG_History.Text = "History";
+            this.TPG_History.UseVisualStyleBackColor = true;
             // 
             // ITunesSearchUtility
             // 
@@ -288,14 +291,14 @@
         #endregion
         private TabControl TCTRL_Main;
         private TabPage TPG_Search;
-        private TabPage tabPage2;
+        private TabPage TPG_History;
         private GroupBox GBX_ContentInformation;
         private GroupBox GBX_ContentResult;
         private ListView LVW_CollectionResults;
         private GroupBox GBX_SearchInput;
-        private ComboBox CBX_ContentType;
+        private ComboBox CBX_SearchBy;
         private TextBox TXT_ContentName;
-        private Label LBL_ContentType;
+        private Label LBL_SearchBy;
         private Label LBL_ContentName;
         private Button BTN_ContentSearch;
         private ColumnHeader CHDR_ContentName;
