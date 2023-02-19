@@ -6,8 +6,8 @@ namespace ITunesSearchUtility
     public partial class ITunesSearchUtility : Form
     {
         readonly iTunesSearchManager _search = new iTunesSearchManager();
-        List<Album> _albums = new List<Album>();
-        List<Podcast> _podcasts = new List<Podcast>();
+        readonly List<Album> _albums = new List<Album>();
+        readonly List<Podcast> _podcasts = new List<Podcast>();
 
         public ITunesSearchUtility()
         {
@@ -106,10 +106,17 @@ namespace ITunesSearchUtility
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
-                    TXT_Name.Text = _albums[index].CollectionName;
-                    TXT_Artists.Text = _albums[index].ArtistName;
-                    TXT_ArtistID.Text = _albums[index].ArtistId.ToString();
-                    TXT_ArtistURL.Text = _albums[index].ArtistViewUrl;
+                    TXT_AlbumName.Text = _albums[index].CollectionName;
+                    TXT_AlbumArtists.Text = _albums[index].ArtistName;
+                    TXT_AlbumArtistID.Text = _albums[index].ArtistId.ToString();
+                    TXT_AlbumArtistURL.Text = _albums[index].ArtistViewUrl;
+                    TXT_AlbumAmgArtistID.Text = _albums[index].AMGArtistId.ToString();
+                    TXT_AlbumReleaseDate.Text = _albums[index].ReleaseDate;
+                    TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
+                    TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
+                    TXT_AlbumCurrency.Text = _albums[index].Currency;
+                    TXT_AlbumCopyright.Text = _albums[index].Copyright;
+                    TXT_AlbumTrackCount.Text = _albums[index].TrackCount.ToString();
                     break;
                 }
             }
@@ -117,10 +124,10 @@ namespace ITunesSearchUtility
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
-                    TXT_Name.Text = _podcasts[index].Name;
-                    TXT_Artists.Text = _podcasts[index].ArtistName;
-                    TXT_ArtistID.Text = _podcasts[index].ArtistId.ToString();
-                    TXT_ArtistURL.Text = _podcasts[index].ArtistViewUrl;
+                    TXT_AlbumName.Text = _podcasts[index].Name;
+                    TXT_AlbumArtists.Text = _podcasts[index].ArtistName;
+                    TXT_AlbumArtistID.Text = _podcasts[index].ArtistId != 0 ? _podcasts[index].ArtistId.ToString() : "N/A";
+                    TXT_AlbumArtistURL.Text = !string.IsNullOrWhiteSpace(_podcasts[index].ArtistViewUrl) ? _podcasts[index].ArtistViewUrl : "N/A";
                     break;
                 }
             }
