@@ -7,6 +7,7 @@ namespace ITunesSearchUtility
     {
         readonly iTunesSearchManager _search = new iTunesSearchManager();
         List<Album> _albums = new List<Album>();
+        List<Podcast> _podcasts = new List<Podcast>();
 
         public ITunesSearchUtility()
         {
@@ -75,9 +76,24 @@ namespace ITunesSearchUtility
                         return;
                     }
                     break;
+                case 4:
+                    if (long.TryParse(TXT_ContentName.Text, out long podcastId))
+                    {
+                        PodcastListResult podcastResultById = await _search.GetPodcastById(podcastId);
+                        if (podcastResultById != null)
+                        {
+                            AddPodcasts(podcastResultById);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter in a proper number for the AMG artist ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    break;
             }
             
-            if (_albums.Count == 0) 
+            if (LVW_CollectionResults.Items.Count == 0) 
             {
                 MessageBox.Show("There are no results for that search", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -86,13 +102,27 @@ namespace ITunesSearchUtility
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (int index in LVW_CollectionResults.SelectedIndices)
+            if (CBX_SearchBy.SelectedIndex < 4)
             {
-                TXT_Name.Text = _albums[index].CollectionName;
-                TXT_Artists.Text = _albums[index].ArtistName;
-                TXT_ArtistID.Text = _albums[index].ArtistId.ToString();
-                TXT_ArtistURL.Text = _albums[index].ArtistViewUrl;
-                break;
+                foreach (int index in LVW_CollectionResults.SelectedIndices)
+                {
+                    TXT_Name.Text = _albums[index].CollectionName;
+                    TXT_Artists.Text = _albums[index].ArtistName;
+                    TXT_ArtistID.Text = _albums[index].ArtistId.ToString();
+                    TXT_ArtistURL.Text = _albums[index].ArtistViewUrl;
+                    break;
+                }
+            }
+            else
+            {
+                foreach (int index in LVW_CollectionResults.SelectedIndices)
+                {
+                    TXT_Name.Text = _podcasts[index].Name;
+                    TXT_Artists.Text = _podcasts[index].ArtistName;
+                    TXT_ArtistID.Text = _podcasts[index].ArtistId.ToString();
+                    TXT_ArtistURL.Text = _podcasts[index].ArtistViewUrl;
+                    break;
+                }
             }
         }
 
@@ -106,6 +136,21 @@ namespace ITunesSearchUtility
                 {
                     _albums.Add(album);
                     ListViewItem item = new ListViewItem(new string[] { album.CollectionName, album.ArtistName });
+                    LVW_CollectionResults.Items.Add(item);
+                }
+            }
+        }
+
+        private void AddPodcasts(PodcastListResult podcastResult)
+        {
+            _podcasts.Clear();
+            LVW_CollectionResults.Items.Clear();
+            foreach (Podcast podcast in podcastResult.Podcasts)
+            {
+                if (podcast.Name != null)
+                {
+                    _podcasts.Add(podcast);
+                    ListViewItem item = new ListViewItem(new string[] { podcast.Name, podcast.ArtistName });
                     LVW_CollectionResults.Items.Add(item);
                 }
             }
