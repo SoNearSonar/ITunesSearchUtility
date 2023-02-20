@@ -76,9 +76,9 @@ namespace ITunesSearchUtility
                     }
                     break;
                 case 4:
-                    if (long.TryParse(TXT_ContentName.Text, out long artistId))
+                    if (ulong.TryParse(TXT_ContentName.Text, out ulong artistId))
                     {
-                        AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(artistId, searchLimit, countryCode);
+                        AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync((long)artistId, searchLimit, countryCode);
                         if (albumResultByArtistId != null)
                         {
                             _albums.Clear();
@@ -93,9 +93,9 @@ namespace ITunesSearchUtility
                     break;
                 case 5:
                 case 6:
-                    if (long.TryParse(TXT_ContentName.Text, out long podcastId))
+                    if (ulong.TryParse(TXT_ContentName.Text, out ulong podcastId))
                     {
-                        PodcastListResult podcastResultById = await _search.GetPodcastById(podcastId);
+                        PodcastListResult podcastResultById = await _search.GetPodcastById((long)podcastId);
                         if (podcastResultById != null)
                         {
                             AddPodcasts(podcastResultById);
@@ -111,7 +111,7 @@ namespace ITunesSearchUtility
             
             if (LVW_CollectionResults.Items.Count == 0) 
             {
-                MessageBox.Show("There are no results for that search", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There are no results for that search", "No results", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
