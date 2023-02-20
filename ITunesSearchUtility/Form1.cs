@@ -58,6 +58,8 @@ namespace ITunesSearchUtility
             switch (CBX_SearchBy.SelectedIndex)
             {
                 case 0:
+                case 1:
+                case 2:
                     AlbumResult albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultByName != null)
                     {
@@ -65,7 +67,7 @@ namespace ITunesSearchUtility
                         AddAlbums(albumResultByName);
                     }
                     break;
-                case 1:
+                case 3:
                     AlbumResult albumResultBySongName = await _search.GetAlbumsFromSongAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultBySongName != null)
                     {
@@ -73,7 +75,7 @@ namespace ITunesSearchUtility
                         AddAlbums(albumResultBySongName);
                     }
                     break;
-                case 2:
+                case 4:
                     if (long.TryParse(TXT_ContentName.Text, out long artistId))
                     {
                         AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(artistId, searchLimit, countryCode);
@@ -89,7 +91,8 @@ namespace ITunesSearchUtility
                         return;
                     }
                     break;
-                case 3:
+                case 5:
+                case 6:
                     if (long.TryParse(TXT_ContentName.Text, out long podcastId))
                     {
                         PodcastListResult podcastResultById = await _search.GetPodcastById(podcastId);
@@ -115,7 +118,7 @@ namespace ITunesSearchUtility
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CBX_SearchBy.SelectedIndex <= 2)
+            if (CBX_SearchBy.SelectedIndex <= 4)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -133,6 +136,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumTrackCount.Text = _albums[index].TrackCount.ToString();
                     break;
                 }
+                TCTRL_InformationSection.SelectedIndex = 0;
             }
             else
             {
@@ -144,6 +148,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumArtistURL.Text = !string.IsNullOrWhiteSpace(_podcasts[index].ArtistViewUrl) ? _podcasts[index].ArtistViewUrl : "N/A";
                     break;
                 }
+                TCTRL_InformationSection.SelectedIndex = 1;
             }
         }
 

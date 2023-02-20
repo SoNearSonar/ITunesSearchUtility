@@ -452,9 +452,12 @@
             this.CBX_SearchBy.FormattingEnabled = true;
             this.CBX_SearchBy.Items.AddRange(new object[] {
             "Album Name",
+            "Artist",
+            "Tag",
             "Song Name",
             "Artist ID",
-            "Podcast ID"});
+            "Podcast ID ",
+            "Audiobook ID"});
             this.CBX_SearchBy.Location = new System.Drawing.Point(103, 55);
             this.CBX_SearchBy.Name = "CBX_SearchBy";
             this.CBX_SearchBy.Size = new System.Drawing.Size(173, 23);
