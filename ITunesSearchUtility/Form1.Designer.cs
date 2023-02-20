@@ -35,8 +35,10 @@
             this.CHDR_ContentName = new System.Windows.Forms.ColumnHeader();
             this.CHDR_Artists = new System.Windows.Forms.ColumnHeader();
             this.GBX_ContentInformation = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TCTRL_InformationSection = new System.Windows.Forms.TabControl();
             this.TPG_Album = new System.Windows.Forms.TabPage();
+            this.TXT_AlbumCountry = new System.Windows.Forms.TextBox();
+            this.LBL_AlbumCountry = new System.Windows.Forms.Label();
             this.TXT_AlbumTrackCount = new System.Windows.Forms.TextBox();
             this.LBL_AlbumTrackCount = new System.Windows.Forms.Label();
             this.TXT_AlbumPrice = new System.Windows.Forms.TextBox();
@@ -61,6 +63,7 @@
             this.LBL_AlbumArtistURL = new System.Windows.Forms.Label();
             this.TPG_Podcast = new System.Windows.Forms.TabPage();
             this.GBX_SearchInput = new System.Windows.Forms.GroupBox();
+            this.TXT_CountryCode = new System.Windows.Forms.TextBox();
             this.TXT_SearchLimit = new System.Windows.Forms.TextBox();
             this.LBL_CountryCode = new System.Windows.Forms.Label();
             this.LBL_SearchLimit = new System.Windows.Forms.Label();
@@ -70,12 +73,11 @@
             this.LBL_ContentName = new System.Windows.Forms.Label();
             this.BTN_ContentSearch = new System.Windows.Forms.Button();
             this.TPG_History = new System.Windows.Forms.TabPage();
-            this.TXT_CountryCode = new System.Windows.Forms.TextBox();
             this.TCTRL_Main.SuspendLayout();
             this.TPG_Search.SuspendLayout();
             this.GBX_ContentResult.SuspendLayout();
             this.GBX_ContentInformation.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.TCTRL_InformationSection.SuspendLayout();
             this.TPG_Album.SuspendLayout();
             this.GBX_SearchInput.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +89,7 @@
             this.TCTRL_Main.Location = new System.Drawing.Point(5, 4);
             this.TCTRL_Main.Name = "TCTRL_Main";
             this.TCTRL_Main.SelectedIndex = 0;
-            this.TCTRL_Main.Size = new System.Drawing.Size(821, 454);
+            this.TCTRL_Main.Size = new System.Drawing.Size(821, 483);
             this.TCTRL_Main.TabIndex = 6;
             // 
             // TPG_Search
@@ -98,7 +100,7 @@
             this.TPG_Search.Location = new System.Drawing.Point(4, 24);
             this.TPG_Search.Name = "TPG_Search";
             this.TPG_Search.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_Search.Size = new System.Drawing.Size(813, 426);
+            this.TPG_Search.Size = new System.Drawing.Size(813, 455);
             this.TPG_Search.TabIndex = 0;
             this.TPG_Search.Text = "Search";
             this.TPG_Search.UseVisualStyleBackColor = true;
@@ -108,7 +110,7 @@
             this.GBX_ContentResult.Controls.Add(this.LVW_CollectionResults);
             this.GBX_ContentResult.Location = new System.Drawing.Point(7, 152);
             this.GBX_ContentResult.Name = "GBX_ContentResult";
-            this.GBX_ContentResult.Size = new System.Drawing.Size(401, 268);
+            this.GBX_ContentResult.Size = new System.Drawing.Size(401, 297);
             this.GBX_ContentResult.TabIndex = 1;
             this.GBX_ContentResult.TabStop = false;
             this.GBX_ContentResult.Text = "Result";
@@ -119,10 +121,10 @@
             this.CHDR_ContentName,
             this.CHDR_Artists});
             this.LVW_CollectionResults.FullRowSelect = true;
-            this.LVW_CollectionResults.Location = new System.Drawing.Point(6, 22);
+            this.LVW_CollectionResults.Location = new System.Drawing.Point(6, 23);
             this.LVW_CollectionResults.MultiSelect = false;
             this.LVW_CollectionResults.Name = "LVW_CollectionResults";
-            this.LVW_CollectionResults.Size = new System.Drawing.Size(389, 240);
+            this.LVW_CollectionResults.Size = new System.Drawing.Size(389, 265);
             this.LVW_CollectionResults.TabIndex = 0;
             this.LVW_CollectionResults.UseCompatibleStateImageBehavior = false;
             this.LVW_CollectionResults.View = System.Windows.Forms.View.Details;
@@ -140,26 +142,28 @@
             // 
             // GBX_ContentInformation
             // 
-            this.GBX_ContentInformation.Controls.Add(this.tabControl1);
+            this.GBX_ContentInformation.Controls.Add(this.TCTRL_InformationSection);
             this.GBX_ContentInformation.Location = new System.Drawing.Point(413, 2);
             this.GBX_ContentInformation.Name = "GBX_ContentInformation";
-            this.GBX_ContentInformation.Size = new System.Drawing.Size(393, 418);
+            this.GBX_ContentInformation.Size = new System.Drawing.Size(393, 447);
             this.GBX_ContentInformation.TabIndex = 2;
             this.GBX_ContentInformation.TabStop = false;
             this.GBX_ContentInformation.Text = "Content Information";
             // 
-            // tabControl1
+            // TCTRL_InformationSection
             // 
-            this.tabControl1.Controls.Add(this.TPG_Album);
-            this.tabControl1.Controls.Add(this.TPG_Podcast);
-            this.tabControl1.Location = new System.Drawing.Point(7, 19);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(381, 393);
-            this.tabControl1.TabIndex = 7;
+            this.TCTRL_InformationSection.Controls.Add(this.TPG_Album);
+            this.TCTRL_InformationSection.Controls.Add(this.TPG_Podcast);
+            this.TCTRL_InformationSection.Location = new System.Drawing.Point(7, 19);
+            this.TCTRL_InformationSection.Name = "TCTRL_InformationSection";
+            this.TCTRL_InformationSection.SelectedIndex = 0;
+            this.TCTRL_InformationSection.Size = new System.Drawing.Size(381, 422);
+            this.TCTRL_InformationSection.TabIndex = 7;
             // 
             // TPG_Album
             // 
+            this.TPG_Album.Controls.Add(this.TXT_AlbumCountry);
+            this.TPG_Album.Controls.Add(this.LBL_AlbumCountry);
             this.TPG_Album.Controls.Add(this.TXT_AlbumTrackCount);
             this.TPG_Album.Controls.Add(this.LBL_AlbumTrackCount);
             this.TPG_Album.Controls.Add(this.TXT_AlbumPrice);
@@ -185,14 +189,30 @@
             this.TPG_Album.Location = new System.Drawing.Point(4, 24);
             this.TPG_Album.Name = "TPG_Album";
             this.TPG_Album.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_Album.Size = new System.Drawing.Size(373, 365);
+            this.TPG_Album.Size = new System.Drawing.Size(373, 394);
             this.TPG_Album.TabIndex = 0;
             this.TPG_Album.Text = "Album";
             this.TPG_Album.UseVisualStyleBackColor = true;
             // 
+            // TXT_AlbumCountry
+            // 
+            this.TXT_AlbumCountry.Location = new System.Drawing.Point(105, 298);
+            this.TXT_AlbumCountry.Name = "TXT_AlbumCountry";
+            this.TXT_AlbumCountry.Size = new System.Drawing.Size(252, 23);
+            this.TXT_AlbumCountry.TabIndex = 28;
+            // 
+            // LBL_AlbumCountry
+            // 
+            this.LBL_AlbumCountry.AutoSize = true;
+            this.LBL_AlbumCountry.Location = new System.Drawing.Point(11, 301);
+            this.LBL_AlbumCountry.Name = "LBL_AlbumCountry";
+            this.LBL_AlbumCountry.Size = new System.Drawing.Size(53, 15);
+            this.LBL_AlbumCountry.TabIndex = 27;
+            this.LBL_AlbumCountry.Text = "Country:";
+            // 
             // TXT_AlbumTrackCount
             // 
-            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(104, 330);
+            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(105, 362);
             this.TXT_AlbumTrackCount.Name = "TXT_AlbumTrackCount";
             this.TXT_AlbumTrackCount.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumTrackCount.TabIndex = 26;
@@ -200,7 +220,7 @@
             // LBL_AlbumTrackCount
             // 
             this.LBL_AlbumTrackCount.AutoSize = true;
-            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(10, 333);
+            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(11, 365);
             this.LBL_AlbumTrackCount.Name = "LBL_AlbumTrackCount";
             this.LBL_AlbumTrackCount.Size = new System.Drawing.Size(73, 15);
             this.LBL_AlbumTrackCount.TabIndex = 25;
@@ -224,7 +244,7 @@
             // 
             // TXT_AlbumCopyright
             // 
-            this.TXT_AlbumCopyright.Location = new System.Drawing.Point(104, 298);
+            this.TXT_AlbumCopyright.Location = new System.Drawing.Point(105, 330);
             this.TXT_AlbumCopyright.Name = "TXT_AlbumCopyright";
             this.TXT_AlbumCopyright.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumCopyright.TabIndex = 22;
@@ -232,7 +252,7 @@
             // LBL_AlbumCopyright
             // 
             this.LBL_AlbumCopyright.AutoSize = true;
-            this.LBL_AlbumCopyright.Location = new System.Drawing.Point(10, 301);
+            this.LBL_AlbumCopyright.Location = new System.Drawing.Point(11, 333);
             this.LBL_AlbumCopyright.Name = "LBL_AlbumCopyright";
             this.LBL_AlbumCopyright.Size = new System.Drawing.Size(63, 15);
             this.LBL_AlbumCopyright.TabIndex = 21;
@@ -371,7 +391,7 @@
             this.TPG_Podcast.Location = new System.Drawing.Point(4, 24);
             this.TPG_Podcast.Name = "TPG_Podcast";
             this.TPG_Podcast.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_Podcast.Size = new System.Drawing.Size(373, 365);
+            this.TPG_Podcast.Size = new System.Drawing.Size(373, 394);
             this.TPG_Podcast.TabIndex = 1;
             this.TPG_Podcast.Text = "Podcast";
             this.TPG_Podcast.UseVisualStyleBackColor = true;
@@ -393,6 +413,13 @@
             this.GBX_SearchInput.TabIndex = 0;
             this.GBX_SearchInput.TabStop = false;
             this.GBX_SearchInput.Text = "Search Input";
+            // 
+            // TXT_CountryCode
+            // 
+            this.TXT_CountryCode.Location = new System.Drawing.Point(103, 119);
+            this.TXT_CountryCode.Name = "TXT_CountryCode";
+            this.TXT_CountryCode.Size = new System.Drawing.Size(173, 23);
+            this.TXT_CountryCode.TabIndex = 9;
             // 
             // TXT_SearchLimit
             // 
@@ -473,23 +500,16 @@
             this.TPG_History.Location = new System.Drawing.Point(4, 24);
             this.TPG_History.Name = "TPG_History";
             this.TPG_History.Padding = new System.Windows.Forms.Padding(3);
-            this.TPG_History.Size = new System.Drawing.Size(813, 426);
+            this.TPG_History.Size = new System.Drawing.Size(813, 455);
             this.TPG_History.TabIndex = 1;
             this.TPG_History.Text = "History";
             this.TPG_History.UseVisualStyleBackColor = true;
-            // 
-            // TXT_CountryCode
-            // 
-            this.TXT_CountryCode.Location = new System.Drawing.Point(103, 119);
-            this.TXT_CountryCode.Name = "TXT_CountryCode";
-            this.TXT_CountryCode.Size = new System.Drawing.Size(173, 23);
-            this.TXT_CountryCode.TabIndex = 9;
             // 
             // ITunesSearchUtility
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 463);
+            this.ClientSize = new System.Drawing.Size(834, 491);
             this.Controls.Add(this.TCTRL_Main);
             this.Name = "ITunesSearchUtility";
             this.Text = "ITunes Search Utility";
@@ -498,7 +518,7 @@
             this.TPG_Search.ResumeLayout(false);
             this.GBX_ContentResult.ResumeLayout(false);
             this.GBX_ContentInformation.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.TCTRL_InformationSection.ResumeLayout(false);
             this.TPG_Album.ResumeLayout(false);
             this.TPG_Album.PerformLayout();
             this.GBX_SearchInput.ResumeLayout(false);
@@ -536,7 +556,7 @@
         private Label LBL_AlbumReleaseDate;
         private TextBox TXT_AlbumIsExplicit;
         private Label LBL_AlbumIsExplicit;
-        private TabControl tabControl1;
+        private TabControl TCTRL_InformationSection;
         private TabPage TPG_Album;
         private TabPage TPG_Podcast;
         private TextBox TXT_AlbumCopyright;
@@ -551,5 +571,7 @@
         private Label LBL_CountryCode;
         private Label LBL_SearchLimit;
         private TextBox TXT_CountryCode;
+        private TextBox TXT_AlbumCountry;
+        private Label LBL_AlbumCountry;
     }
 }

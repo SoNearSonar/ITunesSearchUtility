@@ -115,7 +115,7 @@ namespace ITunesSearchUtility
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CBX_SearchBy.SelectedIndex < 4)
+            if (CBX_SearchBy.SelectedIndex <= 2)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -128,6 +128,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
                     TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
                     TXT_AlbumCurrency.Text = _albums[index].Currency;
+                    TXT_AlbumCountry.Text = _albums[index].Country;
                     TXT_AlbumCopyright.Text = _albums[index].Copyright;
                     TXT_AlbumTrackCount.Text = _albums[index].TrackCount.ToString();
                     break;
