@@ -124,7 +124,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumArtistID.Text = _albums[index].ArtistId.ToString();
                     TXT_AlbumArtistURL.Text = _albums[index].ArtistViewUrl;
                     TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness.Equals("notExplicit") ? "No" : "Yes";
-                    TXT_AlbumReleaseDate.Text = _albums[index].ReleaseDate;
+                    TXT_AlbumReleaseDate.Text = FormatDate(_albums[index].ReleaseDate);
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
                     TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
                     TXT_AlbumCurrency.Text = _albums[index].Currency;
@@ -174,6 +174,12 @@ namespace ITunesSearchUtility
                     LVW_CollectionResults.Items.Add(item);
                 }
             }
+        }
+
+        private string FormatDate(string date)
+        {
+            DateTime time = DateTime.Parse(date);
+            return time.ToString();
         }
     }
  }
