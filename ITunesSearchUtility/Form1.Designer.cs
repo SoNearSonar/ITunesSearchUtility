@@ -45,8 +45,8 @@
             this.LBL_AlbumPrice = new System.Windows.Forms.Label();
             this.TXT_AlbumCopyright = new System.Windows.Forms.TextBox();
             this.LBL_AlbumCopyright = new System.Windows.Forms.Label();
-            this.TXT_AlbumCurrency = new System.Windows.Forms.TextBox();
-            this.LBL_AlbumCurrency = new System.Windows.Forms.Label();
+            this.TXT_AlbumID = new System.Windows.Forms.TextBox();
+            this.LBL_AlbumID = new System.Windows.Forms.Label();
             this.TXT_AlbumPrimaryGenre = new System.Windows.Forms.TextBox();
             this.TXT_AlbumName = new System.Windows.Forms.TextBox();
             this.LBL_AlbumPrimaryGenre = new System.Windows.Forms.Label();
@@ -62,6 +62,30 @@
             this.TXT_AlbumArtistURL = new System.Windows.Forms.TextBox();
             this.LBL_AlbumArtistURL = new System.Windows.Forms.Label();
             this.TPG_Podcast = new System.Windows.Forms.TabPage();
+            this.TXT_PodcastID = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastID = new System.Windows.Forms.Label();
+            this.TXT_PodcastRating = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastRating = new System.Windows.Forms.Label();
+            this.TXT_PodcastIsExplicit = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastIsExplicit = new System.Windows.Forms.Label();
+            this.TXT_PodcastReleaseDate = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastReleaseDate = new System.Windows.Forms.Label();
+            this.TXT_PodcastGenre = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastGenre = new System.Windows.Forms.Label();
+            this.TXT_PodcastEpisodeCount = new System.Windows.Forms.TextBox();
+            this.TXT_PodcastName = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastEpisodeCount = new System.Windows.Forms.Label();
+            this.LBL_PodcastName = new System.Windows.Forms.Label();
+            this.TXT_PodcastDescription = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastArtists = new System.Windows.Forms.Label();
+            this.LBL_PodcastDecription = new System.Windows.Forms.Label();
+            this.TXT_PodcastArtists = new System.Windows.Forms.TextBox();
+            this.TXT_PodcastCopyright = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastArtistID = new System.Windows.Forms.Label();
+            this.LBL_PodcastCopyright = new System.Windows.Forms.Label();
+            this.TXT_PodcastArtistID = new System.Windows.Forms.TextBox();
+            this.TXT_PodcastArtistURL = new System.Windows.Forms.TextBox();
+            this.LBL_PodcastArtistURL = new System.Windows.Forms.Label();
             this.GBX_SearchInput = new System.Windows.Forms.GroupBox();
             this.TXT_CountryCode = new System.Windows.Forms.TextBox();
             this.TXT_SearchLimit = new System.Windows.Forms.TextBox();
@@ -79,6 +103,7 @@
             this.GBX_ContentInformation.SuspendLayout();
             this.TCTRL_InformationSection.SuspendLayout();
             this.TPG_Album.SuspendLayout();
+            this.TPG_Podcast.SuspendLayout();
             this.GBX_SearchInput.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,8 +195,8 @@
             this.TPG_Album.Controls.Add(this.LBL_AlbumPrice);
             this.TPG_Album.Controls.Add(this.TXT_AlbumCopyright);
             this.TPG_Album.Controls.Add(this.LBL_AlbumCopyright);
-            this.TPG_Album.Controls.Add(this.TXT_AlbumCurrency);
-            this.TPG_Album.Controls.Add(this.LBL_AlbumCurrency);
+            this.TPG_Album.Controls.Add(this.TXT_AlbumID);
+            this.TPG_Album.Controls.Add(this.LBL_AlbumID);
             this.TPG_Album.Controls.Add(this.TXT_AlbumPrimaryGenre);
             this.TPG_Album.Controls.Add(this.TXT_AlbumName);
             this.TPG_Album.Controls.Add(this.LBL_AlbumPrimaryGenre);
@@ -196,7 +221,7 @@
             // 
             // TXT_AlbumCountry
             // 
-            this.TXT_AlbumCountry.Location = new System.Drawing.Point(105, 298);
+            this.TXT_AlbumCountry.Location = new System.Drawing.Point(106, 298);
             this.TXT_AlbumCountry.Name = "TXT_AlbumCountry";
             this.TXT_AlbumCountry.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumCountry.TabIndex = 28;
@@ -204,7 +229,7 @@
             // LBL_AlbumCountry
             // 
             this.LBL_AlbumCountry.AutoSize = true;
-            this.LBL_AlbumCountry.Location = new System.Drawing.Point(11, 301);
+            this.LBL_AlbumCountry.Location = new System.Drawing.Point(10, 301);
             this.LBL_AlbumCountry.Name = "LBL_AlbumCountry";
             this.LBL_AlbumCountry.Size = new System.Drawing.Size(53, 15);
             this.LBL_AlbumCountry.TabIndex = 27;
@@ -212,7 +237,7 @@
             // 
             // TXT_AlbumTrackCount
             // 
-            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(105, 362);
+            this.TXT_AlbumTrackCount.Location = new System.Drawing.Point(106, 362);
             this.TXT_AlbumTrackCount.Name = "TXT_AlbumTrackCount";
             this.TXT_AlbumTrackCount.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumTrackCount.TabIndex = 26;
@@ -220,7 +245,7 @@
             // LBL_AlbumTrackCount
             // 
             this.LBL_AlbumTrackCount.AutoSize = true;
-            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(11, 365);
+            this.LBL_AlbumTrackCount.Location = new System.Drawing.Point(10, 365);
             this.LBL_AlbumTrackCount.Name = "LBL_AlbumTrackCount";
             this.LBL_AlbumTrackCount.Size = new System.Drawing.Size(73, 15);
             this.LBL_AlbumTrackCount.TabIndex = 25;
@@ -228,7 +253,7 @@
             // 
             // TXT_AlbumPrice
             // 
-            this.TXT_AlbumPrice.Location = new System.Drawing.Point(104, 234);
+            this.TXT_AlbumPrice.Location = new System.Drawing.Point(105, 234);
             this.TXT_AlbumPrice.Name = "TXT_AlbumPrice";
             this.TXT_AlbumPrice.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumPrice.TabIndex = 24;
@@ -236,7 +261,7 @@
             // LBL_AlbumPrice
             // 
             this.LBL_AlbumPrice.AutoSize = true;
-            this.LBL_AlbumPrice.Location = new System.Drawing.Point(10, 237);
+            this.LBL_AlbumPrice.Location = new System.Drawing.Point(9, 237);
             this.LBL_AlbumPrice.Name = "LBL_AlbumPrice";
             this.LBL_AlbumPrice.Size = new System.Drawing.Size(36, 15);
             this.LBL_AlbumPrice.TabIndex = 23;
@@ -244,7 +269,7 @@
             // 
             // TXT_AlbumCopyright
             // 
-            this.TXT_AlbumCopyright.Location = new System.Drawing.Point(105, 330);
+            this.TXT_AlbumCopyright.Location = new System.Drawing.Point(106, 330);
             this.TXT_AlbumCopyright.Name = "TXT_AlbumCopyright";
             this.TXT_AlbumCopyright.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumCopyright.TabIndex = 22;
@@ -252,38 +277,38 @@
             // LBL_AlbumCopyright
             // 
             this.LBL_AlbumCopyright.AutoSize = true;
-            this.LBL_AlbumCopyright.Location = new System.Drawing.Point(11, 333);
+            this.LBL_AlbumCopyright.Location = new System.Drawing.Point(10, 333);
             this.LBL_AlbumCopyright.Name = "LBL_AlbumCopyright";
             this.LBL_AlbumCopyright.Size = new System.Drawing.Size(63, 15);
             this.LBL_AlbumCopyright.TabIndex = 21;
             this.LBL_AlbumCopyright.Text = "Copyright:";
             // 
-            // TXT_AlbumCurrency
+            // TXT_AlbumID
             // 
-            this.TXT_AlbumCurrency.Location = new System.Drawing.Point(105, 266);
-            this.TXT_AlbumCurrency.Name = "TXT_AlbumCurrency";
-            this.TXT_AlbumCurrency.Size = new System.Drawing.Size(252, 23);
-            this.TXT_AlbumCurrency.TabIndex = 20;
+            this.TXT_AlbumID.Location = new System.Drawing.Point(106, 266);
+            this.TXT_AlbumID.Name = "TXT_AlbumID";
+            this.TXT_AlbumID.Size = new System.Drawing.Size(252, 23);
+            this.TXT_AlbumID.TabIndex = 20;
             // 
-            // LBL_AlbumCurrency
+            // LBL_AlbumID
             // 
-            this.LBL_AlbumCurrency.AutoSize = true;
-            this.LBL_AlbumCurrency.Location = new System.Drawing.Point(11, 269);
-            this.LBL_AlbumCurrency.Name = "LBL_AlbumCurrency";
-            this.LBL_AlbumCurrency.Size = new System.Drawing.Size(58, 15);
-            this.LBL_AlbumCurrency.TabIndex = 19;
-            this.LBL_AlbumCurrency.Text = "Currency:";
+            this.LBL_AlbumID.AutoSize = true;
+            this.LBL_AlbumID.Location = new System.Drawing.Point(10, 269);
+            this.LBL_AlbumID.Name = "LBL_AlbumID";
+            this.LBL_AlbumID.Size = new System.Drawing.Size(21, 15);
+            this.LBL_AlbumID.TabIndex = 19;
+            this.LBL_AlbumID.Text = "ID:";
             // 
             // TXT_AlbumPrimaryGenre
             // 
-            this.TXT_AlbumPrimaryGenre.Location = new System.Drawing.Point(105, 202);
+            this.TXT_AlbumPrimaryGenre.Location = new System.Drawing.Point(106, 202);
             this.TXT_AlbumPrimaryGenre.Name = "TXT_AlbumPrimaryGenre";
             this.TXT_AlbumPrimaryGenre.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumPrimaryGenre.TabIndex = 18;
             // 
             // TXT_AlbumName
             // 
-            this.TXT_AlbumName.Location = new System.Drawing.Point(104, 10);
+            this.TXT_AlbumName.Location = new System.Drawing.Point(105, 10);
             this.TXT_AlbumName.Name = "TXT_AlbumName";
             this.TXT_AlbumName.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumName.TabIndex = 6;
@@ -291,7 +316,7 @@
             // LBL_AlbumPrimaryGenre
             // 
             this.LBL_AlbumPrimaryGenre.AutoSize = true;
-            this.LBL_AlbumPrimaryGenre.Location = new System.Drawing.Point(11, 205);
+            this.LBL_AlbumPrimaryGenre.Location = new System.Drawing.Point(10, 205);
             this.LBL_AlbumPrimaryGenre.Name = "LBL_AlbumPrimaryGenre";
             this.LBL_AlbumPrimaryGenre.Size = new System.Drawing.Size(85, 15);
             this.LBL_AlbumPrimaryGenre.TabIndex = 17;
@@ -300,7 +325,7 @@
             // LBL_AlbumName
             // 
             this.LBL_AlbumName.AutoSize = true;
-            this.LBL_AlbumName.Location = new System.Drawing.Point(10, 13);
+            this.LBL_AlbumName.Location = new System.Drawing.Point(9, 13);
             this.LBL_AlbumName.Name = "LBL_AlbumName";
             this.LBL_AlbumName.Size = new System.Drawing.Size(42, 15);
             this.LBL_AlbumName.TabIndex = 5;
@@ -308,7 +333,7 @@
             // 
             // TXT_AlbumReleaseDate
             // 
-            this.TXT_AlbumReleaseDate.Location = new System.Drawing.Point(105, 170);
+            this.TXT_AlbumReleaseDate.Location = new System.Drawing.Point(106, 170);
             this.TXT_AlbumReleaseDate.Name = "TXT_AlbumReleaseDate";
             this.TXT_AlbumReleaseDate.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumReleaseDate.TabIndex = 16;
@@ -316,7 +341,7 @@
             // LBL_AlbumArtists
             // 
             this.LBL_AlbumArtists.AutoSize = true;
-            this.LBL_AlbumArtists.Location = new System.Drawing.Point(10, 45);
+            this.LBL_AlbumArtists.Location = new System.Drawing.Point(9, 45);
             this.LBL_AlbumArtists.Name = "LBL_AlbumArtists";
             this.LBL_AlbumArtists.Size = new System.Drawing.Size(43, 15);
             this.LBL_AlbumArtists.TabIndex = 7;
@@ -325,7 +350,7 @@
             // LBL_AlbumReleaseDate
             // 
             this.LBL_AlbumReleaseDate.AutoSize = true;
-            this.LBL_AlbumReleaseDate.Location = new System.Drawing.Point(11, 174);
+            this.LBL_AlbumReleaseDate.Location = new System.Drawing.Point(10, 174);
             this.LBL_AlbumReleaseDate.Name = "LBL_AlbumReleaseDate";
             this.LBL_AlbumReleaseDate.Size = new System.Drawing.Size(76, 15);
             this.LBL_AlbumReleaseDate.TabIndex = 15;
@@ -333,14 +358,14 @@
             // 
             // TXT_AlbumArtists
             // 
-            this.TXT_AlbumArtists.Location = new System.Drawing.Point(104, 42);
+            this.TXT_AlbumArtists.Location = new System.Drawing.Point(105, 42);
             this.TXT_AlbumArtists.Name = "TXT_AlbumArtists";
             this.TXT_AlbumArtists.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumArtists.TabIndex = 8;
             // 
             // TXT_AlbumIsExplicit
             // 
-            this.TXT_AlbumIsExplicit.Location = new System.Drawing.Point(105, 138);
+            this.TXT_AlbumIsExplicit.Location = new System.Drawing.Point(106, 138);
             this.TXT_AlbumIsExplicit.Name = "TXT_AlbumIsExplicit";
             this.TXT_AlbumIsExplicit.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumIsExplicit.TabIndex = 14;
@@ -348,7 +373,7 @@
             // LBL_AlbumArtistID
             // 
             this.LBL_AlbumArtistID.AutoSize = true;
-            this.LBL_AlbumArtistID.Location = new System.Drawing.Point(10, 77);
+            this.LBL_AlbumArtistID.Location = new System.Drawing.Point(9, 77);
             this.LBL_AlbumArtistID.Name = "LBL_AlbumArtistID";
             this.LBL_AlbumArtistID.Size = new System.Drawing.Size(52, 15);
             this.LBL_AlbumArtistID.TabIndex = 9;
@@ -357,7 +382,7 @@
             // LBL_AlbumIsExplicit
             // 
             this.LBL_AlbumIsExplicit.AutoSize = true;
-            this.LBL_AlbumIsExplicit.Location = new System.Drawing.Point(11, 142);
+            this.LBL_AlbumIsExplicit.Location = new System.Drawing.Point(10, 142);
             this.LBL_AlbumIsExplicit.Name = "LBL_AlbumIsExplicit";
             this.LBL_AlbumIsExplicit.Size = new System.Drawing.Size(59, 15);
             this.LBL_AlbumIsExplicit.TabIndex = 13;
@@ -365,14 +390,14 @@
             // 
             // TXT_AlbumArtistID
             // 
-            this.TXT_AlbumArtistID.Location = new System.Drawing.Point(104, 74);
+            this.TXT_AlbumArtistID.Location = new System.Drawing.Point(105, 74);
             this.TXT_AlbumArtistID.Name = "TXT_AlbumArtistID";
             this.TXT_AlbumArtistID.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumArtistID.TabIndex = 10;
             // 
             // TXT_AlbumArtistURL
             // 
-            this.TXT_AlbumArtistURL.Location = new System.Drawing.Point(104, 106);
+            this.TXT_AlbumArtistURL.Location = new System.Drawing.Point(105, 106);
             this.TXT_AlbumArtistURL.Name = "TXT_AlbumArtistURL";
             this.TXT_AlbumArtistURL.Size = new System.Drawing.Size(252, 23);
             this.TXT_AlbumArtistURL.TabIndex = 12;
@@ -380,7 +405,7 @@
             // LBL_AlbumArtistURL
             // 
             this.LBL_AlbumArtistURL.AutoSize = true;
-            this.LBL_AlbumArtistURL.Location = new System.Drawing.Point(10, 109);
+            this.LBL_AlbumArtistURL.Location = new System.Drawing.Point(9, 109);
             this.LBL_AlbumArtistURL.Name = "LBL_AlbumArtistURL";
             this.LBL_AlbumArtistURL.Size = new System.Drawing.Size(62, 15);
             this.LBL_AlbumArtistURL.TabIndex = 11;
@@ -388,13 +413,229 @@
             // 
             // TPG_Podcast
             // 
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastID);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastID);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastRating);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastRating);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastIsExplicit);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastIsExplicit);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastReleaseDate);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastReleaseDate);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastGenre);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastGenre);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastEpisodeCount);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastName);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastEpisodeCount);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastName);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastDescription);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastArtists);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastDecription);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastArtists);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastCopyright);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastArtistID);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastCopyright);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastArtistID);
+            this.TPG_Podcast.Controls.Add(this.TXT_PodcastArtistURL);
+            this.TPG_Podcast.Controls.Add(this.LBL_PodcastArtistURL);
             this.TPG_Podcast.Location = new System.Drawing.Point(4, 24);
             this.TPG_Podcast.Name = "TPG_Podcast";
             this.TPG_Podcast.Padding = new System.Windows.Forms.Padding(3);
             this.TPG_Podcast.Size = new System.Drawing.Size(373, 394);
             this.TPG_Podcast.TabIndex = 1;
-            this.TPG_Podcast.Text = "Podcast";
+            this.TPG_Podcast.Text = "Podcast / Audiobook";
             this.TPG_Podcast.UseVisualStyleBackColor = true;
+            // 
+            // TXT_PodcastID
+            // 
+            this.TXT_PodcastID.Location = new System.Drawing.Point(106, 266);
+            this.TXT_PodcastID.Name = "TXT_PodcastID";
+            this.TXT_PodcastID.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastID.TabIndex = 52;
+            // 
+            // LBL_PodcastID
+            // 
+            this.LBL_PodcastID.AutoSize = true;
+            this.LBL_PodcastID.Location = new System.Drawing.Point(10, 269);
+            this.LBL_PodcastID.Name = "LBL_PodcastID";
+            this.LBL_PodcastID.Size = new System.Drawing.Size(21, 15);
+            this.LBL_PodcastID.TabIndex = 51;
+            this.LBL_PodcastID.Text = "ID:";
+            // 
+            // TXT_PodcastRating
+            // 
+            this.TXT_PodcastRating.Location = new System.Drawing.Point(106, 362);
+            this.TXT_PodcastRating.Name = "TXT_PodcastRating";
+            this.TXT_PodcastRating.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastRating.TabIndex = 50;
+            // 
+            // LBL_PodcastRating
+            // 
+            this.LBL_PodcastRating.AutoSize = true;
+            this.LBL_PodcastRating.Location = new System.Drawing.Point(10, 365);
+            this.LBL_PodcastRating.Name = "LBL_PodcastRating";
+            this.LBL_PodcastRating.Size = new System.Drawing.Size(44, 15);
+            this.LBL_PodcastRating.TabIndex = 49;
+            this.LBL_PodcastRating.Text = "Rating:";
+            // 
+            // TXT_PodcastIsExplicit
+            // 
+            this.TXT_PodcastIsExplicit.Location = new System.Drawing.Point(105, 234);
+            this.TXT_PodcastIsExplicit.Name = "TXT_PodcastIsExplicit";
+            this.TXT_PodcastIsExplicit.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastIsExplicit.TabIndex = 48;
+            // 
+            // LBL_PodcastIsExplicit
+            // 
+            this.LBL_PodcastIsExplicit.AutoSize = true;
+            this.LBL_PodcastIsExplicit.Location = new System.Drawing.Point(9, 237);
+            this.LBL_PodcastIsExplicit.Name = "LBL_PodcastIsExplicit";
+            this.LBL_PodcastIsExplicit.Size = new System.Drawing.Size(59, 15);
+            this.LBL_PodcastIsExplicit.TabIndex = 47;
+            this.LBL_PodcastIsExplicit.Text = "Is Explicit:";
+            // 
+            // TXT_PodcastReleaseDate
+            // 
+            this.TXT_PodcastReleaseDate.Location = new System.Drawing.Point(106, 330);
+            this.TXT_PodcastReleaseDate.Name = "TXT_PodcastReleaseDate";
+            this.TXT_PodcastReleaseDate.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastReleaseDate.TabIndex = 46;
+            // 
+            // LBL_PodcastReleaseDate
+            // 
+            this.LBL_PodcastReleaseDate.AutoSize = true;
+            this.LBL_PodcastReleaseDate.Location = new System.Drawing.Point(10, 333);
+            this.LBL_PodcastReleaseDate.Name = "LBL_PodcastReleaseDate";
+            this.LBL_PodcastReleaseDate.Size = new System.Drawing.Size(76, 15);
+            this.LBL_PodcastReleaseDate.TabIndex = 45;
+            this.LBL_PodcastReleaseDate.Text = "Release Date:";
+            // 
+            // TXT_PodcastGenre
+            // 
+            this.TXT_PodcastGenre.Location = new System.Drawing.Point(106, 298);
+            this.TXT_PodcastGenre.Name = "TXT_PodcastGenre";
+            this.TXT_PodcastGenre.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastGenre.TabIndex = 44;
+            // 
+            // LBL_PodcastGenre
+            // 
+            this.LBL_PodcastGenre.AutoSize = true;
+            this.LBL_PodcastGenre.Location = new System.Drawing.Point(10, 301);
+            this.LBL_PodcastGenre.Name = "LBL_PodcastGenre";
+            this.LBL_PodcastGenre.Size = new System.Drawing.Size(41, 15);
+            this.LBL_PodcastGenre.TabIndex = 43;
+            this.LBL_PodcastGenre.Text = "Genre:";
+            // 
+            // TXT_PodcastEpisodeCount
+            // 
+            this.TXT_PodcastEpisodeCount.Location = new System.Drawing.Point(106, 202);
+            this.TXT_PodcastEpisodeCount.Name = "TXT_PodcastEpisodeCount";
+            this.TXT_PodcastEpisodeCount.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastEpisodeCount.TabIndex = 42;
+            // 
+            // TXT_PodcastName
+            // 
+            this.TXT_PodcastName.Location = new System.Drawing.Point(105, 10);
+            this.TXT_PodcastName.Name = "TXT_PodcastName";
+            this.TXT_PodcastName.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastName.TabIndex = 30;
+            // 
+            // LBL_PodcastEpisodeCount
+            // 
+            this.LBL_PodcastEpisodeCount.AutoSize = true;
+            this.LBL_PodcastEpisodeCount.Location = new System.Drawing.Point(10, 205);
+            this.LBL_PodcastEpisodeCount.Name = "LBL_PodcastEpisodeCount";
+            this.LBL_PodcastEpisodeCount.Size = new System.Drawing.Size(87, 15);
+            this.LBL_PodcastEpisodeCount.TabIndex = 41;
+            this.LBL_PodcastEpisodeCount.Text = "Episode Count:";
+            // 
+            // LBL_PodcastName
+            // 
+            this.LBL_PodcastName.AutoSize = true;
+            this.LBL_PodcastName.Location = new System.Drawing.Point(9, 13);
+            this.LBL_PodcastName.Name = "LBL_PodcastName";
+            this.LBL_PodcastName.Size = new System.Drawing.Size(42, 15);
+            this.LBL_PodcastName.TabIndex = 29;
+            this.LBL_PodcastName.Text = "Name:";
+            // 
+            // TXT_PodcastDescription
+            // 
+            this.TXT_PodcastDescription.Location = new System.Drawing.Point(106, 170);
+            this.TXT_PodcastDescription.Name = "TXT_PodcastDescription";
+            this.TXT_PodcastDescription.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastDescription.TabIndex = 40;
+            // 
+            // LBL_PodcastArtists
+            // 
+            this.LBL_PodcastArtists.AutoSize = true;
+            this.LBL_PodcastArtists.Location = new System.Drawing.Point(9, 45);
+            this.LBL_PodcastArtists.Name = "LBL_PodcastArtists";
+            this.LBL_PodcastArtists.Size = new System.Drawing.Size(43, 15);
+            this.LBL_PodcastArtists.TabIndex = 31;
+            this.LBL_PodcastArtists.Text = "Artists:";
+            // 
+            // LBL_PodcastDecription
+            // 
+            this.LBL_PodcastDecription.AutoSize = true;
+            this.LBL_PodcastDecription.Location = new System.Drawing.Point(10, 174);
+            this.LBL_PodcastDecription.Name = "LBL_PodcastDecription";
+            this.LBL_PodcastDecription.Size = new System.Drawing.Size(70, 15);
+            this.LBL_PodcastDecription.TabIndex = 39;
+            this.LBL_PodcastDecription.Text = "Description:";
+            // 
+            // TXT_PodcastArtists
+            // 
+            this.TXT_PodcastArtists.Location = new System.Drawing.Point(105, 42);
+            this.TXT_PodcastArtists.Name = "TXT_PodcastArtists";
+            this.TXT_PodcastArtists.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastArtists.TabIndex = 32;
+            // 
+            // TXT_PodcastCopyright
+            // 
+            this.TXT_PodcastCopyright.Location = new System.Drawing.Point(106, 138);
+            this.TXT_PodcastCopyright.Name = "TXT_PodcastCopyright";
+            this.TXT_PodcastCopyright.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastCopyright.TabIndex = 38;
+            // 
+            // LBL_PodcastArtistID
+            // 
+            this.LBL_PodcastArtistID.AutoSize = true;
+            this.LBL_PodcastArtistID.Location = new System.Drawing.Point(9, 77);
+            this.LBL_PodcastArtistID.Name = "LBL_PodcastArtistID";
+            this.LBL_PodcastArtistID.Size = new System.Drawing.Size(52, 15);
+            this.LBL_PodcastArtistID.TabIndex = 33;
+            this.LBL_PodcastArtistID.Text = "Artist ID:";
+            // 
+            // LBL_PodcastCopyright
+            // 
+            this.LBL_PodcastCopyright.AutoSize = true;
+            this.LBL_PodcastCopyright.Location = new System.Drawing.Point(10, 142);
+            this.LBL_PodcastCopyright.Name = "LBL_PodcastCopyright";
+            this.LBL_PodcastCopyright.Size = new System.Drawing.Size(63, 15);
+            this.LBL_PodcastCopyright.TabIndex = 37;
+            this.LBL_PodcastCopyright.Text = "Copyright:";
+            // 
+            // TXT_PodcastArtistID
+            // 
+            this.TXT_PodcastArtistID.Location = new System.Drawing.Point(105, 74);
+            this.TXT_PodcastArtistID.Name = "TXT_PodcastArtistID";
+            this.TXT_PodcastArtistID.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastArtistID.TabIndex = 34;
+            // 
+            // TXT_PodcastArtistURL
+            // 
+            this.TXT_PodcastArtistURL.Location = new System.Drawing.Point(105, 106);
+            this.TXT_PodcastArtistURL.Name = "TXT_PodcastArtistURL";
+            this.TXT_PodcastArtistURL.Size = new System.Drawing.Size(252, 23);
+            this.TXT_PodcastArtistURL.TabIndex = 36;
+            // 
+            // LBL_PodcastArtistURL
+            // 
+            this.LBL_PodcastArtistURL.AutoSize = true;
+            this.LBL_PodcastArtistURL.Location = new System.Drawing.Point(9, 109);
+            this.LBL_PodcastArtistURL.Name = "LBL_PodcastArtistURL";
+            this.LBL_PodcastArtistURL.Size = new System.Drawing.Size(62, 15);
+            this.LBL_PodcastArtistURL.TabIndex = 35;
+            this.LBL_PodcastArtistURL.Text = "Artist URL:";
             // 
             // GBX_SearchInput
             // 
@@ -456,7 +697,8 @@
             "Tag",
             "Song Name",
             "Artist ID",
-            "Podcast ID ",
+            "Podcast Name",
+            "Podcast ID",
             "Audiobook ID"});
             this.CBX_SearchBy.Location = new System.Drawing.Point(103, 55);
             this.CBX_SearchBy.Name = "CBX_SearchBy";
@@ -512,7 +754,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 491);
+            this.ClientSize = new System.Drawing.Size(830, 491);
             this.Controls.Add(this.TCTRL_Main);
             this.Name = "ITunesSearchUtility";
             this.Text = "ITunes Search Utility";
@@ -524,6 +766,8 @@
             this.TCTRL_InformationSection.ResumeLayout(false);
             this.TPG_Album.ResumeLayout(false);
             this.TPG_Album.PerformLayout();
+            this.TPG_Podcast.ResumeLayout(false);
+            this.TPG_Podcast.PerformLayout();
             this.GBX_SearchInput.ResumeLayout(false);
             this.GBX_SearchInput.PerformLayout();
             this.ResumeLayout(false);
@@ -564,8 +808,8 @@
         private TabPage TPG_Podcast;
         private TextBox TXT_AlbumCopyright;
         private Label LBL_AlbumCopyright;
-        private TextBox TXT_AlbumCurrency;
-        private Label LBL_AlbumCurrency;
+        private TextBox TXT_AlbumID;
+        private Label LBL_AlbumID;
         private TextBox TXT_AlbumPrice;
         private Label LBL_AlbumPrice;
         private TextBox TXT_AlbumTrackCount;
@@ -576,5 +820,29 @@
         private TextBox TXT_CountryCode;
         private TextBox TXT_AlbumCountry;
         private Label LBL_AlbumCountry;
+        private TextBox TXT_PodcastID;
+        private Label LBL_PodcastID;
+        private TextBox TXT_PodcastRating;
+        private Label LBL_PodcastRating;
+        private TextBox TXT_PodcastIsExplicit;
+        private Label LBL_PodcastIsExplicit;
+        private TextBox TXT_PodcastReleaseDate;
+        private Label LBL_PodcastReleaseDate;
+        private TextBox TXT_PodcastGenre;
+        private Label LBL_PodcastGenre;
+        private TextBox TXT_PodcastEpisodeCount;
+        private TextBox TXT_PodcastName;
+        private Label LBL_PodcastEpisodeCount;
+        private Label LBL_PodcastName;
+        private TextBox TXT_PodcastDescription;
+        private Label LBL_PodcastArtists;
+        private Label LBL_PodcastDecription;
+        private TextBox TXT_PodcastArtists;
+        private TextBox TXT_PodcastCopyright;
+        private Label LBL_PodcastArtistID;
+        private Label LBL_PodcastCopyright;
+        private TextBox TXT_PodcastArtistID;
+        private TextBox TXT_PodcastArtistURL;
+        private Label LBL_PodcastArtistURL;
     }
 }

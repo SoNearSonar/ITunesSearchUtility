@@ -1,7 +1,6 @@
 using iTunesSearch.Library;
 using iTunesSearch.Library.Models;
 using ITunesSearchUtility.Helpers;
-using System.Runtime.CompilerServices;
 
 namespace ITunesSearchUtility
 {
@@ -63,7 +62,6 @@ namespace ITunesSearchUtility
                     AlbumResult albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultByName != null)
                     {
-                        _albums.Clear();
                         AddAlbums(albumResultByName);
                     }
                     break;
@@ -71,7 +69,6 @@ namespace ITunesSearchUtility
                     AlbumResult albumResultBySongName = await _search.GetAlbumsFromSongAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultBySongName != null)
                     {
-                        _albums.Clear();
                         AddAlbums(albumResultBySongName);
                     }
                     break;
@@ -81,7 +78,6 @@ namespace ITunesSearchUtility
                         AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync((long)artistId, searchLimit, countryCode);
                         if (albumResultByArtistId != null)
                         {
-                            _albums.Clear();
                             AddAlbums(albumResultByArtistId);
                         }
                     }
@@ -92,7 +88,14 @@ namespace ITunesSearchUtility
                     }
                     break;
                 case 5:
+                    PodcastListResult podcastResultsByName = await _search.GetPodcasts(TXT_ContentName.Text, searchLimit, countryCode);
+                    if (podcastResultsByName != null)
+                    {
+                        AddPodcasts(podcastResultsByName);
+                    }
+                    break;
                 case 6:
+                case 7:
                     if (ulong.TryParse(TXT_ContentName.Text, out ulong podcastId))
                     {
                         PodcastListResult podcastResultById = await _search.GetPodcastById((long)podcastId);
@@ -129,8 +132,8 @@ namespace ITunesSearchUtility
                     TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness.Equals("notExplicit") ? "No" : "Yes";
                     TXT_AlbumReleaseDate.Text = FormatDate(_albums[index].ReleaseDate);
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
-                    TXT_AlbumPrice.Text = _albums[index].CollectionPrice.ToString();
-                    TXT_AlbumCurrency.Text = _albums[index].Currency;
+                    TXT_AlbumPrice.Text = $"{_albums[index].CollectionPrice} {_albums[index].Currency}";
+                    TXT_AlbumID.Text = _albums[index].CollectionId.ToString();
                     TXT_AlbumCountry.Text = _albums[index].Country;
                     TXT_AlbumCopyright.Text = _albums[index].Copyright;
                     TXT_AlbumTrackCount.Text = _albums[index].TrackCount.ToString();
@@ -142,10 +145,18 @@ namespace ITunesSearchUtility
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
-                    TXT_AlbumName.Text = _podcasts[index].Name;
-                    TXT_AlbumArtists.Text = _podcasts[index].ArtistName;
-                    TXT_AlbumArtistID.Text = _podcasts[index].ArtistId != 0 ? _podcasts[index].ArtistId.ToString() : "N/A";
-                    TXT_AlbumArtistURL.Text = !string.IsNullOrWhiteSpace(_podcasts[index].ArtistViewUrl) ? _podcasts[index].ArtistViewUrl : "N/A";
+                    TXT_PodcastName.Text = _podcasts[index].Name;
+                    TXT_PodcastArtists.Text = _podcasts[index].ArtistName;
+                    TXT_PodcastArtistID.Text = _podcasts[index].ArtistId != 0 ? _podcasts[index].ArtistId.ToString() : "N/A";
+                    TXT_PodcastArtistURL.Text = !string.IsNullOrWhiteSpace(_podcasts[index].ArtistViewUrl) ? _podcasts[index].ArtistViewUrl : "N/A";
+                    TXT_PodcastCopyright.Text = !string.IsNullOrWhiteSpace(_podcasts[index].Copyright) ? _podcasts[index].Copyright : "N/A";
+                    TXT_PodcastDescription.Text = !string.IsNullOrWhiteSpace(_podcasts[index].Description) ? _podcasts[index].Description : "N/A";
+                    TXT_PodcastEpisodeCount.Text = _podcasts[index].EpisodeCount.ToString();
+                    TXT_PodcastIsExplicit.Text = _podcasts[index].Explicitness.Equals("notExplicit") ? "No" : "Yes";
+                    TXT_PodcastID.Text = _podcasts[index].Id.ToString();
+                    TXT_PodcastGenre.Text = _podcasts[index].Genre;
+                    TXT_PodcastReleaseDate.Text = FormatDate(_podcasts[index].ReleaseDate);
+                    TXT_PodcastRating.Text = _podcasts[index].Rating;
                     break;
                 }
                 TCTRL_InformationSection.SelectedIndex = 1;
@@ -182,10 +193,9 @@ namespace ITunesSearchUtility
             }
         }
 
-        private string FormatDate(string date)
+        private static string FormatDate(string date)
         {
-            DateTime time = DateTime.Parse(date);
-            return time.ToString();
+            return DateTime.Parse(date).ToString();
         }
     }
  }
