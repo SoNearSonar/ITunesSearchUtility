@@ -23,7 +23,6 @@ namespace ITunesSearchUtility.Helpers
                 else
                 {
                     id = uri.Substring(uri.LastIndexOf("/id") + 3, uri.Length - (uri.LastIndexOf("?i=") + 6));
-                    MessageBox.Show(id);
                     return long.Parse(id);
                 }
             }

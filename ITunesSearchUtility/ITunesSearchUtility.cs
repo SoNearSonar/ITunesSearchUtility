@@ -46,7 +46,7 @@ namespace ITunesSearchUtility
             if (!string.IsNullOrWhiteSpace(TXT_CountryCode.Text))
             {
                 countryCode = TXT_CountryCode.Text.ToUpperInvariant().Substring(0, 2);
-                if (TXT_CountryCode.Text.Length > 2 || !CountryList.Countries.ContainsKey(countryCode))
+                if (TXT_CountryCode.Text.Length > 2 || !CountryList.ContainsKey(countryCode))
                 {
                     MessageBox.Show("Please enter in a proper country code", "Country code error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -57,23 +57,23 @@ namespace ITunesSearchUtility
             switch (CBX_SearchBy.SelectedIndex)
             {
                 case 0:
-                    AlbumResult albumResultByName = null;
-                    Uri albumUri;
-                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumUri) && (albumUri.Scheme == Uri.UriSchemeHttp || albumUri.Scheme == Uri.UriSchemeHttps))
-                    {
-                        albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
-                    }
+                    AlbumResult? albumResultByName = null;
+                    albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultByName != null)
                     {
                         AddAlbums(albumResultByName);
                     }
                     break;
                 case 1:
-                    AlbumResult albumResultByArtistId = null;
-                    Uri albumArtistUri;
+                    AlbumResult? albumResultByArtistId = null;
+                    Uri? albumArtistUri;
                     if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumArtistUri) && (albumArtistUri.Scheme == Uri.UriSchemeHttp || albumArtistUri.Scheme == Uri.UriSchemeHttps))
                     {
                         albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(ContentFormatter.FormatArtistUri(TXT_ContentName.Text));
+                    }
+                    else
+                    {
+                        albumResultByArtistId = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     }
                     if (albumResultByArtistId != null)
                     {
@@ -82,8 +82,8 @@ namespace ITunesSearchUtility
                     break;
                 case 2:
                 case 3:
-                    PodcastListResult podcastResultsByName = null;
-                    Uri podcastUri;
+                    PodcastListResult? podcastResultsByName;
+                    Uri? podcastUri;
                     if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out podcastUri) && (podcastUri.Scheme == Uri.UriSchemeHttp || podcastUri.Scheme == Uri.UriSchemeHttps))
                     {
                         podcastResultsByName = await _search.GetPodcastById(ContentFormatter.FormatUri(TXT_ContentName.Text));

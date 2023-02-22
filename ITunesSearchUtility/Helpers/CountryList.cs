@@ -2,7 +2,7 @@
 {
     public static class CountryList
     {
-        public static Dictionary<string, string> Countries = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> Countries = new Dictionary<string, string>()
         {
             { "AF", "Afghanistan" },
             { "AX", "Åland Islands" },
@@ -255,5 +255,10 @@
             { "ZM", "Zambia" },
             { "ZW", "Zimbabwe" }
         };
+
+        public static bool ContainsKey(string key)
+        {
+            return Countries.ContainsKey(key);
+        }
     }
 }
