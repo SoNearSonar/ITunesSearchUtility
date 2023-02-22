@@ -57,57 +57,45 @@ namespace ITunesSearchUtility
             switch (CBX_SearchBy.SelectedIndex)
             {
                 case 0:
-                case 1:
-                case 2:
-                    AlbumResult albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
+                    AlbumResult albumResultByName = null;
+                    Uri albumUri;
+                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumUri) && (albumUri.Scheme == Uri.UriSchemeHttp || albumUri.Scheme == Uri.UriSchemeHttps))
+                    {
+                        albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
+                    }
                     if (albumResultByName != null)
                     {
                         AddAlbums(albumResultByName);
                     }
                     break;
-                case 3:
-                    AlbumResult albumResultBySongName = await _search.GetAlbumsFromSongAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
-                    if (albumResultBySongName != null)
+                case 1:
+                    AlbumResult albumResultByArtistId = null;
+                    Uri albumArtistUri;
+                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumArtistUri) && (albumArtistUri.Scheme == Uri.UriSchemeHttp || albumArtistUri.Scheme == Uri.UriSchemeHttps))
                     {
-                        AddAlbums(albumResultBySongName);
+                        albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(ContentFormatter.FormatArtistUri(TXT_ContentName.Text));
+                    }
+                    if (albumResultByArtistId != null)
+                    {
+                        AddAlbums(albumResultByArtistId);
                     }
                     break;
-                case 4:
-                    if (ulong.TryParse(TXT_ContentName.Text, out ulong artistId))
+                case 2:
+                case 3:
+                    PodcastListResult podcastResultsByName = null;
+                    Uri podcastUri;
+                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out podcastUri) && (podcastUri.Scheme == Uri.UriSchemeHttp || podcastUri.Scheme == Uri.UriSchemeHttps))
                     {
-                        AlbumResult albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync((long)artistId, searchLimit, countryCode);
-                        if (albumResultByArtistId != null)
-                        {
-                            AddAlbums(albumResultByArtistId);
-                        }
+                        podcastResultsByName = await _search.GetPodcastById(ContentFormatter.FormatUri(TXT_ContentName.Text));
                     }
                     else
                     {
-                        MessageBox.Show("Please enter in a proper number for the artist ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        podcastResultsByName = await _search.GetPodcasts(TXT_ContentName.Text, searchLimit, countryCode);
                     }
-                    break;
-                case 5:
-                    PodcastListResult podcastResultsByName = await _search.GetPodcasts(TXT_ContentName.Text, searchLimit, countryCode);
+                    
                     if (podcastResultsByName != null)
                     {
                         AddPodcasts(podcastResultsByName);
-                    }
-                    break;
-                case 6:
-                case 7:
-                    if (ulong.TryParse(TXT_ContentName.Text, out ulong podcastId))
-                    {
-                        PodcastListResult podcastResultById = await _search.GetPodcastById((long)podcastId);
-                        if (podcastResultById != null)
-                        {
-                            AddPodcasts(podcastResultById);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Please enter in a proper number for the podcast ID", "ID error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
                     }
                     break;
             }
@@ -121,7 +109,7 @@ namespace ITunesSearchUtility
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CBX_SearchBy.SelectedIndex <= 4)
+            if (CBX_SearchBy.SelectedIndex <= 1)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -130,7 +118,7 @@ namespace ITunesSearchUtility
                     TXT_AlbumArtistID.Text = _albums[index].ArtistId.ToString();
                     TXT_AlbumArtistURL.Text = _albums[index].ArtistViewUrl;
                     TXT_AlbumIsExplicit.Text = _albums[index].CollectionExplicitness.Equals("notExplicit") ? "No" : "Yes";
-                    TXT_AlbumReleaseDate.Text = FormatDate(_albums[index].ReleaseDate);
+                    TXT_AlbumReleaseDate.Text = ContentFormatter.FormatDate(_albums[index].ReleaseDate);
                     TXT_AlbumPrimaryGenre.Text = _albums[index].PrimaryGenreName;
                     TXT_AlbumPrice.Text = $"{_albums[index].CollectionPrice} {_albums[index].Currency}";
                     TXT_AlbumID.Text = _albums[index].CollectionId.ToString();
@@ -155,7 +143,7 @@ namespace ITunesSearchUtility
                     TXT_PodcastIsExplicit.Text = _podcasts[index].Explicitness.Equals("notExplicit") ? "No" : "Yes";
                     TXT_PodcastID.Text = _podcasts[index].Id.ToString();
                     TXT_PodcastGenre.Text = _podcasts[index].Genre;
-                    TXT_PodcastReleaseDate.Text = FormatDate(_podcasts[index].ReleaseDate);
+                    TXT_PodcastReleaseDate.Text = ContentFormatter.FormatDate(_podcasts[index].ReleaseDate);
                     TXT_PodcastRating.Text = _podcasts[index].Rating;
                     break;
                 }
@@ -176,6 +164,7 @@ namespace ITunesSearchUtility
                     LVW_CollectionResults.Items.Add(item);
                 }
             }
+            TCTRL_InformationSection.SelectedIndex = 0;
         }
 
         private void AddPodcasts(PodcastListResult podcastResult)
@@ -191,11 +180,12 @@ namespace ITunesSearchUtility
                     LVW_CollectionResults.Items.Add(item);
                 }
             }
+            TCTRL_InformationSection.SelectedIndex = 1;
         }
 
-        private static string FormatDate(string date)
+        private void BTN_Clear_Click(object sender, EventArgs e)
         {
-            return DateTime.Parse(date).ToString();
+            TXT_ContentName.Text = "";
         }
     }
  }
