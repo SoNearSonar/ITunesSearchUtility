@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic.Logging;
-using System.Security.Policy;
-
-namespace ITunesSearchUtility.Helpers
+﻿namespace ITunesSearchUtility.Helpers
 {
     public static class ContentFormatter
     {
@@ -12,18 +9,15 @@ namespace ITunesSearchUtility.Helpers
 
         public static long FormatUri(string uri)
         {
-            string id;
-            if (uri.Contains("podcasts.apple.com") || uri.Contains("books.apple.com"))
+            if (uri.Contains("podcasts.apple.com") || uri.Contains("books.apple.com") || uri.Contains("/tv-season/"))
             {
                 if (uri.Contains("id") && !uri.Contains("?i="))
                 {
-                     id = uri.Substring(uri.LastIndexOf("/id") + 3, uri.Length - (uri.LastIndexOf("/id") + 3));
-                     return long.Parse(id);
+                    return CalculateStringRange(uri, "/id");
                 }
                 else
                 {
-                    id = uri.Substring(uri.LastIndexOf("/id") + 3, uri.Length - (uri.LastIndexOf("?i=") + 6));
-                    return long.Parse(id);
+                    return CalculateStringRange(uri, "/id", "?i=");
                 }
             }
             return default;
@@ -39,6 +33,18 @@ namespace ITunesSearchUtility.Helpers
             {
                 return default;
             }
+        }
+
+        private static long CalculateStringRange(string source, string start)
+        {
+            string id = source[(source.LastIndexOf(start) + 3)..];
+            return long.Parse(id);
+        }
+
+        private static long CalculateStringRange(string source, string start, string end)
+        {
+            string id = source.Substring(source.LastIndexOf(start) + 3, (source.LastIndexOf(end) - 3 - source.LastIndexOf(start)));
+            return long.Parse(id);
         }
     }
 }

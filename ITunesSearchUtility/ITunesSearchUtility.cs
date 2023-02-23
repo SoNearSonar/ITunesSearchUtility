@@ -9,6 +9,9 @@ namespace ITunesSearchUtility
         readonly iTunesSearchManager _search = new iTunesSearchManager();
         readonly List<Album> _albums = new List<Album>();
         readonly List<Podcast> _podcasts = new List<Podcast>();
+        readonly List<TVEpisode> _episodes = new List<TVEpisode>();
+        readonly List<TVSeason> _seasons = new List<TVSeason>();
+        int _lastTrackedIndex = 0;
 
         public ITunesSearchUtility()
         {
@@ -57,16 +60,15 @@ namespace ITunesSearchUtility
             switch (CBX_SearchBy.SelectedIndex)
             {
                 case 0:
-                    AlbumResult? albumResultByName = null;
-                    albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
+                    AlbumResult? albumResultByName = await _search.GetAlbumsAsync(TXT_ContentName.Text, searchLimit, null, countryCode);
                     if (albumResultByName != null)
                     {
                         AddAlbums(albumResultByName);
                     }
                     break;
                 case 1:
-                    AlbumResult? albumResultByArtistId = null;
                     Uri? albumArtistUri;
+                    AlbumResult? albumResultByArtistId;
                     if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumArtistUri) && (albumArtistUri.Scheme == Uri.UriSchemeHttp || albumArtistUri.Scheme == Uri.UriSchemeHttps))
                     {
                         albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(ContentFormatter.FormatArtistUri(TXT_ContentName.Text));
@@ -92,15 +94,41 @@ namespace ITunesSearchUtility
                     {
                         podcastResultsByName = await _search.GetPodcasts(TXT_ContentName.Text, searchLimit, countryCode);
                     }
-                    
+
                     if (podcastResultsByName != null)
                     {
                         AddPodcasts(podcastResultsByName);
                     }
                     break;
+                case 4:
+                    TVEpisodeListResult? tvEpisodesByName;
+                    tvEpisodesByName = await _search.GetTVEpisodesForShow(TXT_ContentName.Text);
+                    if (tvEpisodesByName != null)
+                    {
+                        AddTvEpisodes(tvEpisodesByName);
+                    }
+                    break;
+                case 5:
+                    TVSeasonListResult? tvSeasonByName;
+                    Uri? seasonUri;
+                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out seasonUri) && (seasonUri.Scheme == Uri.UriSchemeHttp || seasonUri.Scheme == Uri.UriSchemeHttps))
+                    {
+                        tvSeasonByName = await _search.GetTVSeasonById(ContentFormatter.FormatUri(TXT_ContentName.Text));
+                    }
+                    else
+                    {
+                        tvSeasonByName = await _search.GetTVSeasonsForShow(TXT_ContentName.Text, searchLimit, countryCode);
+                    }
+
+                    if (tvSeasonByName != null)
+                    {
+                        AddTvSeasons(tvSeasonByName);
+                    }
+                    break;
             }
-            
-            if (LVW_CollectionResults.Items.Count == 0) 
+            _lastTrackedIndex = CBX_SearchBy.SelectedIndex;
+
+            if (LVW_CollectionResults.Items.Count == 0)
             {
                 MessageBox.Show("There are no results for that search", "No results", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -109,7 +137,7 @@ namespace ITunesSearchUtility
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CBX_SearchBy.SelectedIndex <= 1)
+            if (_lastTrackedIndex <= 1)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -129,7 +157,7 @@ namespace ITunesSearchUtility
                 }
                 TCTRL_InformationSection.SelectedIndex = 0;
             }
-            else
+            else if (_lastTrackedIndex > 1 && _lastTrackedIndex < 4)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -148,6 +176,14 @@ namespace ITunesSearchUtility
                     break;
                 }
                 TCTRL_InformationSection.SelectedIndex = 1;
+            }
+            else
+            {
+                foreach (int index in LVW_CollectionResults.SelectedIndices)
+                {
+                    break;
+                }
+                TCTRL_InformationSection.SelectedIndex = 2;
             }
         }
 
@@ -183,9 +219,41 @@ namespace ITunesSearchUtility
             TCTRL_InformationSection.SelectedIndex = 1;
         }
 
+        private void AddTvEpisodes(TVEpisodeListResult episodeResult)
+        {
+            _episodes.Clear();
+            LVW_CollectionResults.Items.Clear();
+            foreach (TVEpisode episode in episodeResult.Episodes)
+            {
+                if (episode.Name != null)
+                {
+                    _episodes.Add(episode);
+                    ListViewItem item = new ListViewItem(new string[] { episode.Name, episode.SeasonName });
+                    LVW_CollectionResults.Items.Add(item);
+                }
+            }
+            TCTRL_InformationSection.SelectedIndex = 2;
+        }
+
+        private void AddTvSeasons(TVSeasonListResult seasonResult)
+        {
+            _episodes.Clear();
+            LVW_CollectionResults.Items.Clear();
+            foreach (TVSeason season in seasonResult.Seasons)
+            {
+                if (season.ShowName != null)
+                {
+                    _seasons.Add(season);
+                    ListViewItem item = new ListViewItem(new string[] { season.ShowName, season.SeasonName });
+                    LVW_CollectionResults.Items.Add(item);
+                }
+            }
+            TCTRL_InformationSection.SelectedIndex = 2;
+        }
+
         private void BTN_Clear_Click(object sender, EventArgs e)
         {
             TXT_ContentName.Text = "";
         }
     }
- }
+}
