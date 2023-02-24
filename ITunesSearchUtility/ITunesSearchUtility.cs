@@ -48,7 +48,7 @@ namespace ITunesSearchUtility
             string countryCode = "us";
             if (!string.IsNullOrWhiteSpace(TXT_CountryCode.Text))
             {
-                countryCode = TXT_CountryCode.Text.ToUpperInvariant().Substring(0, 2);
+                countryCode = TXT_CountryCode.Text.ToUpperInvariant()[..2];
                 if (TXT_CountryCode.Text.Length > 2 || !CountryList.ContainsKey(countryCode))
                 {
                     MessageBox.Show("Please enter in a proper country code", "Country code error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -67,9 +67,8 @@ namespace ITunesSearchUtility
                     }
                     break;
                 case 1:
-                    Uri? albumArtistUri;
                     AlbumResult? albumResultByArtistId;
-                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out albumArtistUri) && (albumArtistUri.Scheme == Uri.UriSchemeHttp || albumArtistUri.Scheme == Uri.UriSchemeHttps))
+                    if (ContentFormatter.IsValidUri(TXT_ContentName.Text))
                     {
                         albumResultByArtistId = await _search.GetAlbumsByArtistIdAsync(ContentFormatter.FormatArtistUri(TXT_ContentName.Text));
                     }
@@ -85,8 +84,7 @@ namespace ITunesSearchUtility
                 case 2:
                 case 3:
                     PodcastListResult? podcastResultsByName;
-                    Uri? podcastUri;
-                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out podcastUri) && (podcastUri.Scheme == Uri.UriSchemeHttp || podcastUri.Scheme == Uri.UriSchemeHttps))
+                    if (ContentFormatter.IsValidUri(TXT_ContentName.Text))
                     {
                         podcastResultsByName = await _search.GetPodcastById(ContentFormatter.FormatUri(TXT_ContentName.Text));
                     }
@@ -110,8 +108,7 @@ namespace ITunesSearchUtility
                     break;
                 case 5:
                     TVSeasonListResult? tvSeasonByName;
-                    Uri? seasonUri;
-                    if (Uri.TryCreate(TXT_ContentName.Text, UriKind.Absolute, out seasonUri) && (seasonUri.Scheme == Uri.UriSchemeHttp || seasonUri.Scheme == Uri.UriSchemeHttps))
+                    if (ContentFormatter.IsValidUri(TXT_ContentName.Text))
                     {
                         tvSeasonByName = await _search.GetTVSeasonById(ContentFormatter.FormatUri(TXT_ContentName.Text));
                     }
@@ -133,6 +130,11 @@ namespace ITunesSearchUtility
                 MessageBox.Show("There are no results for that search", "No results", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void BTN_Clear_Click(object sender, EventArgs e)
+        {
+            TXT_ContentName.Text = "";
         }
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
@@ -181,6 +183,18 @@ namespace ITunesSearchUtility
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
+                    TXT_TVShowName.Text = _seasons[index].SeasonName;
+                    TXT_TVShowSeasonNumber.Text = _seasons[index].SeasonNumber.ToString();
+                    TXT_TVShowSeasonID.Text = _seasons[index].SeasonId.ToString();
+                    TXT_TVShowPrice.Text = _seasons[index].SeasonPrice.ToString();
+                    TXT_TVShowHDPrice.Text = _seasons[index].SeasonPriceHD.ToString();
+                    TXT_TVShowEpisodeCount.Text = _seasons[index].SeasonEpisodeCount.ToString();
+                    TXT_TVShowIsExplicit.Text = _seasons[index].SeasonExplicitness.Equals("notExplicit") ? "No" : "Yes";
+                    TXT_TVShowGenre.Text = _seasons[index].Genre;
+                    TXT_TVShowCopyright.Text = _seasons[index].Copyright;
+                    TXT_TVShowCountry.Text = _seasons[index].Country;
+                    TXT_TVShowReleaseDate.Text = ContentFormatter.FormatDate(_seasons[index].ReleaseDate);
+                    TXT_TVShowRating.Text = _seasons[index].Rating;
                     break;
                 }
                 TCTRL_InformationSection.SelectedIndex = 2;
@@ -237,7 +251,7 @@ namespace ITunesSearchUtility
 
         private void AddTvSeasons(TVSeasonListResult seasonResult)
         {
-            _episodes.Clear();
+            _seasons.Clear();
             LVW_CollectionResults.Items.Clear();
             foreach (TVSeason season in seasonResult.Seasons)
             {
@@ -249,11 +263,6 @@ namespace ITunesSearchUtility
                 }
             }
             TCTRL_InformationSection.SelectedIndex = 2;
-        }
-
-        private void BTN_Clear_Click(object sender, EventArgs e)
-        {
-            TXT_ContentName.Text = "";
         }
     }
 }

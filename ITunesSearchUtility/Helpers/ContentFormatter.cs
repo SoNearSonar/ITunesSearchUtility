@@ -35,6 +35,11 @@
             }
         }
 
+        public static bool IsValidUri(string link)
+        {
+            return Uri.TryCreate(link, UriKind.Absolute, out Uri? uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
+        }
+
         private static long CalculateStringRange(string source, string start)
         {
             string id = source[(source.LastIndexOf(start) + 3)..];

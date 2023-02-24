@@ -86,7 +86,31 @@
             TXT_PodcastArtistID = new TextBox();
             TXT_PodcastArtistURL = new TextBox();
             LBL_PodcastArtistURL = new Label();
-            TPG_TvShow = new TabPage();
+            TPG_TVShow = new TabPage();
+            TXT_TVShowCountry = new TextBox();
+            LBL_TVShowCountry = new Label();
+            TXT_TVShowRating = new TextBox();
+            LBL_TVShowRating = new Label();
+            TXT_TVShowGenre = new TextBox();
+            LBL_TVShowGenre = new Label();
+            TXT_TVShowReleaseDate = new TextBox();
+            LBL_TVShowReleaseDate = new Label();
+            TXT_TVShowCopyright = new TextBox();
+            LBL_TVShowCopyright = new Label();
+            TXT_TVShowIsExplicit = new TextBox();
+            TXT_TVShowName = new TextBox();
+            LBL_TVShowIsExplicit = new Label();
+            LBL_TVShowName = new Label();
+            TXT_TVShowEpisodeCount = new TextBox();
+            LBL_TVShowSeasonNumber = new Label();
+            LBL_TVShowEpisodeCount = new Label();
+            TXT_TVShowSeasonNumber = new TextBox();
+            TXT_TVShowHDPrice = new TextBox();
+            LBL_TVShowSeasonID = new Label();
+            LBL_TVShowHDPrice = new Label();
+            TXT_TVShowSeasonID = new TextBox();
+            TXT_TVShowPrice = new TextBox();
+            LBL_TVShowPrice = new Label();
             GBX_SearchInformation = new GroupBox();
             BTN_Clear = new Button();
             TXT_CountryCode = new TextBox();
@@ -103,30 +127,6 @@
             listView1 = new ListView();
             GBX_SearchActions = new GroupBox();
             GBX_HistorySearchInformation = new GroupBox();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            label2 = new Label();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            textBox4 = new TextBox();
-            label4 = new Label();
-            textBox5 = new TextBox();
-            label5 = new Label();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            textBox8 = new TextBox();
-            label8 = new Label();
-            label9 = new Label();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
-            label10 = new Label();
-            label11 = new Label();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
-            label12 = new Label();
             TCTRL_Main.SuspendLayout();
             TPG_Search.SuspendLayout();
             GBX_ContentResult.SuspendLayout();
@@ -134,7 +134,7 @@
             TCTRL_InformationSection.SuspendLayout();
             TPG_Album.SuspendLayout();
             TPG_Podcast.SuspendLayout();
-            TPG_TvShow.SuspendLayout();
+            TPG_TVShow.SuspendLayout();
             GBX_SearchInformation.SuspendLayout();
             TPG_History.SuspendLayout();
             GBX_History.SuspendLayout();
@@ -210,7 +210,7 @@
             // 
             TCTRL_InformationSection.Controls.Add(TPG_Album);
             TCTRL_InformationSection.Controls.Add(TPG_Podcast);
-            TCTRL_InformationSection.Controls.Add(TPG_TvShow);
+            TCTRL_InformationSection.Controls.Add(TPG_TVShow);
             TCTRL_InformationSection.Location = new Point(7, 19);
             TCTRL_InformationSection.Name = "TCTRL_InformationSection";
             TCTRL_InformationSection.SelectedIndex = 0;
@@ -669,39 +669,231 @@
             LBL_PodcastArtistURL.TabIndex = 35;
             LBL_PodcastArtistURL.Text = "Artist URL:";
             // 
-            // TPG_TvShow
+            // TPG_TVShow
             // 
-            TPG_TvShow.Controls.Add(textBox1);
-            TPG_TvShow.Controls.Add(label1);
-            TPG_TvShow.Controls.Add(textBox2);
-            TPG_TvShow.Controls.Add(label2);
-            TPG_TvShow.Controls.Add(textBox3);
-            TPG_TvShow.Controls.Add(label3);
-            TPG_TvShow.Controls.Add(textBox4);
-            TPG_TvShow.Controls.Add(label4);
-            TPG_TvShow.Controls.Add(textBox5);
-            TPG_TvShow.Controls.Add(label5);
-            TPG_TvShow.Controls.Add(textBox6);
-            TPG_TvShow.Controls.Add(textBox7);
-            TPG_TvShow.Controls.Add(label6);
-            TPG_TvShow.Controls.Add(label7);
-            TPG_TvShow.Controls.Add(textBox8);
-            TPG_TvShow.Controls.Add(label8);
-            TPG_TvShow.Controls.Add(label9);
-            TPG_TvShow.Controls.Add(textBox9);
-            TPG_TvShow.Controls.Add(textBox10);
-            TPG_TvShow.Controls.Add(label10);
-            TPG_TvShow.Controls.Add(label11);
-            TPG_TvShow.Controls.Add(textBox11);
-            TPG_TvShow.Controls.Add(textBox12);
-            TPG_TvShow.Controls.Add(label12);
-            TPG_TvShow.Location = new Point(4, 24);
-            TPG_TvShow.Name = "TPG_TvShow";
-            TPG_TvShow.Padding = new Padding(3);
-            TPG_TvShow.Size = new Size(395, 394);
-            TPG_TvShow.TabIndex = 2;
-            TPG_TvShow.Text = "TV Show";
-            TPG_TvShow.UseVisualStyleBackColor = true;
+            TPG_TVShow.Controls.Add(TXT_TVShowCountry);
+            TPG_TVShow.Controls.Add(LBL_TVShowCountry);
+            TPG_TVShow.Controls.Add(TXT_TVShowRating);
+            TPG_TVShow.Controls.Add(LBL_TVShowRating);
+            TPG_TVShow.Controls.Add(TXT_TVShowGenre);
+            TPG_TVShow.Controls.Add(LBL_TVShowGenre);
+            TPG_TVShow.Controls.Add(TXT_TVShowReleaseDate);
+            TPG_TVShow.Controls.Add(LBL_TVShowReleaseDate);
+            TPG_TVShow.Controls.Add(TXT_TVShowCopyright);
+            TPG_TVShow.Controls.Add(LBL_TVShowCopyright);
+            TPG_TVShow.Controls.Add(TXT_TVShowIsExplicit);
+            TPG_TVShow.Controls.Add(TXT_TVShowName);
+            TPG_TVShow.Controls.Add(LBL_TVShowIsExplicit);
+            TPG_TVShow.Controls.Add(LBL_TVShowName);
+            TPG_TVShow.Controls.Add(TXT_TVShowEpisodeCount);
+            TPG_TVShow.Controls.Add(LBL_TVShowSeasonNumber);
+            TPG_TVShow.Controls.Add(LBL_TVShowEpisodeCount);
+            TPG_TVShow.Controls.Add(TXT_TVShowSeasonNumber);
+            TPG_TVShow.Controls.Add(TXT_TVShowHDPrice);
+            TPG_TVShow.Controls.Add(LBL_TVShowSeasonID);
+            TPG_TVShow.Controls.Add(LBL_TVShowHDPrice);
+            TPG_TVShow.Controls.Add(TXT_TVShowSeasonID);
+            TPG_TVShow.Controls.Add(TXT_TVShowPrice);
+            TPG_TVShow.Controls.Add(LBL_TVShowPrice);
+            TPG_TVShow.Location = new Point(4, 24);
+            TPG_TVShow.Name = "TPG_TVShow";
+            TPG_TVShow.Padding = new Padding(3);
+            TPG_TVShow.Size = new Size(395, 394);
+            TPG_TVShow.TabIndex = 2;
+            TPG_TVShow.Text = "TV Show";
+            TPG_TVShow.UseVisualStyleBackColor = true;
+            // 
+            // TXT_TVShowCountry
+            // 
+            TXT_TVShowCountry.Location = new Point(106, 298);
+            TXT_TVShowCountry.Name = "TXT_TVShowCountry";
+            TXT_TVShowCountry.Size = new Size(274, 23);
+            TXT_TVShowCountry.TabIndex = 52;
+            // 
+            // LBL_TVShowCountry
+            // 
+            LBL_TVShowCountry.AutoSize = true;
+            LBL_TVShowCountry.Location = new Point(10, 301);
+            LBL_TVShowCountry.Name = "LBL_TVShowCountry";
+            LBL_TVShowCountry.Size = new Size(53, 15);
+            LBL_TVShowCountry.TabIndex = 51;
+            LBL_TVShowCountry.Text = "Country:";
+            // 
+            // TXT_TVShowRating
+            // 
+            TXT_TVShowRating.Location = new Point(106, 362);
+            TXT_TVShowRating.Name = "TXT_TVShowRating";
+            TXT_TVShowRating.Size = new Size(274, 23);
+            TXT_TVShowRating.TabIndex = 50;
+            // 
+            // LBL_TVShowRating
+            // 
+            LBL_TVShowRating.AutoSize = true;
+            LBL_TVShowRating.Location = new Point(10, 365);
+            LBL_TVShowRating.Name = "LBL_TVShowRating";
+            LBL_TVShowRating.Size = new Size(44, 15);
+            LBL_TVShowRating.TabIndex = 49;
+            LBL_TVShowRating.Text = "Rating:";
+            // 
+            // TXT_TVShowGenre
+            // 
+            TXT_TVShowGenre.Location = new Point(106, 234);
+            TXT_TVShowGenre.Name = "TXT_TVShowGenre";
+            TXT_TVShowGenre.Size = new Size(274, 23);
+            TXT_TVShowGenre.TabIndex = 48;
+            // 
+            // LBL_TVShowGenre
+            // 
+            LBL_TVShowGenre.AutoSize = true;
+            LBL_TVShowGenre.Location = new Point(9, 237);
+            LBL_TVShowGenre.Name = "LBL_TVShowGenre";
+            LBL_TVShowGenre.Size = new Size(41, 15);
+            LBL_TVShowGenre.TabIndex = 47;
+            LBL_TVShowGenre.Text = "Genre:";
+            // 
+            // TXT_TVShowReleaseDate
+            // 
+            TXT_TVShowReleaseDate.Location = new Point(106, 330);
+            TXT_TVShowReleaseDate.Name = "TXT_TVShowReleaseDate";
+            TXT_TVShowReleaseDate.Size = new Size(274, 23);
+            TXT_TVShowReleaseDate.TabIndex = 46;
+            // 
+            // LBL_TVShowReleaseDate
+            // 
+            LBL_TVShowReleaseDate.AutoSize = true;
+            LBL_TVShowReleaseDate.Location = new Point(10, 333);
+            LBL_TVShowReleaseDate.Name = "LBL_TVShowReleaseDate";
+            LBL_TVShowReleaseDate.Size = new Size(76, 15);
+            LBL_TVShowReleaseDate.TabIndex = 45;
+            LBL_TVShowReleaseDate.Text = "Release Date:";
+            // 
+            // TXT_TVShowCopyright
+            // 
+            TXT_TVShowCopyright.Location = new Point(106, 266);
+            TXT_TVShowCopyright.Name = "TXT_TVShowCopyright";
+            TXT_TVShowCopyright.Size = new Size(274, 23);
+            TXT_TVShowCopyright.TabIndex = 44;
+            // 
+            // LBL_TVShowCopyright
+            // 
+            LBL_TVShowCopyright.AutoSize = true;
+            LBL_TVShowCopyright.Location = new Point(10, 269);
+            LBL_TVShowCopyright.Name = "LBL_TVShowCopyright";
+            LBL_TVShowCopyright.Size = new Size(63, 15);
+            LBL_TVShowCopyright.TabIndex = 43;
+            LBL_TVShowCopyright.Text = "Copyright:";
+            // 
+            // TXT_TVShowIsExplicit
+            // 
+            TXT_TVShowIsExplicit.Location = new Point(106, 202);
+            TXT_TVShowIsExplicit.Name = "TXT_TVShowIsExplicit";
+            TXT_TVShowIsExplicit.Size = new Size(274, 23);
+            TXT_TVShowIsExplicit.TabIndex = 42;
+            // 
+            // TXT_TVShowName
+            // 
+            TXT_TVShowName.Location = new Point(105, 10);
+            TXT_TVShowName.Name = "TXT_TVShowName";
+            TXT_TVShowName.Size = new Size(274, 23);
+            TXT_TVShowName.TabIndex = 30;
+            // 
+            // LBL_TVShowIsExplicit
+            // 
+            LBL_TVShowIsExplicit.AutoSize = true;
+            LBL_TVShowIsExplicit.Location = new Point(10, 205);
+            LBL_TVShowIsExplicit.Name = "LBL_TVShowIsExplicit";
+            LBL_TVShowIsExplicit.Size = new Size(59, 15);
+            LBL_TVShowIsExplicit.TabIndex = 41;
+            LBL_TVShowIsExplicit.Text = "Is Explicit:";
+            // 
+            // LBL_TVShowName
+            // 
+            LBL_TVShowName.AutoSize = true;
+            LBL_TVShowName.Location = new Point(9, 13);
+            LBL_TVShowName.Name = "LBL_TVShowName";
+            LBL_TVShowName.Size = new Size(42, 15);
+            LBL_TVShowName.TabIndex = 29;
+            LBL_TVShowName.Text = "Name:";
+            // 
+            // TXT_TVShowEpisodeCount
+            // 
+            TXT_TVShowEpisodeCount.Location = new Point(106, 170);
+            TXT_TVShowEpisodeCount.Name = "TXT_TVShowEpisodeCount";
+            TXT_TVShowEpisodeCount.Size = new Size(274, 23);
+            TXT_TVShowEpisodeCount.TabIndex = 40;
+            // 
+            // LBL_TVShowSeasonNumber
+            // 
+            LBL_TVShowSeasonNumber.AutoSize = true;
+            LBL_TVShowSeasonNumber.Location = new Point(9, 45);
+            LBL_TVShowSeasonNumber.Name = "LBL_TVShowSeasonNumber";
+            LBL_TVShowSeasonNumber.Size = new Size(94, 15);
+            LBL_TVShowSeasonNumber.TabIndex = 31;
+            LBL_TVShowSeasonNumber.Text = "Season Number:";
+            // 
+            // LBL_TVShowEpisodeCount
+            // 
+            LBL_TVShowEpisodeCount.AutoSize = true;
+            LBL_TVShowEpisodeCount.Location = new Point(10, 174);
+            LBL_TVShowEpisodeCount.Name = "LBL_TVShowEpisodeCount";
+            LBL_TVShowEpisodeCount.Size = new Size(87, 15);
+            LBL_TVShowEpisodeCount.TabIndex = 39;
+            LBL_TVShowEpisodeCount.Text = "Episode Count:";
+            // 
+            // TXT_TVShowSeasonNumber
+            // 
+            TXT_TVShowSeasonNumber.Location = new Point(105, 42);
+            TXT_TVShowSeasonNumber.Name = "TXT_TVShowSeasonNumber";
+            TXT_TVShowSeasonNumber.Size = new Size(274, 23);
+            TXT_TVShowSeasonNumber.TabIndex = 32;
+            // 
+            // TXT_TVShowHDPrice
+            // 
+            TXT_TVShowHDPrice.Location = new Point(106, 138);
+            TXT_TVShowHDPrice.Name = "TXT_TVShowHDPrice";
+            TXT_TVShowHDPrice.Size = new Size(274, 23);
+            TXT_TVShowHDPrice.TabIndex = 38;
+            // 
+            // LBL_TVShowSeasonID
+            // 
+            LBL_TVShowSeasonID.AutoSize = true;
+            LBL_TVShowSeasonID.Location = new Point(9, 77);
+            LBL_TVShowSeasonID.Name = "LBL_TVShowSeasonID";
+            LBL_TVShowSeasonID.Size = new Size(61, 15);
+            LBL_TVShowSeasonID.TabIndex = 33;
+            LBL_TVShowSeasonID.Text = "Season ID:";
+            // 
+            // LBL_TVShowHDPrice
+            // 
+            LBL_TVShowHDPrice.AutoSize = true;
+            LBL_TVShowHDPrice.Location = new Point(10, 142);
+            LBL_TVShowHDPrice.Name = "LBL_TVShowHDPrice";
+            LBL_TVShowHDPrice.Size = new Size(56, 15);
+            LBL_TVShowHDPrice.TabIndex = 37;
+            LBL_TVShowHDPrice.Text = "HD Price:";
+            // 
+            // TXT_TVShowSeasonID
+            // 
+            TXT_TVShowSeasonID.Location = new Point(105, 74);
+            TXT_TVShowSeasonID.Name = "TXT_TVShowSeasonID";
+            TXT_TVShowSeasonID.Size = new Size(274, 23);
+            TXT_TVShowSeasonID.TabIndex = 34;
+            // 
+            // TXT_TVShowPrice
+            // 
+            TXT_TVShowPrice.Location = new Point(105, 106);
+            TXT_TVShowPrice.Name = "TXT_TVShowPrice";
+            TXT_TVShowPrice.Size = new Size(274, 23);
+            TXT_TVShowPrice.TabIndex = 36;
+            // 
+            // LBL_TVShowPrice
+            // 
+            LBL_TVShowPrice.AutoSize = true;
+            LBL_TVShowPrice.Location = new Point(9, 109);
+            LBL_TVShowPrice.Name = "LBL_TVShowPrice";
+            LBL_TVShowPrice.Size = new Size(36, 15);
+            LBL_TVShowPrice.TabIndex = 35;
+            LBL_TVShowPrice.Text = "Price:";
             // 
             // GBX_SearchInformation
             // 
@@ -858,198 +1050,6 @@
             GBX_HistorySearchInformation.TabStop = false;
             GBX_HistorySearchInformation.Text = "Search Information";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(106, 298);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(274, 23);
-            textBox1.TabIndex = 52;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(10, 301);
-            label1.Name = "label1";
-            label1.Size = new Size(53, 15);
-            label1.TabIndex = 51;
-            label1.Text = "Country:";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(106, 362);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(274, 23);
-            textBox2.TabIndex = 50;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 365);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 15);
-            label2.TabIndex = 49;
-            label2.Text = "Track Count:";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(106, 234);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(274, 23);
-            textBox3.TabIndex = 48;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(9, 237);
-            label3.Name = "label3";
-            label3.Size = new Size(36, 15);
-            label3.TabIndex = 47;
-            label3.Text = "Price:";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(106, 330);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(274, 23);
-            textBox4.TabIndex = 46;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(10, 333);
-            label4.Name = "label4";
-            label4.Size = new Size(76, 15);
-            label4.TabIndex = 45;
-            label4.Text = "Release Date:";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(106, 266);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(274, 23);
-            textBox5.TabIndex = 44;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(10, 269);
-            label5.Name = "label5";
-            label5.Size = new Size(21, 15);
-            label5.TabIndex = 43;
-            label5.Text = "ID:";
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(106, 202);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(274, 23);
-            textBox6.TabIndex = 42;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(105, 10);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(274, 23);
-            textBox7.TabIndex = 30;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(10, 205);
-            label6.Name = "label6";
-            label6.Size = new Size(85, 15);
-            label6.TabIndex = 41;
-            label6.Text = "Primary Genre:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(9, 13);
-            label7.Name = "label7";
-            label7.Size = new Size(42, 15);
-            label7.TabIndex = 29;
-            label7.Text = "Name:";
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(106, 170);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(274, 23);
-            textBox8.TabIndex = 40;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(9, 45);
-            label8.Name = "label8";
-            label8.Size = new Size(43, 15);
-            label8.TabIndex = 31;
-            label8.Text = "Artists:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(10, 174);
-            label9.Name = "label9";
-            label9.Size = new Size(63, 15);
-            label9.TabIndex = 39;
-            label9.Text = "Copyright:";
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(105, 42);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(274, 23);
-            textBox9.TabIndex = 32;
-            // 
-            // textBox10
-            // 
-            textBox10.Location = new Point(106, 138);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(274, 23);
-            textBox10.TabIndex = 38;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(9, 77);
-            label10.Name = "label10";
-            label10.Size = new Size(52, 15);
-            label10.TabIndex = 33;
-            label10.Text = "Artist ID:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(10, 142);
-            label11.Name = "label11";
-            label11.Size = new Size(59, 15);
-            label11.TabIndex = 37;
-            label11.Text = "Is Explicit:";
-            // 
-            // textBox11
-            // 
-            textBox11.Location = new Point(105, 74);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(274, 23);
-            textBox11.TabIndex = 34;
-            // 
-            // textBox12
-            // 
-            textBox12.Location = new Point(105, 106);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(274, 23);
-            textBox12.TabIndex = 36;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(9, 109);
-            label12.Name = "label12";
-            label12.Size = new Size(62, 15);
-            label12.TabIndex = 35;
-            label12.Text = "Artist URL:";
-            // 
             // ITunesSearchUtility
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1069,8 +1069,8 @@
             TPG_Album.PerformLayout();
             TPG_Podcast.ResumeLayout(false);
             TPG_Podcast.PerformLayout();
-            TPG_TvShow.ResumeLayout(false);
-            TPG_TvShow.PerformLayout();
+            TPG_TVShow.ResumeLayout(false);
+            TPG_TVShow.PerformLayout();
             GBX_SearchInformation.ResumeLayout(false);
             GBX_SearchInformation.PerformLayout();
             TPG_History.ResumeLayout(false);
@@ -1153,30 +1153,30 @@
         private GroupBox GBX_History;
         private ListView listView1;
         private GroupBox GBX_SearchActions;
-        private TabPage TPG_TvShow;
-        private TextBox textBox1;
-        private Label label1;
-        private TextBox textBox2;
-        private Label label2;
-        private TextBox textBox3;
-        private Label label3;
-        private TextBox textBox4;
-        private Label label4;
-        private TextBox textBox5;
-        private Label label5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private Label label6;
-        private Label label7;
-        private TextBox textBox8;
-        private Label label8;
-        private Label label9;
-        private TextBox textBox9;
-        private TextBox textBox10;
-        private Label label10;
-        private Label label11;
-        private TextBox textBox11;
-        private TextBox textBox12;
-        private Label label12;
+        private TabPage TPG_TVShow;
+        private TextBox TXT_TVShowCountry;
+        private Label LBL_TVShowCountry;
+        private TextBox TXT_TVShowRating;
+        private Label LBL_TVShowRating;
+        private TextBox TXT_TVShowGenre;
+        private Label LBL_TVShowGenre;
+        private TextBox TXT_TVShowReleaseDate;
+        private Label LBL_TVShowReleaseDate;
+        private TextBox TXT_TVShowCopyright;
+        private Label LBL_TVShowCopyright;
+        private TextBox TXT_TVShowIsExplicit;
+        private TextBox TXT_TVShowName;
+        private Label LBL_TVShowIsExplicit;
+        private Label LBL_TVShowName;
+        private TextBox TXT_TVShowEpisodeCount;
+        private Label LBL_TVShowSeasonNumber;
+        private Label LBL_TVShowEpisodeCount;
+        private TextBox TXT_TVShowSeasonNumber;
+        private TextBox TXT_TVShowHDPrice;
+        private Label LBL_TVShowSeasonID;
+        private Label LBL_TVShowHDPrice;
+        private TextBox TXT_TVShowSeasonID;
+        private TextBox TXT_TVShowPrice;
+        private Label LBL_TVShowPrice;
     }
 }
