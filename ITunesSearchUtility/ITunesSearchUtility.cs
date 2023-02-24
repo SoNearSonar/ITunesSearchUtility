@@ -179,7 +179,27 @@ namespace ITunesSearchUtility
                 }
                 TCTRL_InformationSection.SelectedIndex = 1;
             }
-            else
+            else if (_lastTrackedIndex == 4)
+            {
+                foreach (int index in LVW_CollectionResults.SelectedIndices)
+                {
+                    TXT_TVEpisodeName.Text = _episodes[index].SeasonName;
+                    TXT_TVEpisodeSeasonNumber.Text = _episodes[index].SeasonNumber.ToString();
+                    TXT_TVEpisodeSeasonID.Text = _episodes[index].SeasonId.ToString();
+                    TXT_TVEpisodePrice.Text = _episodes[index].SeasonPrice.ToString();
+                    TXT_TVEpisodePrice.Text = _episodes[index].SeasonPriceHD.ToString();
+                    TXT_TVEpisodeCount.Text = _episodes[index].SeasonEpisodeCount.ToString();
+                    TXT_TVEpisodeIsExplicit.Text = _episodes[index].SeasonExplicitness.Equals("notExplicit") ? "No" : "Yes";
+                    TXT_TVEpisodeGenre.Text = _episodes[index].Genre;
+                    TXT_TVEpisodeRuntime.Text = ContentFormatter.FormatRuntime(_episodes[index].RuntimeInMilliseconds);
+                    TXT_TVEpisodeCountry.Text = _episodes[index].Country;
+                    TXT_TVEpisodeReleaseDate.Text = ContentFormatter.FormatDate(_episodes[index].ReleaseDate);
+                    TXT_TVEpisodeRating.Text = _episodes[index].Rating;
+                    break;
+                }
+                TCTRL_InformationSection.SelectedIndex = 2;
+            }
+            else if (_lastTrackedIndex == 5)
             {
                 foreach (int index in LVW_CollectionResults.SelectedIndices)
                 {
@@ -197,7 +217,7 @@ namespace ITunesSearchUtility
                     TXT_TVShowRating.Text = _seasons[index].Rating;
                     break;
                 }
-                TCTRL_InformationSection.SelectedIndex = 2;
+                TCTRL_InformationSection.SelectedIndex = 3;
             }
         }
 
@@ -262,7 +282,7 @@ namespace ITunesSearchUtility
                     LVW_CollectionResults.Items.Add(item);
                 }
             }
-            TCTRL_InformationSection.SelectedIndex = 2;
+            TCTRL_InformationSection.SelectedIndex = 3;
         }
     }
 }

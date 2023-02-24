@@ -86,6 +86,31 @@
             TXT_PodcastArtistID = new TextBox();
             TXT_PodcastArtistURL = new TextBox();
             LBL_PodcastArtistURL = new Label();
+            TPG_TVEpisode = new TabPage();
+            TXT_TVEpisodeCountry = new TextBox();
+            LBL_TVEpisodeCountry = new Label();
+            TXT_TVEpisodeRating = new TextBox();
+            LBL_TVEpisodeRating = new Label();
+            TXT_TVEpisodeGenre = new TextBox();
+            LBL_TVEpisodeGenre = new Label();
+            TXT_TVEpisodeReleaseDate = new TextBox();
+            LBL_TVEpisodeReleaseDate = new Label();
+            TXT_TVEpisodeRuntime = new TextBox();
+            LBL_TVEpisodeRuntime = new Label();
+            TXT_TVEpisodeIsExplicit = new TextBox();
+            TXT_TVEpisodeName = new TextBox();
+            LBL_TVEpisodeIsExplicit = new Label();
+            LBL_TVEpisodeName = new Label();
+            TXT_TVEpisodeCount = new TextBox();
+            LBL_TVEpisodeSeasonNumber = new Label();
+            LBL_TVEpisodeCount = new Label();
+            TXT_TVEpisodeSeasonNumber = new TextBox();
+            TXT_TVEpisodeHDPrice = new TextBox();
+            LBL_TVEpisodeSeasonID = new Label();
+            LBL_TVEpisodeHDPrice = new Label();
+            TXT_TVEpisodeSeasonID = new TextBox();
+            TXT_TVEpisodePrice = new TextBox();
+            LBL_TVEpisodePrice = new Label();
             TPG_TVShow = new TabPage();
             TXT_TVShowCountry = new TextBox();
             LBL_TVShowCountry = new Label();
@@ -134,6 +159,7 @@
             TCTRL_InformationSection.SuspendLayout();
             TPG_Album.SuspendLayout();
             TPG_Podcast.SuspendLayout();
+            TPG_TVEpisode.SuspendLayout();
             TPG_TVShow.SuspendLayout();
             GBX_SearchInformation.SuspendLayout();
             TPG_History.SuspendLayout();
@@ -148,7 +174,7 @@
             TCTRL_Main.Name = "TCTRL_Main";
             TCTRL_Main.SelectedIndex = 0;
             TCTRL_Main.Size = new Size(843, 483);
-            TCTRL_Main.TabIndex = 6;
+            TCTRL_Main.TabIndex = 0;
             // 
             // TPG_Search
             // 
@@ -169,7 +195,7 @@
             GBX_ContentResult.Location = new Point(7, 152);
             GBX_ContentResult.Name = "GBX_ContentResult";
             GBX_ContentResult.Size = new Size(401, 297);
-            GBX_ContentResult.TabIndex = 1;
+            GBX_ContentResult.TabIndex = 12;
             GBX_ContentResult.TabStop = false;
             GBX_ContentResult.Text = "Result";
             // 
@@ -181,7 +207,7 @@
             LVW_CollectionResults.MultiSelect = false;
             LVW_CollectionResults.Name = "LVW_CollectionResults";
             LVW_CollectionResults.Size = new Size(389, 265);
-            LVW_CollectionResults.TabIndex = 0;
+            LVW_CollectionResults.TabIndex = 13;
             LVW_CollectionResults.UseCompatibleStateImageBehavior = false;
             LVW_CollectionResults.View = View.Details;
             LVW_CollectionResults.SelectedIndexChanged += LVW_CollectionResults_SelectedIndexChanged;
@@ -202,7 +228,7 @@
             GBX_ContentInformation.Location = new Point(413, 2);
             GBX_ContentInformation.Name = "GBX_ContentInformation";
             GBX_ContentInformation.Size = new Size(416, 447);
-            GBX_ContentInformation.TabIndex = 2;
+            GBX_ContentInformation.TabIndex = 14;
             GBX_ContentInformation.TabStop = false;
             GBX_ContentInformation.Text = "Content Information";
             // 
@@ -210,12 +236,13 @@
             // 
             TCTRL_InformationSection.Controls.Add(TPG_Album);
             TCTRL_InformationSection.Controls.Add(TPG_Podcast);
+            TCTRL_InformationSection.Controls.Add(TPG_TVEpisode);
             TCTRL_InformationSection.Controls.Add(TPG_TVShow);
             TCTRL_InformationSection.Location = new Point(7, 19);
             TCTRL_InformationSection.Name = "TCTRL_InformationSection";
             TCTRL_InformationSection.SelectedIndex = 0;
             TCTRL_InformationSection.Size = new Size(403, 422);
-            TCTRL_InformationSection.TabIndex = 7;
+            TCTRL_InformationSection.TabIndex = 15;
             // 
             // TPG_Album
             // 
@@ -255,8 +282,9 @@
             // 
             TXT_AlbumCountry.Location = new Point(106, 298);
             TXT_AlbumCountry.Name = "TXT_AlbumCountry";
+            TXT_AlbumCountry.ReadOnly = true;
             TXT_AlbumCountry.Size = new Size(274, 23);
-            TXT_AlbumCountry.TabIndex = 28;
+            TXT_AlbumCountry.TabIndex = 35;
             // 
             // LBL_AlbumCountry
             // 
@@ -264,15 +292,16 @@
             LBL_AlbumCountry.Location = new Point(10, 301);
             LBL_AlbumCountry.Name = "LBL_AlbumCountry";
             LBL_AlbumCountry.Size = new Size(53, 15);
-            LBL_AlbumCountry.TabIndex = 27;
+            LBL_AlbumCountry.TabIndex = 34;
             LBL_AlbumCountry.Text = "Country:";
             // 
             // TXT_AlbumTrackCount
             // 
             TXT_AlbumTrackCount.Location = new Point(106, 362);
             TXT_AlbumTrackCount.Name = "TXT_AlbumTrackCount";
+            TXT_AlbumTrackCount.ReadOnly = true;
             TXT_AlbumTrackCount.Size = new Size(274, 23);
-            TXT_AlbumTrackCount.TabIndex = 26;
+            TXT_AlbumTrackCount.TabIndex = 39;
             // 
             // LBL_AlbumTrackCount
             // 
@@ -280,15 +309,16 @@
             LBL_AlbumTrackCount.Location = new Point(10, 365);
             LBL_AlbumTrackCount.Name = "LBL_AlbumTrackCount";
             LBL_AlbumTrackCount.Size = new Size(73, 15);
-            LBL_AlbumTrackCount.TabIndex = 25;
+            LBL_AlbumTrackCount.TabIndex = 38;
             LBL_AlbumTrackCount.Text = "Track Count:";
             // 
             // TXT_AlbumPrice
             // 
             TXT_AlbumPrice.Location = new Point(106, 234);
             TXT_AlbumPrice.Name = "TXT_AlbumPrice";
+            TXT_AlbumPrice.ReadOnly = true;
             TXT_AlbumPrice.Size = new Size(274, 23);
-            TXT_AlbumPrice.TabIndex = 24;
+            TXT_AlbumPrice.TabIndex = 31;
             // 
             // LBL_AlbumPrice
             // 
@@ -296,15 +326,16 @@
             LBL_AlbumPrice.Location = new Point(9, 237);
             LBL_AlbumPrice.Name = "LBL_AlbumPrice";
             LBL_AlbumPrice.Size = new Size(36, 15);
-            LBL_AlbumPrice.TabIndex = 23;
+            LBL_AlbumPrice.TabIndex = 30;
             LBL_AlbumPrice.Text = "Price:";
             // 
             // TXT_AlbumReleaseDate
             // 
             TXT_AlbumReleaseDate.Location = new Point(106, 330);
             TXT_AlbumReleaseDate.Name = "TXT_AlbumReleaseDate";
+            TXT_AlbumReleaseDate.ReadOnly = true;
             TXT_AlbumReleaseDate.Size = new Size(274, 23);
-            TXT_AlbumReleaseDate.TabIndex = 22;
+            TXT_AlbumReleaseDate.TabIndex = 37;
             // 
             // LBL_AlbumReleaseDate
             // 
@@ -312,15 +343,16 @@
             LBL_AlbumReleaseDate.Location = new Point(10, 333);
             LBL_AlbumReleaseDate.Name = "LBL_AlbumReleaseDate";
             LBL_AlbumReleaseDate.Size = new Size(76, 15);
-            LBL_AlbumReleaseDate.TabIndex = 21;
+            LBL_AlbumReleaseDate.TabIndex = 36;
             LBL_AlbumReleaseDate.Text = "Release Date:";
             // 
             // TXT_AlbumID
             // 
             TXT_AlbumID.Location = new Point(106, 266);
             TXT_AlbumID.Name = "TXT_AlbumID";
+            TXT_AlbumID.ReadOnly = true;
             TXT_AlbumID.Size = new Size(274, 23);
-            TXT_AlbumID.TabIndex = 20;
+            TXT_AlbumID.TabIndex = 33;
             // 
             // LBL_AlbumID
             // 
@@ -328,22 +360,24 @@
             LBL_AlbumID.Location = new Point(10, 269);
             LBL_AlbumID.Name = "LBL_AlbumID";
             LBL_AlbumID.Size = new Size(21, 15);
-            LBL_AlbumID.TabIndex = 19;
+            LBL_AlbumID.TabIndex = 32;
             LBL_AlbumID.Text = "ID:";
             // 
             // TXT_AlbumPrimaryGenre
             // 
             TXT_AlbumPrimaryGenre.Location = new Point(106, 202);
             TXT_AlbumPrimaryGenre.Name = "TXT_AlbumPrimaryGenre";
+            TXT_AlbumPrimaryGenre.ReadOnly = true;
             TXT_AlbumPrimaryGenre.Size = new Size(274, 23);
-            TXT_AlbumPrimaryGenre.TabIndex = 18;
+            TXT_AlbumPrimaryGenre.TabIndex = 29;
             // 
             // TXT_AlbumName
             // 
             TXT_AlbumName.Location = new Point(105, 10);
             TXT_AlbumName.Name = "TXT_AlbumName";
+            TXT_AlbumName.ReadOnly = true;
             TXT_AlbumName.Size = new Size(274, 23);
-            TXT_AlbumName.TabIndex = 6;
+            TXT_AlbumName.TabIndex = 17;
             // 
             // LBL_AlbumPrimaryGenre
             // 
@@ -351,7 +385,7 @@
             LBL_AlbumPrimaryGenre.Location = new Point(10, 205);
             LBL_AlbumPrimaryGenre.Name = "LBL_AlbumPrimaryGenre";
             LBL_AlbumPrimaryGenre.Size = new Size(85, 15);
-            LBL_AlbumPrimaryGenre.TabIndex = 17;
+            LBL_AlbumPrimaryGenre.TabIndex = 28;
             LBL_AlbumPrimaryGenre.Text = "Primary Genre:";
             // 
             // LBL_AlbumName
@@ -360,15 +394,16 @@
             LBL_AlbumName.Location = new Point(9, 13);
             LBL_AlbumName.Name = "LBL_AlbumName";
             LBL_AlbumName.Size = new Size(42, 15);
-            LBL_AlbumName.TabIndex = 5;
+            LBL_AlbumName.TabIndex = 16;
             LBL_AlbumName.Text = "Name:";
             // 
             // TXT_AlbumCopyright
             // 
             TXT_AlbumCopyright.Location = new Point(106, 170);
             TXT_AlbumCopyright.Name = "TXT_AlbumCopyright";
+            TXT_AlbumCopyright.ReadOnly = true;
             TXT_AlbumCopyright.Size = new Size(274, 23);
-            TXT_AlbumCopyright.TabIndex = 16;
+            TXT_AlbumCopyright.TabIndex = 27;
             // 
             // LBL_AlbumArtists
             // 
@@ -376,7 +411,7 @@
             LBL_AlbumArtists.Location = new Point(9, 45);
             LBL_AlbumArtists.Name = "LBL_AlbumArtists";
             LBL_AlbumArtists.Size = new Size(43, 15);
-            LBL_AlbumArtists.TabIndex = 7;
+            LBL_AlbumArtists.TabIndex = 18;
             LBL_AlbumArtists.Text = "Artists:";
             // 
             // LBL_AlbumCopyright
@@ -385,22 +420,24 @@
             LBL_AlbumCopyright.Location = new Point(10, 174);
             LBL_AlbumCopyright.Name = "LBL_AlbumCopyright";
             LBL_AlbumCopyright.Size = new Size(63, 15);
-            LBL_AlbumCopyright.TabIndex = 15;
+            LBL_AlbumCopyright.TabIndex = 26;
             LBL_AlbumCopyright.Text = "Copyright:";
             // 
             // TXT_AlbumArtists
             // 
             TXT_AlbumArtists.Location = new Point(105, 42);
             TXT_AlbumArtists.Name = "TXT_AlbumArtists";
+            TXT_AlbumArtists.ReadOnly = true;
             TXT_AlbumArtists.Size = new Size(274, 23);
-            TXT_AlbumArtists.TabIndex = 8;
+            TXT_AlbumArtists.TabIndex = 19;
             // 
             // TXT_AlbumIsExplicit
             // 
             TXT_AlbumIsExplicit.Location = new Point(106, 138);
             TXT_AlbumIsExplicit.Name = "TXT_AlbumIsExplicit";
+            TXT_AlbumIsExplicit.ReadOnly = true;
             TXT_AlbumIsExplicit.Size = new Size(274, 23);
-            TXT_AlbumIsExplicit.TabIndex = 14;
+            TXT_AlbumIsExplicit.TabIndex = 25;
             // 
             // LBL_AlbumArtistID
             // 
@@ -408,7 +445,7 @@
             LBL_AlbumArtistID.Location = new Point(9, 77);
             LBL_AlbumArtistID.Name = "LBL_AlbumArtistID";
             LBL_AlbumArtistID.Size = new Size(52, 15);
-            LBL_AlbumArtistID.TabIndex = 9;
+            LBL_AlbumArtistID.TabIndex = 20;
             LBL_AlbumArtistID.Text = "Artist ID:";
             // 
             // LBL_AlbumIsExplicit
@@ -417,22 +454,24 @@
             LBL_AlbumIsExplicit.Location = new Point(10, 142);
             LBL_AlbumIsExplicit.Name = "LBL_AlbumIsExplicit";
             LBL_AlbumIsExplicit.Size = new Size(59, 15);
-            LBL_AlbumIsExplicit.TabIndex = 13;
+            LBL_AlbumIsExplicit.TabIndex = 24;
             LBL_AlbumIsExplicit.Text = "Is Explicit:";
             // 
             // TXT_AlbumArtistID
             // 
             TXT_AlbumArtistID.Location = new Point(105, 74);
             TXT_AlbumArtistID.Name = "TXT_AlbumArtistID";
+            TXT_AlbumArtistID.ReadOnly = true;
             TXT_AlbumArtistID.Size = new Size(274, 23);
-            TXT_AlbumArtistID.TabIndex = 10;
+            TXT_AlbumArtistID.TabIndex = 21;
             // 
             // TXT_AlbumArtistURL
             // 
             TXT_AlbumArtistURL.Location = new Point(105, 106);
             TXT_AlbumArtistURL.Name = "TXT_AlbumArtistURL";
+            TXT_AlbumArtistURL.ReadOnly = true;
             TXT_AlbumArtistURL.Size = new Size(274, 23);
-            TXT_AlbumArtistURL.TabIndex = 12;
+            TXT_AlbumArtistURL.TabIndex = 23;
             // 
             // LBL_AlbumArtistURL
             // 
@@ -440,7 +479,7 @@
             LBL_AlbumArtistURL.Location = new Point(9, 109);
             LBL_AlbumArtistURL.Name = "LBL_AlbumArtistURL";
             LBL_AlbumArtistURL.Size = new Size(62, 15);
-            LBL_AlbumArtistURL.TabIndex = 11;
+            LBL_AlbumArtistURL.TabIndex = 22;
             LBL_AlbumArtistURL.Text = "Artist URL:";
             // 
             // TPG_Podcast
@@ -481,15 +520,17 @@
             // 
             TXT_PodcastID.Location = new Point(106, 266);
             TXT_PodcastID.Name = "TXT_PodcastID";
+            TXT_PodcastID.ReadOnly = true;
             TXT_PodcastID.Size = new Size(274, 23);
-            TXT_PodcastID.TabIndex = 52;
+            TXT_PodcastID.TabIndex = 57;
             // 
             // TXT_PodcastEpisodeCount
             // 
             TXT_PodcastEpisodeCount.Location = new Point(106, 298);
             TXT_PodcastEpisodeCount.Name = "TXT_PodcastEpisodeCount";
+            TXT_PodcastEpisodeCount.ReadOnly = true;
             TXT_PodcastEpisodeCount.Size = new Size(274, 23);
-            TXT_PodcastEpisodeCount.TabIndex = 42;
+            TXT_PodcastEpisodeCount.TabIndex = 59;
             // 
             // LBL_PodcastEpisodeCount
             // 
@@ -497,15 +538,16 @@
             LBL_PodcastEpisodeCount.Location = new Point(10, 301);
             LBL_PodcastEpisodeCount.Name = "LBL_PodcastEpisodeCount";
             LBL_PodcastEpisodeCount.Size = new Size(87, 15);
-            LBL_PodcastEpisodeCount.TabIndex = 41;
+            LBL_PodcastEpisodeCount.TabIndex = 58;
             LBL_PodcastEpisodeCount.Text = "Episode Count:";
             // 
             // TXT_PodcastGenre
             // 
             TXT_PodcastGenre.Location = new Point(106, 202);
             TXT_PodcastGenre.Name = "TXT_PodcastGenre";
+            TXT_PodcastGenre.ReadOnly = true;
             TXT_PodcastGenre.Size = new Size(274, 23);
-            TXT_PodcastGenre.TabIndex = 44;
+            TXT_PodcastGenre.TabIndex = 53;
             // 
             // LBL_PodcastGenre
             // 
@@ -513,15 +555,16 @@
             LBL_PodcastGenre.Location = new Point(10, 205);
             LBL_PodcastGenre.Name = "LBL_PodcastGenre";
             LBL_PodcastGenre.Size = new Size(85, 15);
-            LBL_PodcastGenre.TabIndex = 43;
+            LBL_PodcastGenre.TabIndex = 52;
             LBL_PodcastGenre.Text = "Primary Genre:";
             // 
             // TXT_PodcastDescription
             // 
             TXT_PodcastDescription.Location = new Point(106, 234);
             TXT_PodcastDescription.Name = "TXT_PodcastDescription";
+            TXT_PodcastDescription.ReadOnly = true;
             TXT_PodcastDescription.Size = new Size(274, 23);
-            TXT_PodcastDescription.TabIndex = 40;
+            TXT_PodcastDescription.TabIndex = 55;
             // 
             // LBL_PodcastDecription
             // 
@@ -529,15 +572,16 @@
             LBL_PodcastDecription.Location = new Point(10, 238);
             LBL_PodcastDecription.Name = "LBL_PodcastDecription";
             LBL_PodcastDecription.Size = new Size(70, 15);
-            LBL_PodcastDecription.TabIndex = 39;
+            LBL_PodcastDecription.TabIndex = 54;
             LBL_PodcastDecription.Text = "Description:";
             // 
             // TXT_PodcastCopyright
             // 
             TXT_PodcastCopyright.Location = new Point(106, 170);
             TXT_PodcastCopyright.Name = "TXT_PodcastCopyright";
+            TXT_PodcastCopyright.ReadOnly = true;
             TXT_PodcastCopyright.Size = new Size(274, 23);
-            TXT_PodcastCopyright.TabIndex = 38;
+            TXT_PodcastCopyright.TabIndex = 51;
             // 
             // LBL_PodcastCopyright
             // 
@@ -545,15 +589,16 @@
             LBL_PodcastCopyright.Location = new Point(10, 174);
             LBL_PodcastCopyright.Name = "LBL_PodcastCopyright";
             LBL_PodcastCopyright.Size = new Size(63, 15);
-            LBL_PodcastCopyright.TabIndex = 37;
+            LBL_PodcastCopyright.TabIndex = 50;
             LBL_PodcastCopyright.Text = "Copyright:";
             // 
             // TXT_PodcastIsExplicit
             // 
             TXT_PodcastIsExplicit.Location = new Point(106, 138);
             TXT_PodcastIsExplicit.Name = "TXT_PodcastIsExplicit";
+            TXT_PodcastIsExplicit.ReadOnly = true;
             TXT_PodcastIsExplicit.Size = new Size(274, 23);
-            TXT_PodcastIsExplicit.TabIndex = 48;
+            TXT_PodcastIsExplicit.TabIndex = 49;
             // 
             // LBL_PodcastIsExplicit
             // 
@@ -561,7 +606,7 @@
             LBL_PodcastIsExplicit.Location = new Point(10, 142);
             LBL_PodcastIsExplicit.Name = "LBL_PodcastIsExplicit";
             LBL_PodcastIsExplicit.Size = new Size(59, 15);
-            LBL_PodcastIsExplicit.TabIndex = 47;
+            LBL_PodcastIsExplicit.TabIndex = 48;
             LBL_PodcastIsExplicit.Text = "Is Explicit:";
             // 
             // LBL_PodcastID
@@ -570,15 +615,16 @@
             LBL_PodcastID.Location = new Point(10, 269);
             LBL_PodcastID.Name = "LBL_PodcastID";
             LBL_PodcastID.Size = new Size(21, 15);
-            LBL_PodcastID.TabIndex = 51;
+            LBL_PodcastID.TabIndex = 56;
             LBL_PodcastID.Text = "ID:";
             // 
             // TXT_PodcastRating
             // 
             TXT_PodcastRating.Location = new Point(106, 362);
             TXT_PodcastRating.Name = "TXT_PodcastRating";
+            TXT_PodcastRating.ReadOnly = true;
             TXT_PodcastRating.Size = new Size(274, 23);
-            TXT_PodcastRating.TabIndex = 50;
+            TXT_PodcastRating.TabIndex = 63;
             // 
             // LBL_PodcastRating
             // 
@@ -586,15 +632,16 @@
             LBL_PodcastRating.Location = new Point(10, 365);
             LBL_PodcastRating.Name = "LBL_PodcastRating";
             LBL_PodcastRating.Size = new Size(44, 15);
-            LBL_PodcastRating.TabIndex = 49;
+            LBL_PodcastRating.TabIndex = 62;
             LBL_PodcastRating.Text = "Rating:";
             // 
             // TXT_PodcastReleaseDate
             // 
             TXT_PodcastReleaseDate.Location = new Point(106, 330);
             TXT_PodcastReleaseDate.Name = "TXT_PodcastReleaseDate";
+            TXT_PodcastReleaseDate.ReadOnly = true;
             TXT_PodcastReleaseDate.Size = new Size(274, 23);
-            TXT_PodcastReleaseDate.TabIndex = 46;
+            TXT_PodcastReleaseDate.TabIndex = 61;
             // 
             // LBL_PodcastReleaseDate
             // 
@@ -602,15 +649,16 @@
             LBL_PodcastReleaseDate.Location = new Point(10, 333);
             LBL_PodcastReleaseDate.Name = "LBL_PodcastReleaseDate";
             LBL_PodcastReleaseDate.Size = new Size(76, 15);
-            LBL_PodcastReleaseDate.TabIndex = 45;
+            LBL_PodcastReleaseDate.TabIndex = 60;
             LBL_PodcastReleaseDate.Text = "Release Date:";
             // 
             // TXT_PodcastName
             // 
             TXT_PodcastName.Location = new Point(105, 10);
             TXT_PodcastName.Name = "TXT_PodcastName";
+            TXT_PodcastName.ReadOnly = true;
             TXT_PodcastName.Size = new Size(274, 23);
-            TXT_PodcastName.TabIndex = 30;
+            TXT_PodcastName.TabIndex = 41;
             // 
             // LBL_PodcastName
             // 
@@ -618,7 +666,7 @@
             LBL_PodcastName.Location = new Point(9, 13);
             LBL_PodcastName.Name = "LBL_PodcastName";
             LBL_PodcastName.Size = new Size(42, 15);
-            LBL_PodcastName.TabIndex = 29;
+            LBL_PodcastName.TabIndex = 40;
             LBL_PodcastName.Text = "Name:";
             // 
             // LBL_PodcastArtists
@@ -627,15 +675,16 @@
             LBL_PodcastArtists.Location = new Point(9, 45);
             LBL_PodcastArtists.Name = "LBL_PodcastArtists";
             LBL_PodcastArtists.Size = new Size(43, 15);
-            LBL_PodcastArtists.TabIndex = 31;
+            LBL_PodcastArtists.TabIndex = 42;
             LBL_PodcastArtists.Text = "Artists:";
             // 
             // TXT_PodcastArtists
             // 
             TXT_PodcastArtists.Location = new Point(105, 42);
             TXT_PodcastArtists.Name = "TXT_PodcastArtists";
+            TXT_PodcastArtists.ReadOnly = true;
             TXT_PodcastArtists.Size = new Size(274, 23);
-            TXT_PodcastArtists.TabIndex = 32;
+            TXT_PodcastArtists.TabIndex = 43;
             // 
             // LBL_PodcastArtistID
             // 
@@ -643,22 +692,24 @@
             LBL_PodcastArtistID.Location = new Point(9, 77);
             LBL_PodcastArtistID.Name = "LBL_PodcastArtistID";
             LBL_PodcastArtistID.Size = new Size(52, 15);
-            LBL_PodcastArtistID.TabIndex = 33;
+            LBL_PodcastArtistID.TabIndex = 44;
             LBL_PodcastArtistID.Text = "Artist ID:";
             // 
             // TXT_PodcastArtistID
             // 
             TXT_PodcastArtistID.Location = new Point(105, 74);
             TXT_PodcastArtistID.Name = "TXT_PodcastArtistID";
+            TXT_PodcastArtistID.ReadOnly = true;
             TXT_PodcastArtistID.Size = new Size(274, 23);
-            TXT_PodcastArtistID.TabIndex = 34;
+            TXT_PodcastArtistID.TabIndex = 45;
             // 
             // TXT_PodcastArtistURL
             // 
             TXT_PodcastArtistURL.Location = new Point(105, 106);
             TXT_PodcastArtistURL.Name = "TXT_PodcastArtistURL";
+            TXT_PodcastArtistURL.ReadOnly = true;
             TXT_PodcastArtistURL.Size = new Size(274, 23);
-            TXT_PodcastArtistURL.TabIndex = 36;
+            TXT_PodcastArtistURL.TabIndex = 47;
             // 
             // LBL_PodcastArtistURL
             // 
@@ -666,8 +717,246 @@
             LBL_PodcastArtistURL.Location = new Point(9, 109);
             LBL_PodcastArtistURL.Name = "LBL_PodcastArtistURL";
             LBL_PodcastArtistURL.Size = new Size(62, 15);
-            LBL_PodcastArtistURL.TabIndex = 35;
+            LBL_PodcastArtistURL.TabIndex = 46;
             LBL_PodcastArtistURL.Text = "Artist URL:";
+            // 
+            // TPG_TVEpisode
+            // 
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeCountry);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeCountry);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeRating);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeRating);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeGenre);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeGenre);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeReleaseDate);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeReleaseDate);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeRuntime);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeRuntime);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeIsExplicit);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeName);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeIsExplicit);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeName);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeCount);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeSeasonNumber);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeCount);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeSeasonNumber);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeHDPrice);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeSeasonID);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodeHDPrice);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodeSeasonID);
+            TPG_TVEpisode.Controls.Add(TXT_TVEpisodePrice);
+            TPG_TVEpisode.Controls.Add(LBL_TVEpisodePrice);
+            TPG_TVEpisode.Location = new Point(4, 24);
+            TPG_TVEpisode.Name = "TPG_TVEpisode";
+            TPG_TVEpisode.Padding = new Padding(3);
+            TPG_TVEpisode.Size = new Size(395, 394);
+            TPG_TVEpisode.TabIndex = 3;
+            TPG_TVEpisode.Text = "TV Episode";
+            TPG_TVEpisode.UseVisualStyleBackColor = true;
+            // 
+            // TXT_TVEpisodeCountry
+            // 
+            TXT_TVEpisodeCountry.Location = new Point(106, 298);
+            TXT_TVEpisodeCountry.Name = "TXT_TVEpisodeCountry";
+            TXT_TVEpisodeCountry.ReadOnly = true;
+            TXT_TVEpisodeCountry.Size = new Size(274, 23);
+            TXT_TVEpisodeCountry.TabIndex = 83;
+            // 
+            // LBL_TVEpisodeCountry
+            // 
+            LBL_TVEpisodeCountry.AutoSize = true;
+            LBL_TVEpisodeCountry.Location = new Point(10, 301);
+            LBL_TVEpisodeCountry.Name = "LBL_TVEpisodeCountry";
+            LBL_TVEpisodeCountry.Size = new Size(53, 15);
+            LBL_TVEpisodeCountry.TabIndex = 82;
+            LBL_TVEpisodeCountry.Text = "Country:";
+            // 
+            // TXT_TVEpisodeRating
+            // 
+            TXT_TVEpisodeRating.Location = new Point(106, 362);
+            TXT_TVEpisodeRating.Name = "TXT_TVEpisodeRating";
+            TXT_TVEpisodeRating.ReadOnly = true;
+            TXT_TVEpisodeRating.Size = new Size(274, 23);
+            TXT_TVEpisodeRating.TabIndex = 87;
+            // 
+            // LBL_TVEpisodeRating
+            // 
+            LBL_TVEpisodeRating.AutoSize = true;
+            LBL_TVEpisodeRating.Location = new Point(10, 365);
+            LBL_TVEpisodeRating.Name = "LBL_TVEpisodeRating";
+            LBL_TVEpisodeRating.Size = new Size(44, 15);
+            LBL_TVEpisodeRating.TabIndex = 86;
+            LBL_TVEpisodeRating.Text = "Rating:";
+            // 
+            // TXT_TVEpisodeGenre
+            // 
+            TXT_TVEpisodeGenre.Location = new Point(106, 234);
+            TXT_TVEpisodeGenre.Name = "TXT_TVEpisodeGenre";
+            TXT_TVEpisodeGenre.ReadOnly = true;
+            TXT_TVEpisodeGenre.Size = new Size(274, 23);
+            TXT_TVEpisodeGenre.TabIndex = 79;
+            // 
+            // LBL_TVEpisodeGenre
+            // 
+            LBL_TVEpisodeGenre.AutoSize = true;
+            LBL_TVEpisodeGenre.Location = new Point(9, 237);
+            LBL_TVEpisodeGenre.Name = "LBL_TVEpisodeGenre";
+            LBL_TVEpisodeGenre.Size = new Size(41, 15);
+            LBL_TVEpisodeGenre.TabIndex = 78;
+            LBL_TVEpisodeGenre.Text = "Genre:";
+            // 
+            // TXT_TVEpisodeReleaseDate
+            // 
+            TXT_TVEpisodeReleaseDate.Location = new Point(106, 330);
+            TXT_TVEpisodeReleaseDate.Name = "TXT_TVEpisodeReleaseDate";
+            TXT_TVEpisodeReleaseDate.ReadOnly = true;
+            TXT_TVEpisodeReleaseDate.Size = new Size(274, 23);
+            TXT_TVEpisodeReleaseDate.TabIndex = 85;
+            // 
+            // LBL_TVEpisodeReleaseDate
+            // 
+            LBL_TVEpisodeReleaseDate.AutoSize = true;
+            LBL_TVEpisodeReleaseDate.Location = new Point(10, 333);
+            LBL_TVEpisodeReleaseDate.Name = "LBL_TVEpisodeReleaseDate";
+            LBL_TVEpisodeReleaseDate.Size = new Size(76, 15);
+            LBL_TVEpisodeReleaseDate.TabIndex = 84;
+            LBL_TVEpisodeReleaseDate.Text = "Release Date:";
+            // 
+            // TXT_TVEpisodeRuntime
+            // 
+            TXT_TVEpisodeRuntime.Location = new Point(106, 266);
+            TXT_TVEpisodeRuntime.Name = "TXT_TVEpisodeRuntime";
+            TXT_TVEpisodeRuntime.ReadOnly = true;
+            TXT_TVEpisodeRuntime.Size = new Size(274, 23);
+            TXT_TVEpisodeRuntime.TabIndex = 81;
+            // 
+            // LBL_TVEpisodeRuntime
+            // 
+            LBL_TVEpisodeRuntime.AutoSize = true;
+            LBL_TVEpisodeRuntime.Location = new Point(10, 269);
+            LBL_TVEpisodeRuntime.Name = "LBL_TVEpisodeRuntime";
+            LBL_TVEpisodeRuntime.Size = new Size(55, 15);
+            LBL_TVEpisodeRuntime.TabIndex = 80;
+            LBL_TVEpisodeRuntime.Text = "Runtime:";
+            // 
+            // TXT_TVEpisodeIsExplicit
+            // 
+            TXT_TVEpisodeIsExplicit.Location = new Point(106, 202);
+            TXT_TVEpisodeIsExplicit.Name = "TXT_TVEpisodeIsExplicit";
+            TXT_TVEpisodeIsExplicit.ReadOnly = true;
+            TXT_TVEpisodeIsExplicit.Size = new Size(274, 23);
+            TXT_TVEpisodeIsExplicit.TabIndex = 77;
+            // 
+            // TXT_TVEpisodeName
+            // 
+            TXT_TVEpisodeName.Location = new Point(105, 10);
+            TXT_TVEpisodeName.Name = "TXT_TVEpisodeName";
+            TXT_TVEpisodeName.ReadOnly = true;
+            TXT_TVEpisodeName.Size = new Size(274, 23);
+            TXT_TVEpisodeName.TabIndex = 65;
+            // 
+            // LBL_TVEpisodeIsExplicit
+            // 
+            LBL_TVEpisodeIsExplicit.AutoSize = true;
+            LBL_TVEpisodeIsExplicit.Location = new Point(10, 205);
+            LBL_TVEpisodeIsExplicit.Name = "LBL_TVEpisodeIsExplicit";
+            LBL_TVEpisodeIsExplicit.Size = new Size(59, 15);
+            LBL_TVEpisodeIsExplicit.TabIndex = 76;
+            LBL_TVEpisodeIsExplicit.Text = "Is Explicit:";
+            // 
+            // LBL_TVEpisodeName
+            // 
+            LBL_TVEpisodeName.AutoSize = true;
+            LBL_TVEpisodeName.Location = new Point(9, 13);
+            LBL_TVEpisodeName.Name = "LBL_TVEpisodeName";
+            LBL_TVEpisodeName.Size = new Size(42, 15);
+            LBL_TVEpisodeName.TabIndex = 64;
+            LBL_TVEpisodeName.Text = "Name:";
+            // 
+            // TXT_TVEpisodeCount
+            // 
+            TXT_TVEpisodeCount.Location = new Point(106, 170);
+            TXT_TVEpisodeCount.Name = "TXT_TVEpisodeCount";
+            TXT_TVEpisodeCount.ReadOnly = true;
+            TXT_TVEpisodeCount.Size = new Size(274, 23);
+            TXT_TVEpisodeCount.TabIndex = 75;
+            // 
+            // LBL_TVEpisodeSeasonNumber
+            // 
+            LBL_TVEpisodeSeasonNumber.AutoSize = true;
+            LBL_TVEpisodeSeasonNumber.Location = new Point(9, 45);
+            LBL_TVEpisodeSeasonNumber.Name = "LBL_TVEpisodeSeasonNumber";
+            LBL_TVEpisodeSeasonNumber.Size = new Size(94, 15);
+            LBL_TVEpisodeSeasonNumber.TabIndex = 66;
+            LBL_TVEpisodeSeasonNumber.Text = "Season Number:";
+            // 
+            // LBL_TVEpisodeCount
+            // 
+            LBL_TVEpisodeCount.AutoSize = true;
+            LBL_TVEpisodeCount.Location = new Point(10, 174);
+            LBL_TVEpisodeCount.Name = "LBL_TVEpisodeCount";
+            LBL_TVEpisodeCount.Size = new Size(87, 15);
+            LBL_TVEpisodeCount.TabIndex = 74;
+            LBL_TVEpisodeCount.Text = "Episode Count:";
+            // 
+            // TXT_TVEpisodeSeasonNumber
+            // 
+            TXT_TVEpisodeSeasonNumber.Location = new Point(105, 42);
+            TXT_TVEpisodeSeasonNumber.Name = "TXT_TVEpisodeSeasonNumber";
+            TXT_TVEpisodeSeasonNumber.ReadOnly = true;
+            TXT_TVEpisodeSeasonNumber.Size = new Size(274, 23);
+            TXT_TVEpisodeSeasonNumber.TabIndex = 67;
+            // 
+            // TXT_TVEpisodeHDPrice
+            // 
+            TXT_TVEpisodeHDPrice.Location = new Point(106, 138);
+            TXT_TVEpisodeHDPrice.Name = "TXT_TVEpisodeHDPrice";
+            TXT_TVEpisodeHDPrice.ReadOnly = true;
+            TXT_TVEpisodeHDPrice.Size = new Size(274, 23);
+            TXT_TVEpisodeHDPrice.TabIndex = 73;
+            // 
+            // LBL_TVEpisodeSeasonID
+            // 
+            LBL_TVEpisodeSeasonID.AutoSize = true;
+            LBL_TVEpisodeSeasonID.Location = new Point(9, 77);
+            LBL_TVEpisodeSeasonID.Name = "LBL_TVEpisodeSeasonID";
+            LBL_TVEpisodeSeasonID.Size = new Size(61, 15);
+            LBL_TVEpisodeSeasonID.TabIndex = 68;
+            LBL_TVEpisodeSeasonID.Text = "Season ID:";
+            // 
+            // LBL_TVEpisodeHDPrice
+            // 
+            LBL_TVEpisodeHDPrice.AutoSize = true;
+            LBL_TVEpisodeHDPrice.Location = new Point(10, 142);
+            LBL_TVEpisodeHDPrice.Name = "LBL_TVEpisodeHDPrice";
+            LBL_TVEpisodeHDPrice.Size = new Size(56, 15);
+            LBL_TVEpisodeHDPrice.TabIndex = 72;
+            LBL_TVEpisodeHDPrice.Text = "HD Price:";
+            // 
+            // TXT_TVEpisodeSeasonID
+            // 
+            TXT_TVEpisodeSeasonID.Location = new Point(105, 74);
+            TXT_TVEpisodeSeasonID.Name = "TXT_TVEpisodeSeasonID";
+            TXT_TVEpisodeSeasonID.ReadOnly = true;
+            TXT_TVEpisodeSeasonID.Size = new Size(274, 23);
+            TXT_TVEpisodeSeasonID.TabIndex = 69;
+            // 
+            // TXT_TVEpisodePrice
+            // 
+            TXT_TVEpisodePrice.Location = new Point(105, 106);
+            TXT_TVEpisodePrice.Name = "TXT_TVEpisodePrice";
+            TXT_TVEpisodePrice.ReadOnly = true;
+            TXT_TVEpisodePrice.Size = new Size(274, 23);
+            TXT_TVEpisodePrice.TabIndex = 710;
+            // 
+            // LBL_TVEpisodePrice
+            // 
+            LBL_TVEpisodePrice.AutoSize = true;
+            LBL_TVEpisodePrice.Location = new Point(9, 109);
+            LBL_TVEpisodePrice.Name = "LBL_TVEpisodePrice";
+            LBL_TVEpisodePrice.Size = new Size(36, 15);
+            LBL_TVEpisodePrice.TabIndex = 70;
+            LBL_TVEpisodePrice.Text = "Price:";
             // 
             // TPG_TVShow
             // 
@@ -707,8 +996,9 @@
             // 
             TXT_TVShowCountry.Location = new Point(106, 298);
             TXT_TVShowCountry.Name = "TXT_TVShowCountry";
+            TXT_TVShowCountry.ReadOnly = true;
             TXT_TVShowCountry.Size = new Size(274, 23);
-            TXT_TVShowCountry.TabIndex = 52;
+            TXT_TVShowCountry.TabIndex = 107;
             // 
             // LBL_TVShowCountry
             // 
@@ -716,15 +1006,16 @@
             LBL_TVShowCountry.Location = new Point(10, 301);
             LBL_TVShowCountry.Name = "LBL_TVShowCountry";
             LBL_TVShowCountry.Size = new Size(53, 15);
-            LBL_TVShowCountry.TabIndex = 51;
+            LBL_TVShowCountry.TabIndex = 106;
             LBL_TVShowCountry.Text = "Country:";
             // 
             // TXT_TVShowRating
             // 
             TXT_TVShowRating.Location = new Point(106, 362);
             TXT_TVShowRating.Name = "TXT_TVShowRating";
+            TXT_TVShowRating.ReadOnly = true;
             TXT_TVShowRating.Size = new Size(274, 23);
-            TXT_TVShowRating.TabIndex = 50;
+            TXT_TVShowRating.TabIndex = 111;
             // 
             // LBL_TVShowRating
             // 
@@ -732,15 +1023,16 @@
             LBL_TVShowRating.Location = new Point(10, 365);
             LBL_TVShowRating.Name = "LBL_TVShowRating";
             LBL_TVShowRating.Size = new Size(44, 15);
-            LBL_TVShowRating.TabIndex = 49;
+            LBL_TVShowRating.TabIndex = 110;
             LBL_TVShowRating.Text = "Rating:";
             // 
             // TXT_TVShowGenre
             // 
             TXT_TVShowGenre.Location = new Point(106, 234);
             TXT_TVShowGenre.Name = "TXT_TVShowGenre";
+            TXT_TVShowGenre.ReadOnly = true;
             TXT_TVShowGenre.Size = new Size(274, 23);
-            TXT_TVShowGenre.TabIndex = 48;
+            TXT_TVShowGenre.TabIndex = 103;
             // 
             // LBL_TVShowGenre
             // 
@@ -748,15 +1040,16 @@
             LBL_TVShowGenre.Location = new Point(9, 237);
             LBL_TVShowGenre.Name = "LBL_TVShowGenre";
             LBL_TVShowGenre.Size = new Size(41, 15);
-            LBL_TVShowGenre.TabIndex = 47;
+            LBL_TVShowGenre.TabIndex = 102;
             LBL_TVShowGenre.Text = "Genre:";
             // 
             // TXT_TVShowReleaseDate
             // 
             TXT_TVShowReleaseDate.Location = new Point(106, 330);
             TXT_TVShowReleaseDate.Name = "TXT_TVShowReleaseDate";
+            TXT_TVShowReleaseDate.ReadOnly = true;
             TXT_TVShowReleaseDate.Size = new Size(274, 23);
-            TXT_TVShowReleaseDate.TabIndex = 46;
+            TXT_TVShowReleaseDate.TabIndex = 109;
             // 
             // LBL_TVShowReleaseDate
             // 
@@ -764,15 +1057,16 @@
             LBL_TVShowReleaseDate.Location = new Point(10, 333);
             LBL_TVShowReleaseDate.Name = "LBL_TVShowReleaseDate";
             LBL_TVShowReleaseDate.Size = new Size(76, 15);
-            LBL_TVShowReleaseDate.TabIndex = 45;
+            LBL_TVShowReleaseDate.TabIndex = 108;
             LBL_TVShowReleaseDate.Text = "Release Date:";
             // 
             // TXT_TVShowCopyright
             // 
             TXT_TVShowCopyright.Location = new Point(106, 266);
             TXT_TVShowCopyright.Name = "TXT_TVShowCopyright";
+            TXT_TVShowCopyright.ReadOnly = true;
             TXT_TVShowCopyright.Size = new Size(274, 23);
-            TXT_TVShowCopyright.TabIndex = 44;
+            TXT_TVShowCopyright.TabIndex = 105;
             // 
             // LBL_TVShowCopyright
             // 
@@ -780,22 +1074,24 @@
             LBL_TVShowCopyright.Location = new Point(10, 269);
             LBL_TVShowCopyright.Name = "LBL_TVShowCopyright";
             LBL_TVShowCopyright.Size = new Size(63, 15);
-            LBL_TVShowCopyright.TabIndex = 43;
+            LBL_TVShowCopyright.TabIndex = 104;
             LBL_TVShowCopyright.Text = "Copyright:";
             // 
             // TXT_TVShowIsExplicit
             // 
             TXT_TVShowIsExplicit.Location = new Point(106, 202);
             TXT_TVShowIsExplicit.Name = "TXT_TVShowIsExplicit";
+            TXT_TVShowIsExplicit.ReadOnly = true;
             TXT_TVShowIsExplicit.Size = new Size(274, 23);
-            TXT_TVShowIsExplicit.TabIndex = 42;
+            TXT_TVShowIsExplicit.TabIndex = 101;
             // 
             // TXT_TVShowName
             // 
             TXT_TVShowName.Location = new Point(105, 10);
             TXT_TVShowName.Name = "TXT_TVShowName";
+            TXT_TVShowName.ReadOnly = true;
             TXT_TVShowName.Size = new Size(274, 23);
-            TXT_TVShowName.TabIndex = 30;
+            TXT_TVShowName.TabIndex = 89;
             // 
             // LBL_TVShowIsExplicit
             // 
@@ -803,7 +1099,7 @@
             LBL_TVShowIsExplicit.Location = new Point(10, 205);
             LBL_TVShowIsExplicit.Name = "LBL_TVShowIsExplicit";
             LBL_TVShowIsExplicit.Size = new Size(59, 15);
-            LBL_TVShowIsExplicit.TabIndex = 41;
+            LBL_TVShowIsExplicit.TabIndex = 100;
             LBL_TVShowIsExplicit.Text = "Is Explicit:";
             // 
             // LBL_TVShowName
@@ -812,15 +1108,16 @@
             LBL_TVShowName.Location = new Point(9, 13);
             LBL_TVShowName.Name = "LBL_TVShowName";
             LBL_TVShowName.Size = new Size(42, 15);
-            LBL_TVShowName.TabIndex = 29;
+            LBL_TVShowName.TabIndex = 88;
             LBL_TVShowName.Text = "Name:";
             // 
             // TXT_TVShowEpisodeCount
             // 
             TXT_TVShowEpisodeCount.Location = new Point(106, 170);
             TXT_TVShowEpisodeCount.Name = "TXT_TVShowEpisodeCount";
+            TXT_TVShowEpisodeCount.ReadOnly = true;
             TXT_TVShowEpisodeCount.Size = new Size(274, 23);
-            TXT_TVShowEpisodeCount.TabIndex = 40;
+            TXT_TVShowEpisodeCount.TabIndex = 99;
             // 
             // LBL_TVShowSeasonNumber
             // 
@@ -828,7 +1125,7 @@
             LBL_TVShowSeasonNumber.Location = new Point(9, 45);
             LBL_TVShowSeasonNumber.Name = "LBL_TVShowSeasonNumber";
             LBL_TVShowSeasonNumber.Size = new Size(94, 15);
-            LBL_TVShowSeasonNumber.TabIndex = 31;
+            LBL_TVShowSeasonNumber.TabIndex = 90;
             LBL_TVShowSeasonNumber.Text = "Season Number:";
             // 
             // LBL_TVShowEpisodeCount
@@ -837,22 +1134,24 @@
             LBL_TVShowEpisodeCount.Location = new Point(10, 174);
             LBL_TVShowEpisodeCount.Name = "LBL_TVShowEpisodeCount";
             LBL_TVShowEpisodeCount.Size = new Size(87, 15);
-            LBL_TVShowEpisodeCount.TabIndex = 39;
+            LBL_TVShowEpisodeCount.TabIndex = 98;
             LBL_TVShowEpisodeCount.Text = "Episode Count:";
             // 
             // TXT_TVShowSeasonNumber
             // 
             TXT_TVShowSeasonNumber.Location = new Point(105, 42);
             TXT_TVShowSeasonNumber.Name = "TXT_TVShowSeasonNumber";
+            TXT_TVShowSeasonNumber.ReadOnly = true;
             TXT_TVShowSeasonNumber.Size = new Size(274, 23);
-            TXT_TVShowSeasonNumber.TabIndex = 32;
+            TXT_TVShowSeasonNumber.TabIndex = 91;
             // 
             // TXT_TVShowHDPrice
             // 
             TXT_TVShowHDPrice.Location = new Point(106, 138);
             TXT_TVShowHDPrice.Name = "TXT_TVShowHDPrice";
+            TXT_TVShowHDPrice.ReadOnly = true;
             TXT_TVShowHDPrice.Size = new Size(274, 23);
-            TXT_TVShowHDPrice.TabIndex = 38;
+            TXT_TVShowHDPrice.TabIndex = 97;
             // 
             // LBL_TVShowSeasonID
             // 
@@ -860,7 +1159,7 @@
             LBL_TVShowSeasonID.Location = new Point(9, 77);
             LBL_TVShowSeasonID.Name = "LBL_TVShowSeasonID";
             LBL_TVShowSeasonID.Size = new Size(61, 15);
-            LBL_TVShowSeasonID.TabIndex = 33;
+            LBL_TVShowSeasonID.TabIndex = 92;
             LBL_TVShowSeasonID.Text = "Season ID:";
             // 
             // LBL_TVShowHDPrice
@@ -869,22 +1168,24 @@
             LBL_TVShowHDPrice.Location = new Point(10, 142);
             LBL_TVShowHDPrice.Name = "LBL_TVShowHDPrice";
             LBL_TVShowHDPrice.Size = new Size(56, 15);
-            LBL_TVShowHDPrice.TabIndex = 37;
+            LBL_TVShowHDPrice.TabIndex = 96;
             LBL_TVShowHDPrice.Text = "HD Price:";
             // 
             // TXT_TVShowSeasonID
             // 
             TXT_TVShowSeasonID.Location = new Point(105, 74);
             TXT_TVShowSeasonID.Name = "TXT_TVShowSeasonID";
+            TXT_TVShowSeasonID.ReadOnly = true;
             TXT_TVShowSeasonID.Size = new Size(274, 23);
-            TXT_TVShowSeasonID.TabIndex = 34;
+            TXT_TVShowSeasonID.TabIndex = 93;
             // 
             // TXT_TVShowPrice
             // 
             TXT_TVShowPrice.Location = new Point(105, 106);
             TXT_TVShowPrice.Name = "TXT_TVShowPrice";
+            TXT_TVShowPrice.ReadOnly = true;
             TXT_TVShowPrice.Size = new Size(274, 23);
-            TXT_TVShowPrice.TabIndex = 36;
+            TXT_TVShowPrice.TabIndex = 95;
             // 
             // LBL_TVShowPrice
             // 
@@ -892,7 +1193,7 @@
             LBL_TVShowPrice.Location = new Point(9, 109);
             LBL_TVShowPrice.Name = "LBL_TVShowPrice";
             LBL_TVShowPrice.Size = new Size(36, 15);
-            LBL_TVShowPrice.TabIndex = 35;
+            LBL_TVShowPrice.TabIndex = 94;
             LBL_TVShowPrice.Text = "Price:";
             // 
             // GBX_SearchInformation
@@ -910,7 +1211,7 @@
             GBX_SearchInformation.Location = new Point(7, 2);
             GBX_SearchInformation.Name = "GBX_SearchInformation";
             GBX_SearchInformation.Size = new Size(401, 151);
-            GBX_SearchInformation.TabIndex = 0;
+            GBX_SearchInformation.TabIndex = 1;
             GBX_SearchInformation.TabStop = false;
             GBX_SearchInformation.Text = "Search Information";
             // 
@@ -919,7 +1220,7 @@
             BTN_Clear.Location = new Point(295, 21);
             BTN_Clear.Name = "BTN_Clear";
             BTN_Clear.Size = new Size(91, 24);
-            BTN_Clear.TabIndex = 10;
+            BTN_Clear.TabIndex = 4;
             BTN_Clear.Text = "Clear";
             BTN_Clear.UseVisualStyleBackColor = true;
             BTN_Clear.Click += BTN_Clear_Click;
@@ -929,14 +1230,14 @@
             TXT_CountryCode.Location = new Point(104, 118);
             TXT_CountryCode.Name = "TXT_CountryCode";
             TXT_CountryCode.Size = new Size(182, 23);
-            TXT_CountryCode.TabIndex = 9;
+            TXT_CountryCode.TabIndex = 11;
             // 
             // TXT_SearchLimit
             // 
             TXT_SearchLimit.Location = new Point(104, 86);
             TXT_SearchLimit.Name = "TXT_SearchLimit";
             TXT_SearchLimit.Size = new Size(182, 23);
-            TXT_SearchLimit.TabIndex = 8;
+            TXT_SearchLimit.TabIndex = 9;
             // 
             // LBL_CountryCode
             // 
@@ -944,7 +1245,7 @@
             LBL_CountryCode.Location = new Point(14, 121);
             LBL_CountryCode.Name = "LBL_CountryCode";
             LBL_CountryCode.Size = new Size(84, 15);
-            LBL_CountryCode.TabIndex = 7;
+            LBL_CountryCode.TabIndex = 10;
             LBL_CountryCode.Text = "Country Code:";
             // 
             // LBL_SearchLimit
@@ -953,7 +1254,7 @@
             LBL_SearchLimit.Location = new Point(14, 89);
             LBL_SearchLimit.Name = "LBL_SearchLimit";
             LBL_SearchLimit.Size = new Size(75, 15);
-            LBL_SearchLimit.TabIndex = 5;
+            LBL_SearchLimit.TabIndex = 8;
             LBL_SearchLimit.Text = "Search Limit:";
             // 
             // CBX_SearchBy
@@ -964,7 +1265,7 @@
             CBX_SearchBy.Location = new Point(104, 54);
             CBX_SearchBy.Name = "CBX_SearchBy";
             CBX_SearchBy.Size = new Size(182, 23);
-            CBX_SearchBy.TabIndex = 4;
+            CBX_SearchBy.TabIndex = 6;
             // 
             // TXT_ContentName
             // 
@@ -979,7 +1280,7 @@
             LBL_SearchBy.Location = new Point(14, 58);
             LBL_SearchBy.Name = "LBL_SearchBy";
             LBL_SearchBy.Size = new Size(61, 15);
-            LBL_SearchBy.TabIndex = 2;
+            LBL_SearchBy.TabIndex = 5;
             LBL_SearchBy.Text = "Search By:";
             // 
             // LBL_ContentName
@@ -988,7 +1289,7 @@
             LBL_ContentName.Location = new Point(14, 26);
             LBL_ContentName.Name = "LBL_ContentName";
             LBL_ContentName.Size = new Size(38, 15);
-            LBL_ContentName.TabIndex = 1;
+            LBL_ContentName.TabIndex = 2;
             LBL_ContentName.Text = "Input:";
             // 
             // BTN_ContentSearch
@@ -996,7 +1297,7 @@
             BTN_ContentSearch.Location = new Point(295, 53);
             BTN_ContentSearch.Name = "BTN_ContentSearch";
             BTN_ContentSearch.Size = new Size(91, 24);
-            BTN_ContentSearch.TabIndex = 0;
+            BTN_ContentSearch.TabIndex = 7;
             BTN_ContentSearch.Text = "Search";
             BTN_ContentSearch.UseVisualStyleBackColor = true;
             BTN_ContentSearch.Click += BTN_ContentSearch_Click;
@@ -1069,6 +1370,8 @@
             TPG_Album.PerformLayout();
             TPG_Podcast.ResumeLayout(false);
             TPG_Podcast.PerformLayout();
+            TPG_TVEpisode.ResumeLayout(false);
+            TPG_TVEpisode.PerformLayout();
             TPG_TVShow.ResumeLayout(false);
             TPG_TVShow.PerformLayout();
             GBX_SearchInformation.ResumeLayout(false);
@@ -1178,5 +1481,30 @@
         private TextBox TXT_TVShowSeasonID;
         private TextBox TXT_TVShowPrice;
         private Label LBL_TVShowPrice;
+        private TabPage TPG_TVEpisode;
+        private TextBox TXT_TVEpisodeCountry;
+        private Label LBL_TVEpisodeCountry;
+        private TextBox TXT_TVEpisodeRating;
+        private Label LBL_TVEpisodeRating;
+        private TextBox TXT_TVEpisodeGenre;
+        private Label LBL_TVEpisodeGenre;
+        private TextBox TXT_TVEpisodeReleaseDate;
+        private Label LBL_TVEpisodeReleaseDate;
+        private TextBox TXT_TVEpisodeRuntime;
+        private Label LBL_TVEpisodeRuntime;
+        private TextBox TXT_TVEpisodeIsExplicit;
+        private TextBox TXT_TVEpisodeName;
+        private Label LBL_TVEpisodeIsExplicit;
+        private Label LBL_TVEpisodeName;
+        private TextBox TXT_TVEpisodeCount;
+        private Label LBL_TVEpisodeSeasonNumber;
+        private Label LBL_TVEpisodeCount;
+        private TextBox TXT_TVEpisodeSeasonNumber;
+        private TextBox TXT_TVEpisodeHDPrice;
+        private Label LBL_TVEpisodeSeasonID;
+        private Label LBL_TVEpisodeHDPrice;
+        private TextBox TXT_TVEpisodeSeasonID;
+        private TextBox TXT_TVEpisodePrice;
+        private Label LBL_TVEpisodePrice;
     }
 }

@@ -7,6 +7,12 @@
             return DateTime.Parse(date).ToString();
         }
 
+        public static string FormatRuntime(long milliseconds)
+        {
+            TimeSpan time = TimeSpan.FromMilliseconds(milliseconds);
+            return $"{time.Hours}:{time.Minutes}:{time.Seconds}";
+        }
+
         public static long FormatUri(string uri)
         {
             if (uri.Contains("podcasts.apple.com") || uri.Contains("books.apple.com") || uri.Contains("/tv-season/"))
