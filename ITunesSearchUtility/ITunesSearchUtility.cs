@@ -286,5 +286,21 @@ namespace ITunesSearchUtility
             }
             TCTRL_InformationSection.SelectedIndex = 3;
         }
+
+        private void TXT_SearchLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ((char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TXT_CountryCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsLetter(e.KeyChar) || TXT_CountryCode.Text.Length >= 2) && e.KeyChar != ((char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
