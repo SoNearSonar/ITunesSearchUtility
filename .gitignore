@@ -12,3 +12,11 @@ ITunesSearchUtility/bin/Debug/net6.0-windows/
 ITunesSearchUtility/obj/Debug/net6.0-windows/
 
 ITunesSearchUtility/obj/
+
+ITunesSearchUtility/bin/Release/net6.0-windows/
+
+ITunesSearchUtility/Properties/PublishProfiles/FolderProfile.pubxml
+
+ITunesSearchUtility/Properties/PublishProfiles/FolderProfile.pubxml.user
+
+ITunesSearchUtility/ITunesSearchUtility.csproj.user

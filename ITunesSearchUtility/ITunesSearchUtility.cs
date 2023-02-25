@@ -1,6 +1,7 @@
 using iTunesSearch.Library;
 using iTunesSearch.Library.Models;
 using ITunesSearchUtility.Helpers;
+using ITunesSearchUtility.Objects;
 
 namespace ITunesSearchUtility
 {
@@ -11,6 +12,7 @@ namespace ITunesSearchUtility
         readonly List<Podcast> _podcasts = new List<Podcast>();
         readonly List<TVEpisode> _episodes = new List<TVEpisode>();
         readonly List<TVSeason> _seasons = new List<TVSeason>();
+        readonly List<Search> _searches = new List<Search>();
         int _lastTrackedIndex = 0;
 
         public ITunesSearchUtility()
@@ -187,7 +189,7 @@ namespace ITunesSearchUtility
                     TXT_TVEpisodeSeasonNumber.Text = _episodes[index].SeasonNumber.ToString();
                     TXT_TVEpisodeSeasonID.Text = _episodes[index].SeasonId.ToString();
                     TXT_TVEpisodePrice.Text = _episodes[index].SeasonPrice.ToString();
-                    TXT_TVEpisodePrice.Text = _episodes[index].SeasonPriceHD.ToString();
+                    TXT_TVEpisodeHDPrice.Text = _episodes[index].SeasonPriceHD.ToString();
                     TXT_TVEpisodeCount.Text = _episodes[index].SeasonEpisodeCount.ToString();
                     TXT_TVEpisodeIsExplicit.Text = _episodes[index].SeasonExplicitness.Equals("notExplicit") ? "No" : "Yes";
                     TXT_TVEpisodeGenre.Text = _episodes[index].Genre;

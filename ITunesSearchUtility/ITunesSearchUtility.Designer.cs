@@ -150,8 +150,22 @@
             TPG_History = new TabPage();
             GBX_History = new GroupBox();
             listView1 = new ListView();
+            CHDR_Favorite = new ColumnHeader();
+            CHDR_SearchContent = new ColumnHeader();
+            CHDR_SearchType = new ColumnHeader();
             GBX_SearchActions = new GroupBox();
+            BTN_ClearSearches = new Button();
+            BTN_UseInfo = new Button();
+            CHK_ToggleFavoriting = new CheckBox();
             GBX_HistorySearchInformation = new GroupBox();
+            checkBox1 = new CheckBox();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
+            CHDR_SearchLimit = new ColumnHeader();
+            CHDR_SearchCountryCode = new ColumnHeader();
+            CHDR_ID = new ColumnHeader();
             TCTRL_Main.SuspendLayout();
             TPG_Search.SuspendLayout();
             GBX_ContentResult.SuspendLayout();
@@ -164,6 +178,8 @@
             GBX_SearchInformation.SuspendLayout();
             TPG_History.SuspendLayout();
             GBX_History.SuspendLayout();
+            GBX_SearchActions.SuspendLayout();
+            GBX_HistorySearchInformation.SuspendLayout();
             SuspendLayout();
             // 
             // TCTRL_Main
@@ -1231,6 +1247,7 @@
             TXT_CountryCode.Name = "TXT_CountryCode";
             TXT_CountryCode.Size = new Size(182, 23);
             TXT_CountryCode.TabIndex = 11;
+            TXT_CountryCode.KeyPress += TXT_CountryCode_KeyPress;
             // 
             // TXT_SearchLimit
             // 
@@ -1238,6 +1255,7 @@
             TXT_SearchLimit.Name = "TXT_SearchLimit";
             TXT_SearchLimit.Size = new Size(182, 23);
             TXT_SearchLimit.TabIndex = 9;
+            TXT_SearchLimit.KeyPress += TXT_SearchLimit_KeyPress;
             // 
             // LBL_CountryCode
             // 
@@ -1321,35 +1339,153 @@
             GBX_History.Location = new Point(7, 85);
             GBX_History.Name = "GBX_History";
             GBX_History.Size = new Size(822, 364);
-            GBX_History.TabIndex = 1;
+            GBX_History.TabIndex = 122;
             GBX_History.TabStop = false;
             GBX_History.Text = "History";
             // 
             // listView1
             // 
+            listView1.Columns.AddRange(new ColumnHeader[] { CHDR_ID, CHDR_Favorite, CHDR_SearchContent, CHDR_SearchType, CHDR_SearchLimit, CHDR_SearchCountryCode });
             listView1.Location = new Point(6, 21);
             listView1.Name = "listView1";
             listView1.Size = new Size(810, 336);
-            listView1.TabIndex = 0;
+            listView1.TabIndex = 123;
             listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            // 
+            // CHDR_Favorite
+            // 
+            CHDR_Favorite.DisplayIndex = 0;
+            CHDR_Favorite.Text = "★";
+            CHDR_Favorite.Width = 30;
+            // 
+            // CHDR_SearchContent
+            // 
+            CHDR_SearchContent.DisplayIndex = 1;
+            CHDR_SearchContent.Text = "Search Content";
+            CHDR_SearchContent.Width = 455;
+            // 
+            // CHDR_SearchType
+            // 
+            CHDR_SearchType.DisplayIndex = 2;
+            CHDR_SearchType.Text = "Search Type";
+            CHDR_SearchType.Width = 120;
             // 
             // GBX_SearchActions
             // 
-            GBX_SearchActions.Location = new Point(381, 2);
+            GBX_SearchActions.Controls.Add(BTN_ClearSearches);
+            GBX_SearchActions.Controls.Add(BTN_UseInfo);
+            GBX_SearchActions.Controls.Add(CHK_ToggleFavoriting);
+            GBX_SearchActions.Location = new Point(422, 2);
             GBX_SearchActions.Name = "GBX_SearchActions";
-            GBX_SearchActions.Size = new Size(368, 77);
-            GBX_SearchActions.TabIndex = 1;
+            GBX_SearchActions.Size = new Size(407, 77);
+            GBX_SearchActions.TabIndex = 118;
             GBX_SearchActions.TabStop = false;
             GBX_SearchActions.Text = "Search Actions";
             // 
+            // BTN_ClearSearches
+            // 
+            BTN_ClearSearches.Location = new Point(150, 31);
+            BTN_ClearSearches.Name = "BTN_ClearSearches";
+            BTN_ClearSearches.Size = new Size(99, 23);
+            BTN_ClearSearches.TabIndex = 120;
+            BTN_ClearSearches.Text = "Clear Searches";
+            BTN_ClearSearches.UseVisualStyleBackColor = true;
+            // 
+            // BTN_UseInfo
+            // 
+            BTN_UseInfo.Location = new Point(45, 31);
+            BTN_UseInfo.Name = "BTN_UseInfo";
+            BTN_UseInfo.Size = new Size(99, 23);
+            BTN_UseInfo.TabIndex = 119;
+            BTN_UseInfo.Text = "Use Info";
+            BTN_UseInfo.UseVisualStyleBackColor = true;
+            // 
+            // CHK_ToggleFavoriting
+            // 
+            CHK_ToggleFavoriting.AutoSize = true;
+            CHK_ToggleFavoriting.Location = new Point(255, 34);
+            CHK_ToggleFavoriting.Name = "CHK_ToggleFavoriting";
+            CHK_ToggleFavoriting.Size = new Size(122, 19);
+            CHK_ToggleFavoriting.TabIndex = 121;
+            CHK_ToggleFavoriting.Text = "Toggle Favoriting?";
+            CHK_ToggleFavoriting.UseVisualStyleBackColor = true;
+            // 
             // GBX_HistorySearchInformation
             // 
+            GBX_HistorySearchInformation.Controls.Add(checkBox1);
+            GBX_HistorySearchInformation.Controls.Add(comboBox1);
+            GBX_HistorySearchInformation.Controls.Add(textBox1);
+            GBX_HistorySearchInformation.Controls.Add(label2);
+            GBX_HistorySearchInformation.Controls.Add(label1);
             GBX_HistorySearchInformation.Location = new Point(7, 2);
             GBX_HistorySearchInformation.Name = "GBX_HistorySearchInformation";
-            GBX_HistorySearchInformation.Size = new Size(368, 77);
-            GBX_HistorySearchInformation.TabIndex = 0;
+            GBX_HistorySearchInformation.Size = new Size(409, 77);
+            GBX_HistorySearchInformation.TabIndex = 112;
             GBX_HistorySearchInformation.TabStop = false;
             GBX_HistorySearchInformation.Text = "Search Information";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(300, 46);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(101, 19);
+            checkBox1.TabIndex = 117;
+            checkBox1.Text = "Only Favorites";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(88, 44);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(201, 23);
+            comboBox1.TabIndex = 116;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(88, 18);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(308, 23);
+            textBox1.TabIndex = 114;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(6, 47);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 115;
+            label2.Text = "Search By:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 15);
+            label1.TabIndex = 113;
+            label1.Text = "Search Input:";
+            // 
+            // CHDR_SearchLimit
+            // 
+            CHDR_SearchLimit.DisplayIndex = 3;
+            CHDR_SearchLimit.Text = "Search Limit";
+            CHDR_SearchLimit.Width = 90;
+            // 
+            // CHDR_SearchCountryCode
+            // 
+            CHDR_SearchCountryCode.DisplayIndex = 4;
+            CHDR_SearchCountryCode.Text = "Country Code";
+            CHDR_SearchCountryCode.Width = 90;
+            // 
+            // CHDR_ID
+            // 
+            CHDR_ID.DisplayIndex = 5;
+            CHDR_ID.Text = "ID";
+            CHDR_ID.Width = 0;
             // 
             // ITunesSearchUtility
             // 
@@ -1358,6 +1494,8 @@
             BackColor = SystemColors.Control;
             ClientSize = new Size(854, 493);
             Controls.Add(TCTRL_Main);
+            MaximumSize = new Size(870, 532);
+            MinimumSize = new Size(870, 532);
             Name = "ITunesSearchUtility";
             Text = "ITunes Search Utility";
             Load += ITunesSearchUtility_Load;
@@ -1378,6 +1516,10 @@
             GBX_SearchInformation.PerformLayout();
             TPG_History.ResumeLayout(false);
             GBX_History.ResumeLayout(false);
+            GBX_SearchActions.ResumeLayout(false);
+            GBX_SearchActions.PerformLayout();
+            GBX_HistorySearchInformation.ResumeLayout(false);
+            GBX_HistorySearchInformation.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1506,5 +1648,19 @@
         private TextBox TXT_TVEpisodeSeasonID;
         private TextBox TXT_TVEpisodePrice;
         private Label LBL_TVEpisodePrice;
+        private ColumnHeader CHDR_Favorite;
+        private ColumnHeader CHDR_SearchContent;
+        private ColumnHeader CHDR_SearchType;
+        private Button BTN_ClearSearches;
+        private Button BTN_UseInfo;
+        private CheckBox CHK_ToggleFavoriting;
+        private CheckBox checkBox1;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
+        private Label label2;
+        private Label label1;
+        private ColumnHeader CHDR_ID;
+        private ColumnHeader CHDR_SearchLimit;
+        private ColumnHeader CHDR_SearchCountryCode;
     }
 }
