@@ -2,17 +2,23 @@ using iTunesSearch.Library;
 using iTunesSearch.Library.Models;
 using ITunesSearchUtility.Helpers;
 using ITunesSearchUtility.Objects;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 
 namespace ITunesSearchUtility
 {
     public partial class ITunesSearchUtility : Form
     {
+#pragma warning disable IDE0090 // Use 'new(...)'
         readonly iTunesSearchManager _search = new iTunesSearchManager();
         readonly List<Album> _albums = new List<Album>();
         readonly List<Podcast> _podcasts = new List<Podcast>();
         readonly List<TVEpisode> _episodes = new List<TVEpisode>();
         readonly List<TVSeason> _seasons = new List<TVSeason>();
-        readonly List<Search> _searches = new List<Search>();
+        readonly static string _directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ITunes Search Utility");
+        readonly static string _filePath = Path.Combine(_directoryPath, "SearchHistory.json");
+
+        List<Search>? _searches;
         int _lastTrackedIndex = 0;
 
         public ITunesSearchUtility()
@@ -23,7 +29,64 @@ namespace ITunesSearchUtility
         private void ITunesSearchUtility_Load(object sender, EventArgs e)
         {
             CBX_SearchBy.SelectedIndex = 0;
+
+            try
+            {
+                if (!Directory.Exists(_directoryPath))
+                {
+                    Directory.CreateDirectory(_directoryPath);
+                }
+                if (!File.Exists(_filePath))
+                {
+                    File.Create(_filePath);
+                }
+
+                _searches = JsonConvert.DeserializeObject<List<Search>>(File.ReadAllText(_filePath));
+                if (_searches != null)
+                {
+                    foreach (Search search in _searches)
+                    {
+                        string[] listViewContents =
+                        {
+                            search.Id,
+                            search.GetFavoriteIcon(),
+                            search.SearchDate,
+                            search.SearchContent,
+                            search.SearchType.ToString().Replace("_", " "),
+                            search.SearchCount.ToString(),
+                            search.SearchCountryCode
+                        };
+                        ListViewItem item = new ListViewItem(listViewContents);
+                        LVW_SearchHistory.Items.Add(item);
+                    }
+                }
+                else
+                {
+                    _searches = new List<Search>();
+                }
+            }
+            catch
+            {
+
+            }
         }
+
+        private void ITunesSearchUtility_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if (_searches != null)
+                {
+                    string searches = JsonConvert.SerializeObject(_searches);
+                    File.WriteAllText(_filePath, searches);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         private async void BTN_ContentSearch_Click(object sender, EventArgs e)
         {
@@ -131,12 +194,97 @@ namespace ITunesSearchUtility
             {
                 MessageBox.Show("There are no results for that search", "No results", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                SearchType searchType = SearchType.Music;
+                switch (_lastTrackedIndex)
+                {
+                    case 1:
+                        searchType = SearchType.Artist;
+                        break;
+                    case 2:
+                        searchType = SearchType.Podcast;
+                        break;
+                    case 3:
+                        searchType = SearchType.Audiobook;
+                        break;
+                    case 4:
+                        searchType = SearchType.TV_Episode;
+                        break;
+                    case 5:
+                        searchType = SearchType.TV_Show;
+                        break;
+                }
 
+                Search search = new Search
+                (
+                    Guid.NewGuid().ToString(),
+                    false,
+                    DateTime.Now.ToString(),
+                    TXT_ContentName.Text,
+                    searchType,
+                    int.TryParse(TXT_SearchLimit.Text, out int limit) ? limit : 100,
+                    !string.IsNullOrWhiteSpace(TXT_CountryCode.Text) ? TXT_CountryCode.Text.ToUpperInvariant() : "US"
+                );
+
+                _searches ??= new List<Search>();
+                _searches.Add(search);
+
+                if (string.IsNullOrWhiteSpace(TXT_SearchHistoryInput.Text))
+                {
+                    string[] listViewContents =
+                    {
+                        search.Id,
+                        search.GetFavoriteIcon(),
+                        search.SearchDate,
+                        search.SearchContent,
+                        search.SearchType.ToString().Replace("_", " "),
+                        search.SearchCount.ToString(),
+                        search.SearchCountryCode
+                    };
+
+                    ListViewItem item = new ListViewItem(listViewContents);
+                    LVW_SearchHistory.Items.Add(item);
+                }
+            }
         }
 
         private void BTN_Clear_Click(object sender, EventArgs e)
         {
             TXT_ContentName.Text = "";
+        }
+
+        private void BTN_UseInfo_Click(object sender, EventArgs e)
+        {
+            if (LVW_SearchHistory.Items.Count != 0 && LVW_SearchHistory.SelectedItems.Count != 0)
+            {
+                TXT_ContentName.Text = LVW_SearchHistory.SelectedItems[0].SubItems[3].Text;
+                CBX_SearchBy.SelectedIndex = (int)Enum.Parse<SearchType>(LVW_SearchHistory.SelectedItems[0].SubItems[4].Text.Replace(" ", "_"));
+                TXT_SearchLimit.Text = LVW_SearchHistory.SelectedItems[0].SubItems[5].Text;
+                TXT_CountryCode.Text = LVW_SearchHistory.SelectedItems[0].SubItems[6].Text.ToLowerInvariant();
+                TCTRL_Main.SelectedIndex = 0;
+                BTN_ContentSearch_Click(sender, e);
+            }
+        }
+
+        private void BTN_ClearSearches_Click(object sender, EventArgs e)
+        {
+            DialogResult response = MessageBox.Show("Are you sure you want to delete all searches?", "Delete all searches", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (response == DialogResult.Yes)
+            {
+                LVW_SearchHistory.Clear();
+                _searches?.Clear();
+            }
+        }
+
+        private void BTN_ClearSearch_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in LVW_SearchHistory.SelectedItems)
+            {
+                LVW_SearchHistory.Items.Remove(item);
+                Search? search = _searches?.Find(s => s.Id.Equals(item.SubItems[0].Text));
+                _ = _searches?.Remove(search);
+            }
         }
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
@@ -223,6 +371,30 @@ namespace ITunesSearchUtility
             }
         }
 
+        private void LVW_SearchHistory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CHK_ToggleFavoriting.Checked)
+            {
+
+            }
+        }
+
+        private void TXT_SearchLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ((char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TXT_CountryCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((!char.IsLetter(e.KeyChar) || TXT_CountryCode.Text.Length >= 2) && e.KeyChar != ((char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void AddAlbums(AlbumResult albumResult)
         {
             _albums.Clear();
@@ -285,22 +457,6 @@ namespace ITunesSearchUtility
                 }
             }
             TCTRL_InformationSection.SelectedIndex = 3;
-        }
-
-        private void TXT_SearchLimit_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ((char)Keys.Back))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void TXT_CountryCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((!char.IsLetter(e.KeyChar) || TXT_CountryCode.Text.Length >= 2) && e.KeyChar != ((char)Keys.Back))
-            {
-                e.Handled = true;
-            }
         }
     }
 }

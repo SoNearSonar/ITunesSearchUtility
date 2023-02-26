@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="iTunesSearch" Version="1.0.44" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>

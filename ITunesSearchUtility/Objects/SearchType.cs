@@ -2,11 +2,11 @@
 {
     public enum SearchType
     {
-        Music = 1,
-        Artist = 2,
-        Podcast = 3,
-        Audiobook = 4,
-        TV_Episode = 5,
-        TV_Show = 6
+        Music = 0,
+        Artist = 1,
+        Podcast = 2,
+        Audiobook = 3,
+        TV_Episode = 4,
+        TV_Show = 5
     }
 }
