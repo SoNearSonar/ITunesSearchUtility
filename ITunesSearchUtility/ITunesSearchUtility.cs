@@ -28,7 +28,13 @@ namespace ITunesSearchUtility
 
         private void ITunesSearchUtility_Load(object sender, EventArgs e)
         {
-            CBX_SearchBy.SelectedIndex = 0;
+            TXT_ContentName.Text = Properties.Settings.Default.ContentNameInput;
+            CBX_SearchBy.SelectedIndex = Properties.Settings.Default.ContentSearchFilterIndex;
+            TXT_SearchLimit.Text = Properties.Settings.Default.ContentSearchLimitNumber.ToString();
+            TXT_CountryCode.Text = Properties.Settings.Default.ContentSearchCountryCode;
+            TXT_SearchHistoryInput.Text = Properties.Settings.Default.SearchNameInput;
+            CHK_OnlyFavorites.Checked = Properties.Settings.Default.OnlySearchFavorites;
+            CHK_ToggleFavoriting.Checked = Properties.Settings.Default.SetSearchFavorites;
 
             try
             {
@@ -64,6 +70,9 @@ namespace ITunesSearchUtility
                 {
                     _searches = new List<Search>();
                 }
+
+                CHK_OnlyFavorites_CheckedChanged(sender, e);
+                TXT_SearchHistoryInput_TextChanged(sender, e);
             }
             catch (Exception ex)
             {
@@ -85,6 +94,15 @@ namespace ITunesSearchUtility
             {
                 MessageBox.Show(ex.Message);
             }
+
+            Properties.Settings.Default.ContentNameInput = TXT_ContentName.Text;
+            Properties.Settings.Default.ContentSearchFilterIndex = CBX_SearchBy.SelectedIndex;
+            Properties.Settings.Default.ContentSearchLimitNumber = int.Parse(TXT_SearchLimit.Text);
+            Properties.Settings.Default.ContentSearchCountryCode = TXT_CountryCode.Text;
+            Properties.Settings.Default.SearchNameInput = TXT_SearchHistoryInput.Text;
+            Properties.Settings.Default.OnlySearchFavorites = CHK_OnlyFavorites.Checked;
+            Properties.Settings.Default.SetSearchFavorites = CHK_ToggleFavoriting.Checked;
+            Properties.Settings.Default.Save();
         }
 
 
@@ -99,7 +117,7 @@ namespace ITunesSearchUtility
             int searchLimit = 100;
             if (!string.IsNullOrWhiteSpace(TXT_SearchLimit.Text))
             {
-                if (int.TryParse(TXT_SearchLimit.Text, out int limit))
+                if (int.TryParse(TXT_SearchLimit.Text, out int limit) && limit > 0)
                 {
                     searchLimit = limit;
                 }
