@@ -6,7 +6,13 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Music_Icon.ico</ApplicationIcon>
+    <AssemblyName>ITunes Search Utility</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Music_Icon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="iTunesSearch" Version="1.0.44" />

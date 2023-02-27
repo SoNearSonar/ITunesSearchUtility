@@ -106,5 +106,17 @@ namespace ITunesSearchUtility.Properties {
                 this["SetSearchFavorites"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ToggleListViewGridlines {
+            get {
+                return ((bool)(this["ToggleListViewGridlines"]));
+            }
+            set {
+                this["ToggleListViewGridlines"] = value;
+            }
+        }
     }
 }

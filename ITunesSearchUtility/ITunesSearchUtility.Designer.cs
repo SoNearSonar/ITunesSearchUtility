@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ITunesSearchUtility));
             TCTRL_Main = new TabControl();
             TPG_Search = new TabPage();
             GBX_ContentResult = new GroupBox();
@@ -158,7 +159,6 @@
             CHDR_SearchLimit = new ColumnHeader();
             CHDR_SearchCountryCode = new ColumnHeader();
             GBX_SearchActions = new GroupBox();
-            BTN_OpenFolder = new Button();
             BTN_ClearSearch = new Button();
             BTN_ClearSearches = new Button();
             BTN_UseInfo = new Button();
@@ -168,6 +168,10 @@
             CHK_OnlyFavorites = new CheckBox();
             TXT_SearchHistoryInput = new TextBox();
             LBL_SearchHistoryInput = new Label();
+            MNUSTRP_Main = new MenuStrip();
+            MNUITM_Main = new ToolStripMenuItem();
+            MNUITM_OpenHistoryFolder = new ToolStripMenuItem();
+            MNUITM_ToggleGridlines = new ToolStripMenuItem();
             TCTRL_Main.SuspendLayout();
             TPG_Search.SuspendLayout();
             GBX_ContentResult.SuspendLayout();
@@ -182,13 +186,14 @@
             GBX_History.SuspendLayout();
             GBX_SearchActions.SuspendLayout();
             GBX_HistorySearchInformation.SuspendLayout();
+            MNUSTRP_Main.SuspendLayout();
             SuspendLayout();
             // 
             // TCTRL_Main
             // 
             TCTRL_Main.Controls.Add(TPG_Search);
             TCTRL_Main.Controls.Add(TPG_History);
-            TCTRL_Main.Location = new Point(5, 4);
+            TCTRL_Main.Location = new Point(5, 28);
             TCTRL_Main.Name = "TCTRL_Main";
             TCTRL_Main.SelectedIndex = 0;
             TCTRL_Main.Size = new Size(843, 483);
@@ -1395,7 +1400,6 @@
             // 
             // GBX_SearchActions
             // 
-            GBX_SearchActions.Controls.Add(BTN_OpenFolder);
             GBX_SearchActions.Controls.Add(BTN_ClearSearch);
             GBX_SearchActions.Controls.Add(BTN_ClearSearches);
             GBX_SearchActions.Controls.Add(BTN_UseInfo);
@@ -1407,19 +1411,9 @@
             GBX_SearchActions.TabStop = false;
             GBX_SearchActions.Text = "Search Actions";
             // 
-            // BTN_OpenFolder
-            // 
-            BTN_OpenFolder.Location = new Point(135, 45);
-            BTN_OpenFolder.Name = "BTN_OpenFolder";
-            BTN_OpenFolder.Size = new Size(99, 23);
-            BTN_OpenFolder.TabIndex = 121;
-            BTN_OpenFolder.Text = "Open Folder";
-            BTN_OpenFolder.UseVisualStyleBackColor = true;
-            BTN_OpenFolder.Click += BTN_OpenFolder_Click;
-            // 
             // BTN_ClearSearch
             // 
-            BTN_ClearSearch.Location = new Point(30, 45);
+            BTN_ClearSearch.Location = new Point(85, 45);
             BTN_ClearSearch.Name = "BTN_ClearSearch";
             BTN_ClearSearch.Size = new Size(99, 23);
             BTN_ClearSearch.TabIndex = 119;
@@ -1508,16 +1502,49 @@
             LBL_SearchHistoryInput.TabIndex = 113;
             LBL_SearchHistoryInput.Text = "Search Input:";
             // 
+            // MNUSTRP_Main
+            // 
+            MNUSTRP_Main.Items.AddRange(new ToolStripItem[] { MNUITM_Main });
+            MNUSTRP_Main.Location = new Point(0, 0);
+            MNUSTRP_Main.Name = "MNUSTRP_Main";
+            MNUSTRP_Main.Size = new Size(851, 24);
+            MNUSTRP_Main.TabIndex = 1;
+            MNUSTRP_Main.Text = "menuStrip1";
+            // 
+            // MNUITM_Main
+            // 
+            MNUITM_Main.DropDownItems.AddRange(new ToolStripItem[] { MNUITM_OpenHistoryFolder, MNUITM_ToggleGridlines });
+            MNUITM_Main.Name = "MNUITM_Main";
+            MNUITM_Main.Size = new Size(46, 20);
+            MNUITM_Main.Text = "Main";
+            // 
+            // MNUITM_OpenHistoryFolder
+            // 
+            MNUITM_OpenHistoryFolder.Name = "MNUITM_OpenHistoryFolder";
+            MNUITM_OpenHistoryFolder.Size = new Size(180, 22);
+            MNUITM_OpenHistoryFolder.Text = "Open History Folder";
+            MNUITM_OpenHistoryFolder.Click += MNUITM_OpenHistoryFolder_Click;
+            // 
+            // MNUITM_ToggleGridlines
+            // 
+            MNUITM_ToggleGridlines.Name = "MNUITM_ToggleGridlines";
+            MNUITM_ToggleGridlines.Size = new Size(180, 22);
+            MNUITM_ToggleGridlines.Text = "Toggle Gridlines";
+            MNUITM_ToggleGridlines.Click += MNUITM_ToggleGridlines_Click;
+            // 
             // ITunesSearchUtility
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(854, 493);
+            ClientSize = new Size(851, 514);
             Controls.Add(TCTRL_Main);
+            Controls.Add(MNUSTRP_Main);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximumSize = new Size(870, 532);
-            MinimumSize = new Size(870, 532);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = MNUSTRP_Main;
+            MaximumSize = new Size(867, 553);
+            MinimumSize = new Size(867, 553);
             Name = "ITunesSearchUtility";
             Text = "ITunes Search Utility";
             FormClosing += ITunesSearchUtility_FormClosing;
@@ -1543,7 +1570,10 @@
             GBX_SearchActions.PerformLayout();
             GBX_HistorySearchInformation.ResumeLayout(false);
             GBX_HistorySearchInformation.PerformLayout();
+            MNUSTRP_Main.ResumeLayout(false);
+            MNUSTRP_Main.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1686,6 +1716,9 @@
         private Button BTN_ClearSearch;
         private ColumnHeader CHDR_Column2;
         private Button BTN_ClearSearchInput;
-        private Button BTN_OpenFolder;
+        private MenuStrip MNUSTRP_Main;
+        private ToolStripMenuItem MNUITM_Main;
+        private ToolStripMenuItem MNUITM_OpenHistoryFolder;
+        private ToolStripMenuItem MNUITM_ToggleGridlines;
     }
 }

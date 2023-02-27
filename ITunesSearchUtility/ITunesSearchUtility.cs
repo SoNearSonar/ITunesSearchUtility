@@ -47,6 +47,12 @@ namespace ITunesSearchUtility
             CHK_OnlyFavorites.Checked = Properties.Settings.Default.OnlySearchFavorites;
             CHK_ToggleFavoriting.Checked = Properties.Settings.Default.SetSearchFavorites;
 
+            if (Properties.Settings.Default.ToggleListViewGridlines)
+            {
+                LVW_CollectionResults.GridLines = true;
+                LVW_SearchHistory.GridLines = true;
+            }
+
             try
             {
                 if (!Directory.Exists(_directoryPath))
@@ -312,12 +318,16 @@ namespace ITunesSearchUtility
             TXT_SearchHistoryInput.Clear();
         }
 
-        private void BTN_OpenFolder_Click(object sender, EventArgs e)
+        private void MNUITM_OpenHistoryFolder_Click(object sender, EventArgs e)
         {
-            if (process != null)
-            {
-                process.Start();
-            }
+            process?.Start();
+        }
+
+        private void MNUITM_ToggleGridlines_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ToggleListViewGridlines = !Properties.Settings.Default.ToggleListViewGridlines;
+            LVW_CollectionResults.GridLines = Properties.Settings.Default.ToggleListViewGridlines;
+            LVW_SearchHistory.GridLines = Properties.Settings.Default.ToggleListViewGridlines;
         }
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
