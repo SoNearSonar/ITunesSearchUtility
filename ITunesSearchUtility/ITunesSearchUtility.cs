@@ -65,9 +65,9 @@ namespace ITunesSearchUtility
                     _searches = new List<Search>();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -232,26 +232,14 @@ namespace ITunesSearchUtility
 
                 if (string.IsNullOrWhiteSpace(TXT_SearchHistoryInput.Text))
                 {
-                    string[] listViewContents =
-                    {
-                        search.Id,
-                        search.GetFavoriteIcon(),
-                        search.SearchDate,
-                        search.SearchContent,
-                        search.SearchType.ToString().Replace("_", " "),
-                        search.SearchCount.ToString(),
-                        search.SearchCountryCode
-                    };
-
-                    ListViewItem item = new ListViewItem(listViewContents);
-                    LVW_SearchHistory.Items.Add(item);
+                    AddListViewItem(search);
                 }
             }
         }
 
         private void BTN_Clear_Click(object sender, EventArgs e)
         {
-            TXT_ContentName.Text = "";
+            TXT_ContentName.Clear();
         }
 
         private void BTN_UseInfo_Click(object sender, EventArgs e)
@@ -283,8 +271,16 @@ namespace ITunesSearchUtility
             {
                 LVW_SearchHistory.Items.Remove(item);
                 Search? search = _searches?.Find(s => s.Id.Equals(item.SubItems[0].Text));
-                _ = _searches?.Remove(search);
+                if (search != null)
+                {
+                    _ = _searches?.Remove(search);
+                }
             }
+        }
+
+        private void BTN_ClearSearchInput_Click(object sender, EventArgs e)
+        {
+            TXT_SearchHistoryInput.Clear();
         }
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
@@ -373,10 +369,65 @@ namespace ITunesSearchUtility
 
         private void LVW_SearchHistory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CHK_ToggleFavoriting.Checked)
+            if (CHK_ToggleFavoriting.Checked && _searches != null)
             {
-
+                foreach (ListViewItem item in LVW_SearchHistory.SelectedItems)
+                {
+                    item.SubItems[1].Text = string.IsNullOrWhiteSpace(item.SubItems[1].Text) ? "\u2605" : "";
+                    Search? search = _searches.Find(s => s.Id.Equals(item.SubItems[0].Text));
+                    if (search != null)
+                    {
+                        int index = _searches.IndexOf(search);
+                        _searches[index].IsFavorite = !_searches[index].IsFavorite;
+                        if (CHK_OnlyFavorites.Checked)
+                        {
+                            LVW_SearchHistory.Items.Remove(item);
+                        }
+                    }
+                }
             }
+        }
+
+        private void LVW_SearchHistory_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    e.Cancel = true;
+                    e.NewWidth = 0;
+                    break;
+                case 1:
+                    e.Cancel = true;
+                    e.NewWidth = 30;
+                    break;
+            }
+        }
+
+        private void TXT_SearchHistoryInput_TextChanged(object sender, EventArgs e)
+        {
+            LVW_SearchHistory.Items.Clear();
+            if (_searches != null)
+            {
+                if (CHK_OnlyFavorites.Checked)
+                {
+                    foreach (Search search in _searches.FindAll(s => s.SearchContent.Contains(TXT_SearchHistoryInput.Text, StringComparison.InvariantCultureIgnoreCase) && s.IsFavorite))
+                    {
+                        AddListViewItem(search);
+                    }
+                }
+                else
+                {
+                    foreach (Search search in _searches.FindAll(s => s.SearchContent.Contains(TXT_SearchHistoryInput.Text, StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        AddListViewItem(search);
+                    }
+                }
+            }
+        }
+
+        private void CHK_OnlyFavorites_CheckedChanged(object sender, EventArgs e)
+        {
+            TXT_SearchHistoryInput_TextChanged(sender, e);
         }
 
         private void TXT_SearchLimit_KeyPress(object sender, KeyPressEventArgs e)
@@ -399,6 +450,8 @@ namespace ITunesSearchUtility
         {
             _albums.Clear();
             LVW_CollectionResults.Items.Clear();
+            LVW_CollectionResults.Columns[0].Text = "Name";
+            LVW_CollectionResults.Columns[1].Text = "Artist Name";
             foreach (Album album in albumResult.Albums)
             {
                 if (album.CollectionName != null)
@@ -415,6 +468,8 @@ namespace ITunesSearchUtility
         {
             _podcasts.Clear();
             LVW_CollectionResults.Items.Clear();
+            LVW_CollectionResults.Columns[0].Text = "Name";
+            LVW_CollectionResults.Columns[1].Text = "Artist Name";
             foreach (Podcast podcast in podcastResult.Podcasts)
             {
                 if (podcast.Name != null)
@@ -431,6 +486,8 @@ namespace ITunesSearchUtility
         {
             _episodes.Clear();
             LVW_CollectionResults.Items.Clear();
+            LVW_CollectionResults.Columns[0].Text = "Name";
+            LVW_CollectionResults.Columns[1].Text = "Season Name";
             foreach (TVEpisode episode in episodeResult.Episodes)
             {
                 if (episode.Name != null)
@@ -447,6 +504,8 @@ namespace ITunesSearchUtility
         {
             _seasons.Clear();
             LVW_CollectionResults.Items.Clear();
+            LVW_CollectionResults.Columns[0].Text = "Show Name";
+            LVW_CollectionResults.Columns[1].Text = "Season Name";
             foreach (TVSeason season in seasonResult.Seasons)
             {
                 if (season.ShowName != null)
@@ -457,6 +516,23 @@ namespace ITunesSearchUtility
                 }
             }
             TCTRL_InformationSection.SelectedIndex = 3;
+        }
+
+        private void AddListViewItem(Search search)
+        {
+            string[] listViewContents =
+            {
+                search.Id,
+                search.GetFavoriteIcon(),
+                search.SearchDate,
+                search.SearchContent,
+                search.SearchType.ToString().Replace("_", " "),
+                search.SearchCount.ToString(),
+                search.SearchCountryCode
+            };
+
+            ListViewItem item = new ListViewItem(listViewContents);
+            LVW_SearchHistory.Items.Add(item);
         }
     }
 }

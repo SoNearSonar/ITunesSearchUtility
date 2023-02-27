@@ -32,8 +32,8 @@
             TPG_Search = new TabPage();
             GBX_ContentResult = new GroupBox();
             LVW_CollectionResults = new ListView();
-            CHDR_ContentName = new ColumnHeader();
-            CHDR_Artists = new ColumnHeader();
+            CHDR_Column1 = new ColumnHeader();
+            CHDR_Column2 = new ColumnHeader();
             GBX_ContentInformation = new GroupBox();
             TCTRL_InformationSection = new TabControl();
             TPG_Album = new TabPage();
@@ -158,16 +158,15 @@
             CHDR_SearchLimit = new ColumnHeader();
             CHDR_SearchCountryCode = new ColumnHeader();
             GBX_SearchActions = new GroupBox();
+            BTN_ClearSearch = new Button();
             BTN_ClearSearches = new Button();
             BTN_UseInfo = new Button();
             CHK_ToggleFavoriting = new CheckBox();
             GBX_HistorySearchInformation = new GroupBox();
+            BTN_ClearSearchInput = new Button();
             CHK_OnlyFavorites = new CheckBox();
-            CBX_SearchHistoryBy = new ComboBox();
             TXT_SearchHistoryInput = new TextBox();
-            LBL_SearchHistoryBy = new Label();
             LBL_SearchHistoryInput = new Label();
-            BTN_ClearSearch = new Button();
             TCTRL_Main.SuspendLayout();
             TPG_Search.SuspendLayout();
             GBX_ContentResult.SuspendLayout();
@@ -219,7 +218,7 @@
             // 
             // LVW_CollectionResults
             // 
-            LVW_CollectionResults.Columns.AddRange(new ColumnHeader[] { CHDR_ContentName, CHDR_Artists });
+            LVW_CollectionResults.Columns.AddRange(new ColumnHeader[] { CHDR_Column1, CHDR_Column2 });
             LVW_CollectionResults.FullRowSelect = true;
             LVW_CollectionResults.Location = new Point(6, 23);
             LVW_CollectionResults.MultiSelect = false;
@@ -230,15 +229,15 @@
             LVW_CollectionResults.View = View.Details;
             LVW_CollectionResults.SelectedIndexChanged += LVW_CollectionResults_SelectedIndexChanged;
             // 
-            // CHDR_ContentName
+            // CHDR_Column1
             // 
-            CHDR_ContentName.Text = "Content Name";
-            CHDR_ContentName.Width = 180;
+            CHDR_Column1.Text = "Name";
+            CHDR_Column1.Width = 180;
             // 
-            // CHDR_Artists
+            // CHDR_Column2
             // 
-            CHDR_Artists.Text = "Artists(s)";
-            CHDR_Artists.Width = 180;
+            CHDR_Column2.Text = "Artist Name";
+            CHDR_Column2.Width = 180;
             // 
             // GBX_ContentInformation
             // 
@@ -1341,7 +1340,7 @@
             GBX_History.Location = new Point(7, 85);
             GBX_History.Name = "GBX_History";
             GBX_History.Size = new Size(822, 364);
-            GBX_History.TabIndex = 123;
+            GBX_History.TabIndex = 122;
             GBX_History.TabStop = false;
             GBX_History.Text = "History";
             // 
@@ -1352,9 +1351,10 @@
             LVW_SearchHistory.Location = new Point(6, 21);
             LVW_SearchHistory.Name = "LVW_SearchHistory";
             LVW_SearchHistory.Size = new Size(810, 336);
-            LVW_SearchHistory.TabIndex = 124;
+            LVW_SearchHistory.TabIndex = 123;
             LVW_SearchHistory.UseCompatibleStateImageBehavior = false;
             LVW_SearchHistory.View = View.Details;
+            LVW_SearchHistory.ColumnWidthChanging += LVW_SearchHistory_ColumnWidthChanging;
             LVW_SearchHistory.SelectedIndexChanged += LVW_SearchHistory_SelectedIndexChanged;
             // 
             // CHDR_ID
@@ -1401,9 +1401,19 @@
             GBX_SearchActions.Location = new Point(422, 2);
             GBX_SearchActions.Name = "GBX_SearchActions";
             GBX_SearchActions.Size = new Size(407, 77);
-            GBX_SearchActions.TabIndex = 118;
+            GBX_SearchActions.TabIndex = 117;
             GBX_SearchActions.TabStop = false;
             GBX_SearchActions.Text = "Search Actions";
+            // 
+            // BTN_ClearSearch
+            // 
+            BTN_ClearSearch.Location = new Point(83, 46);
+            BTN_ClearSearch.Name = "BTN_ClearSearch";
+            BTN_ClearSearch.Size = new Size(99, 23);
+            BTN_ClearSearch.TabIndex = 119;
+            BTN_ClearSearch.Text = "Clear Search";
+            BTN_ClearSearch.UseVisualStyleBackColor = true;
+            BTN_ClearSearch.Click += BTN_ClearSearch_Click;
             // 
             // BTN_ClearSearches
             // 
@@ -1420,7 +1430,7 @@
             BTN_UseInfo.Location = new Point(30, 18);
             BTN_UseInfo.Name = "BTN_UseInfo";
             BTN_UseInfo.Size = new Size(99, 23);
-            BTN_UseInfo.TabIndex = 119;
+            BTN_UseInfo.TabIndex = 118;
             BTN_UseInfo.Text = "Use Info";
             BTN_UseInfo.UseVisualStyleBackColor = true;
             BTN_UseInfo.Click += BTN_UseInfo_Click;
@@ -1431,16 +1441,15 @@
             CHK_ToggleFavoriting.Location = new Point(264, 34);
             CHK_ToggleFavoriting.Name = "CHK_ToggleFavoriting";
             CHK_ToggleFavoriting.Size = new Size(122, 19);
-            CHK_ToggleFavoriting.TabIndex = 122;
+            CHK_ToggleFavoriting.TabIndex = 121;
             CHK_ToggleFavoriting.Text = "Toggle Favoriting?";
             CHK_ToggleFavoriting.UseVisualStyleBackColor = true;
             // 
             // GBX_HistorySearchInformation
             // 
+            GBX_HistorySearchInformation.Controls.Add(BTN_ClearSearchInput);
             GBX_HistorySearchInformation.Controls.Add(CHK_OnlyFavorites);
-            GBX_HistorySearchInformation.Controls.Add(CBX_SearchHistoryBy);
             GBX_HistorySearchInformation.Controls.Add(TXT_SearchHistoryInput);
-            GBX_HistorySearchInformation.Controls.Add(LBL_SearchHistoryBy);
             GBX_HistorySearchInformation.Controls.Add(LBL_SearchHistoryInput);
             GBX_HistorySearchInformation.Location = new Point(7, 2);
             GBX_HistorySearchInformation.Name = "GBX_HistorySearchInformation";
@@ -1449,59 +1458,43 @@
             GBX_HistorySearchInformation.TabStop = false;
             GBX_HistorySearchInformation.Text = "Search Information";
             // 
+            // BTN_ClearSearchInput
+            // 
+            BTN_ClearSearchInput.Location = new Point(302, 19);
+            BTN_ClearSearchInput.Name = "BTN_ClearSearchInput";
+            BTN_ClearSearchInput.Size = new Size(99, 23);
+            BTN_ClearSearchInput.TabIndex = 115;
+            BTN_ClearSearchInput.Text = "Clear Input";
+            BTN_ClearSearchInput.UseVisualStyleBackColor = true;
+            BTN_ClearSearchInput.Click += BTN_ClearSearchInput_Click;
+            // 
             // CHK_OnlyFavorites
             // 
             CHK_OnlyFavorites.AutoSize = true;
-            CHK_OnlyFavorites.Location = new Point(300, 46);
+            CHK_OnlyFavorites.Location = new Point(12, 48);
             CHK_OnlyFavorites.Name = "CHK_OnlyFavorites";
             CHK_OnlyFavorites.Size = new Size(101, 19);
-            CHK_OnlyFavorites.TabIndex = 117;
+            CHK_OnlyFavorites.TabIndex = 116;
             CHK_OnlyFavorites.Text = "Only Favorites";
             CHK_OnlyFavorites.UseVisualStyleBackColor = true;
-            // 
-            // CBX_SearchHistoryBy
-            // 
-            CBX_SearchHistoryBy.DropDownStyle = ComboBoxStyle.DropDownList;
-            CBX_SearchHistoryBy.FormattingEnabled = true;
-            CBX_SearchHistoryBy.Location = new Point(88, 44);
-            CBX_SearchHistoryBy.Name = "CBX_SearchHistoryBy";
-            CBX_SearchHistoryBy.Size = new Size(201, 23);
-            CBX_SearchHistoryBy.TabIndex = 116;
+            CHK_OnlyFavorites.CheckedChanged += CHK_OnlyFavorites_CheckedChanged;
             // 
             // TXT_SearchHistoryInput
             // 
-            TXT_SearchHistoryInput.Location = new Point(88, 18);
+            TXT_SearchHistoryInput.Location = new Point(88, 19);
             TXT_SearchHistoryInput.Name = "TXT_SearchHistoryInput";
-            TXT_SearchHistoryInput.Size = new Size(308, 23);
+            TXT_SearchHistoryInput.Size = new Size(208, 23);
             TXT_SearchHistoryInput.TabIndex = 114;
-            // 
-            // LBL_SearchHistoryBy
-            // 
-            LBL_SearchHistoryBy.AutoSize = true;
-            LBL_SearchHistoryBy.Location = new Point(6, 47);
-            LBL_SearchHistoryBy.Name = "LBL_SearchHistoryBy";
-            LBL_SearchHistoryBy.Size = new Size(61, 15);
-            LBL_SearchHistoryBy.TabIndex = 115;
-            LBL_SearchHistoryBy.Text = "Search By:";
+            TXT_SearchHistoryInput.TextChanged += TXT_SearchHistoryInput_TextChanged;
             // 
             // LBL_SearchHistoryInput
             // 
             LBL_SearchHistoryInput.AutoSize = true;
-            LBL_SearchHistoryInput.Location = new Point(6, 21);
+            LBL_SearchHistoryInput.Location = new Point(9, 22);
             LBL_SearchHistoryInput.Name = "LBL_SearchHistoryInput";
             LBL_SearchHistoryInput.Size = new Size(76, 15);
             LBL_SearchHistoryInput.TabIndex = 113;
             LBL_SearchHistoryInput.Text = "Search Input:";
-            // 
-            // BTN_ClearSearch
-            // 
-            BTN_ClearSearch.Location = new Point(83, 46);
-            BTN_ClearSearch.Name = "BTN_ClearSearch";
-            BTN_ClearSearch.Size = new Size(99, 23);
-            BTN_ClearSearch.TabIndex = 121;
-            BTN_ClearSearch.Text = "Clear Search";
-            BTN_ClearSearch.UseVisualStyleBackColor = true;
-            BTN_ClearSearch.Click += BTN_ClearSearch_Click;
             // 
             // ITunesSearchUtility
             // 
@@ -1554,8 +1547,7 @@
         private Label LBL_SearchBy;
         private Label LBL_ContentName;
         private Button BTN_ContentSearch;
-        private ColumnHeader CHDR_ContentName;
-        private ColumnHeader CHDR_Artists;
+        private ColumnHeader CHDR_Column1;
         private TextBox TXT_AlbumArtistURL;
         private Label LBL_AlbumArtistURL;
         private TextBox TXT_AlbumArtistID;
@@ -1673,14 +1665,14 @@
         private Button BTN_UseInfo;
         private CheckBox CHK_ToggleFavoriting;
         private CheckBox CHK_OnlyFavorites;
-        private ComboBox CBX_SearchHistoryBy;
         private TextBox TXT_SearchHistoryInput;
-        private Label LBL_SearchHistoryBy;
         private Label LBL_SearchHistoryInput;
         private ColumnHeader CHDR_ID;
         private ColumnHeader CHDR_SearchLimit;
         private ColumnHeader CHDR_SearchCountryCode;
         private ColumnHeader CHDR_Time;
         private Button BTN_ClearSearch;
+        private ColumnHeader CHDR_Column2;
+        private Button BTN_ClearSearchInput;
     }
 }
