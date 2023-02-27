@@ -158,6 +158,7 @@
             CHDR_SearchLimit = new ColumnHeader();
             CHDR_SearchCountryCode = new ColumnHeader();
             GBX_SearchActions = new GroupBox();
+            BTN_OpenFolder = new Button();
             BTN_ClearSearch = new Button();
             BTN_ClearSearches = new Button();
             BTN_UseInfo = new Button();
@@ -1340,7 +1341,7 @@
             GBX_History.Location = new Point(7, 85);
             GBX_History.Name = "GBX_History";
             GBX_History.Size = new Size(822, 364);
-            GBX_History.TabIndex = 122;
+            GBX_History.TabIndex = 123;
             GBX_History.TabStop = false;
             GBX_History.Text = "History";
             // 
@@ -1351,7 +1352,7 @@
             LVW_SearchHistory.Location = new Point(6, 21);
             LVW_SearchHistory.Name = "LVW_SearchHistory";
             LVW_SearchHistory.Size = new Size(810, 336);
-            LVW_SearchHistory.TabIndex = 123;
+            LVW_SearchHistory.TabIndex = 124;
             LVW_SearchHistory.UseCompatibleStateImageBehavior = false;
             LVW_SearchHistory.View = View.Details;
             LVW_SearchHistory.ColumnWidthChanging += LVW_SearchHistory_ColumnWidthChanging;
@@ -1394,6 +1395,7 @@
             // 
             // GBX_SearchActions
             // 
+            GBX_SearchActions.Controls.Add(BTN_OpenFolder);
             GBX_SearchActions.Controls.Add(BTN_ClearSearch);
             GBX_SearchActions.Controls.Add(BTN_ClearSearches);
             GBX_SearchActions.Controls.Add(BTN_UseInfo);
@@ -1405,9 +1407,19 @@
             GBX_SearchActions.TabStop = false;
             GBX_SearchActions.Text = "Search Actions";
             // 
+            // BTN_OpenFolder
+            // 
+            BTN_OpenFolder.Location = new Point(135, 45);
+            BTN_OpenFolder.Name = "BTN_OpenFolder";
+            BTN_OpenFolder.Size = new Size(99, 23);
+            BTN_OpenFolder.TabIndex = 121;
+            BTN_OpenFolder.Text = "Open Folder";
+            BTN_OpenFolder.UseVisualStyleBackColor = true;
+            BTN_OpenFolder.Click += BTN_OpenFolder_Click;
+            // 
             // BTN_ClearSearch
             // 
-            BTN_ClearSearch.Location = new Point(83, 46);
+            BTN_ClearSearch.Location = new Point(30, 45);
             BTN_ClearSearch.Name = "BTN_ClearSearch";
             BTN_ClearSearch.Size = new Size(99, 23);
             BTN_ClearSearch.TabIndex = 119;
@@ -1441,7 +1453,7 @@
             CHK_ToggleFavoriting.Location = new Point(264, 34);
             CHK_ToggleFavoriting.Name = "CHK_ToggleFavoriting";
             CHK_ToggleFavoriting.Size = new Size(122, 19);
-            CHK_ToggleFavoriting.TabIndex = 121;
+            CHK_ToggleFavoriting.TabIndex = 122;
             CHK_ToggleFavoriting.Text = "Toggle Favoriting?";
             CHK_ToggleFavoriting.UseVisualStyleBackColor = true;
             // 
@@ -1674,5 +1686,6 @@
         private Button BTN_ClearSearch;
         private ColumnHeader CHDR_Column2;
         private Button BTN_ClearSearchInput;
+        private Button BTN_OpenFolder;
     }
 }

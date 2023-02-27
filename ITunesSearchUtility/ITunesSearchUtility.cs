@@ -4,6 +4,7 @@ using ITunesSearchUtility.Helpers;
 using ITunesSearchUtility.Objects;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace ITunesSearchUtility
 {
@@ -19,6 +20,7 @@ namespace ITunesSearchUtility
         readonly static string _filePath = Path.Combine(_directoryPath, "SearchHistory.json");
 
         List<Search>? _searches;
+        Process? process;
         int _lastTrackedIndex = 0;
 
         public ITunesSearchUtility()
@@ -28,6 +30,15 @@ namespace ITunesSearchUtility
 
         private void ITunesSearchUtility_Load(object sender, EventArgs e)
         {
+            process = new Process()
+            {
+                StartInfo = new ProcessStartInfo()
+                {
+                    FileName = "explorer.exe",
+                    Arguments = _directoryPath
+                }
+            };
+
             TXT_ContentName.Text = Properties.Settings.Default.ContentNameInput;
             CBX_SearchBy.SelectedIndex = Properties.Settings.Default.ContentSearchFilterIndex;
             TXT_SearchLimit.Text = Properties.Settings.Default.ContentSearchLimitNumber.ToString();
@@ -86,7 +97,7 @@ namespace ITunesSearchUtility
             {
                 if (_searches != null)
                 {
-                    string searches = JsonConvert.SerializeObject(_searches);
+                    string searches = JsonConvert.SerializeObject(_searches, Formatting.Indented);
                     File.WriteAllText(_filePath, searches);
                 }
             }
@@ -299,6 +310,14 @@ namespace ITunesSearchUtility
         private void BTN_ClearSearchInput_Click(object sender, EventArgs e)
         {
             TXT_SearchHistoryInput.Clear();
+        }
+
+        private void BTN_OpenFolder_Click(object sender, EventArgs e)
+        {
+            if (process != null)
+            {
+                process.Start();
+            }
         }
 
         private void LVW_CollectionResults_SelectedIndexChanged(object sender, EventArgs e)
